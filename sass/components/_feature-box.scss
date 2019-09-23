@@ -1,0 +1,44 @@
+.feature-box {
+  //float: left;
+  //width: 33.3333%;
+  //margin-bottom: 6rem;
+
+  background-color: rgba($color-white, 0.8);
+  //font size anname siin et läheks edasi alamatele, paragraphile
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+  transition: transform 0.3s;
+
+  @include respond(tab-port) {
+    padding: 2rem;
+  }
+
+  &__icon {
+    font-size: 6rem;
+    margin-bottom: 0.5rem;
+
+    //et poleks akna lõpuni vaid texti lõpuni
+    display: inline-block;
+    //tagaplaani värv heledamast tumedamaks
+    background-image: linear-gradient(
+      to right,
+      $color-primary-light,
+      $color-primary-dark
+    );
+    //et text oleks hoopis background image
+    -webkit-background-clip: text;
+    //teksti värv läbipaistvaks, et hakkaks paistma background imageks tehtud tekst
+    color: transparent;
+
+    @include respond(tab-port) {
+      margin-bottom: 0;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-1.5rem) scale(1.03);
+  }
+}

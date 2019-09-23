@@ -1,19 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <link rel="stylesheet" href="css/icon-font.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
-        
-        <title>Natours | Exciting tours for adventurous people</title>
-    </head>
-    <body>
-        
-        
-    </body>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Chilanka|Lato:400i&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i"
+      rel="stylesheet"
+    />
+    <!--font-family: 'Chilanka', cursive;
+font-family: 'Lato', sans-serif;-->
+
+    <link rel="stylesheet" href="css/icon-font.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!--link rel="shortcut icon" type="image/png" href="img/favicon.png" /-->
+
+    <!--title>Babywatchers | New Exciting page for family people</title-->
+    <title>Babywatchers | Uus, Lihtne ja Mugav leht Peredele!</title>
+  </head>
+  <body>
+    <div class="navigation">
+      <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+
+      <label for="navi-toggle" class="navigation__button">
+        <span class="navigation__icon">&nbsp;</span>
+      </label>
+
+      <div class="navigation__background">&nbsp;</div>
+
+      <nav class="navigation__nav">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="#section-about" class="navigation__link" target="_blank"
+              ><span>01</span>Meie kohta</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="#section-features" class="navigation__link" target="_blank"
+              ><span>02</span>Plussid teile</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a
+              href="../index.html#section-services"
+              class="navigation__link"
+              target="_blank"
+              ><span>03</span>Teenused</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a
+              href="http://babywatchlastehoid.ee/index.php"
+              class="navigation__link"
+              ><span>04</span>Babywatch lastehoid</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="#section-book" class="navigation__link" target="_blank"
+              ><span>05</span>Logi sisse</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div>
+      <header class="header" id="header">
+        <div class="header__logo-box">
+          <!--img src="img/eye.svg" alt="Babywatchers Logo" class="header__logo" /-->
+          <svg class="icon-red feature__icon header__logo">
+            <use xlink:href="img/icons.svg#icon-reddit"></use>
+          </svg>
+        </div>
+
+        <div class="header__text-box">
+          <h1 class="heading-primary">
+            <span class="heading-primary--main">Babywatchers</span>
+            <span class="heading-primary--sub"
+              >vahel on hea tunda end vabana</span
+            >
+          </h1>
+          <div class="btn-group">
+            <a
+              href="#section-tours"
+              class="btn btn--blue-lightest btn--animated"
+              >Tutvu võimalustega</a
+            >
+            <a
+              href="#section-babywatch"
+              class="btn btn--blue-lightest-2 btn--animated"
+              >Meie enda lastehoid</a
+            >
+          </div>
+        </div>
+      </header>
+      <main class="container">
+        <section class="section-about" id="section-about">
+          <div class="about">
+            <div class="u-center-text u-margin-bottom-big">
+              <h2 class="heading-secondary">
+                Lihtne ja selge leht lastevanematele ja hoidjatele
+              </h2>
+            </div>
+
+            <div class="row">
+              <div class="about__text">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                  Kui oled lapsevanem
+                </h3>
+                <p class="paragraph">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic
+                  tenetur fuga quos! Ipsa omnis nam numquam, voluptate, corrupti
+                  nesciunt tenetur dolores aspernatur deleniti reiciendis beatae
+                  est veniam quibusdam recusandae fugit?
+                </p>
+
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                  Hoidjad ja lastehoiud
+                </h3>
+                <p class="paragraph">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Excepturi velit dolorem repellat neque eos reiciendis.
+                </p>
+
+                <!--a-- href="#" class="btn-text">Lisaks infot &rarr;</!--a-->
+                <a href="#" class="btn-inline">Lisaks infot &rarr;</a>
+                <!--button-- class="btn-inline">Show all <span>&rarr;</span></!--button-->
+              </div>
+              <div class="about__pics composition">
+                <div class="">
+                  <img
+                    sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                    alt="Photo 1"
+                    class="composition__photo composition__photo--p1"
+                    src="img/pilt1.jpg"
+                    srcset="img/pilt1.jpg 300w, img/pilt1.jpg 1000w"
+                  />
+
+                  <img
+                    srcset="img/pilt2.jpg 300w, img/pilt2.jpg 1000w"
+                    sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                    alt="Photo 2"
+                    class="composition__photo composition__photo--p2"
+                    src="img/pilt2.jpg"
+                  />
+
+                  <img
+                    srcset="img/pilt3.jpg 300w, img/pilt3.jpg 1000w"
+                    sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                    alt="Photo 3"
+                    class="composition__photo composition__photo--p3"
+                    src="img/pilt3.jpg"
+                  />
+                  <!--img
+                                src="img/nat-1-large.jpg"
+                                alt="Photo 1"
+                                class="composition__photo composition__photo--p1"
+                              />
+                              <img
+                                src="img/nat-2-large.jpg"
+                                alt="Photo 2"
+                                class="composition__photo composition__photo--p2"
+                              />
+                              <img
+                                src="img/nat-3-large.jpg"
+                                alt="Photo 3"
+                                class="composition__photo composition__photo--p3"
+                              /-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section-features" id="section-features">
+          <div class="features2">
+            <div class="feature-box">
+              <i class="feature-box__icon icon-basic-world"></i>
+              <h3 class="header-tertiary u-margin-bottom-small">
+                Hästi hoitud lapsed
+              </h3>
+              <p class="feature-box__text">
+                Tänu tagasisidele võimalusele ja hoidjate ning hoidude
+                hindamisele, saavad ka nemad põhjuse endast parim anda.
+                Kasvatajad saavad anda igapäevast tagasisidet ka Teie laste
+                kohta. Nii olete kursis
+              </p>
+            </div>
+
+            <div class="feature-box">
+              <i class="feature-box__icon icon-basic-compass"></i>
+              <h3 class="header-tertiary u-margin-bottom-small">
+                Mõistlikud hinnad
+              </h3>
+              <p class="feature-box__text">
+                Üritame hoida erinevate teenuste hinnad mõistlikul tasemel. Tänu
+                meie hindamis ja tagasiside süsteemile, saate võrrelda taset ja
+                kas hinnad on vastavad tasemele.
+              </p>
+            </div>
+
+            <div class="feature-box">
+              <i class="feature-box__icon icon-basic-map"></i>
+              <h3 class="header-tertiary u-margin-bottom-small">
+                Suhtlus ja tagasiside
+              </h3>
+              <p class="feature-box__text">
+                Tagasisidet saavad anda nii lapsevanemad kui hoidjad üksteisele
+                või ka lastehoiule. Saate valida kes näeb hindamist või
+                kommentaari. Samas saavad suhelda omavahel nii kasvatajad kui
+                lapsevanemad.
+              </p>
+            </div>
+
+            <div class="feature-box">
+              <i class="feature-box__icon icon-basic-compass"></i>
+              <h3 class="header-tertiary u-margin-bottom-small">
+                Pildid ja videod
+              </h3>
+              <p class="feature-box__text">
+                Tulekul piltide ja videode lisamise võimalus ning
+                kommenteerimine. Saab ise valida, kes neid näeb.
+              </p>
+            </div>
+
+            <div class="feature-box">
+              <i class="feature-box__icon icon-basic-compass"></i>
+              <h3 class="header-tertiary u-margin-bottom-small">
+                Pood ja vahetus
+              </h3>
+              <p class="feature-box__text">
+                Tulekul kasutatud asjade pakkumise või müügi võimalus.
+                Loomulikult tuleb ka võimalus müüa uusi asju või tekitada
+                oksion.
+              </p>
+            </div>
+
+            <div class="feature-box">
+              <i class="feature-box__icon icon-basic-compass"></i>
+              <h3 class="header-tertiary u-margin-bottom-small">
+                Analüüs ja statistika
+              </h3>
+              <p class="feature-box__text">
+                Tulekul laste analüüsi ja satistika kogumise võimalused nii
+                hoidudele kui lapsevanematele või kaupmeestele. Samuti raha
+                asjade jälgimine.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="features">
+          <div class="feature">
+            <svg class="feature__icon">
+              <!--i-- class="feature-box__icon icon-basic-world"></!--i-->
+              <use xlink:href="img/icons.svg#icon-earth"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Mõistlikud hinnad</h4>
+            <p class="feature__text">
+              Üritame hoida erinevate teenuste hinnad mõistlikul tasemel. Tänu
+              meie hindamis ja tagasiside süsteemile, saate võrrelda taset ja
+              kas hinnad on vastavad tasemele.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg class="feature__icon">
+              <!--i-- class="feature-box__icon icon-basic-world"></!--i-->
+              <use xlink:href="img/icons.svg#icon-earth"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Hästi hoitud lapsed</h4>
+            <p class="feature__text">
+              Tänu tagasisidele võimalusele ja hoidjate ning hoidude
+              hindamisele, saavad ka nemad põhjuse endast parim anda. Kasvatajad
+              saavad anda igapäevast tagasisidet ka Teie laste kohta. Nii olete
+              kursis
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg class="feature__icon">
+              <!--i-- class="feature-box__icon icon-basic-world"></!--i-->
+              <use xlink:href="img/icons.svg#icon-earth"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Suhtlus ja tagasiside</h4>
+            <p class="feature__text">
+              Tagasisidet saavad anda nii lapsevanemad kui hoidjad üksteisele
+              või ka lastehoiule. Saate valida kes näeb hindamist või
+              kommentaari. Samas saavad suhelda omavahel nii kasvatajad kui
+              lapsevanemad.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg class="feature__icon">
+              <!--i-- class="feature-box__icon icon-basic-world"></!--i-->
+              <use xlink:href="img/icons.svg#icon-earth"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Pildid ja videod</h4>
+            <p class="feature__text">
+              Tulekul piltide ja videode lisamise võimalus ning kommenteerimine.
+              Saab ise valida, kes neid näeb.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg class="feature__icon">
+              <!--i-- class="feature-box__icon icon-basic-world"></!--i-->
+              <use xlink:href="img/icons.svg#icon-earth"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Pood ja vahetus</h4>
+            <p class="feature__text">
+              Tulekul kasutatud asjade pakkumise või müügi võimalus. Loomulikult
+              tuleb ka võimalus müüa uusi asju või tekitada oksion.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg class="feature__icon">
+              <!--i-- class="feature-box__icon icon-basic-world"></!--i-->
+              <use xlink:href="img/icons.svg#icon-earth"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Analüüs ja statistika</h4>
+            <p class="feature__text">
+              Tulekul laste analüüsi ja satistika kogumise võimalused nii
+              hoidudele kui lapsevanematele või kaupmeestele. Samuti raha asjade
+              jälgimine.
+            </p>
+          </div>
+        </section>
+
+        <!--section-- class="section-services" id="section-services">
+          Services
+        </!--section-->
+
+        <section class="section-book" id="section-book">
+          Book
+        </section>
+
+        <footer class="footer">
+          <ul class="nav">
+            <li class="nav__item">
+              <a href="#" class="nav__link">Logi sisse</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Uus kasutaja</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Lisa laps</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Võta ühendust</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Lisage enda lastehoid</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Vabad töökohad</a>
+            </li>
+          </ul>
+          <p class="copyright">
+            &copy; Copyright 2019 by Rünno Ruul. Võite kasutada seda lehte ja
+            võimalusi omal vastutusel.
+          </p>
+        </footer>
+      </main>
+      <div class="popup">Popup</div>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,51 @@
+.about {
+  grid-column: center-start / center-end;
+  //grid-row: 3;
+  //background-color: $color-grey-light-1;
+  //et about leht algaks eelmise lehe alumisest nrgast
+  //padding: 25rem 0;
+  //et hall osa läheks ikkagi üles välja miinusmärgiga
+  //margin-top: -20vh;
+
+  display: grid;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: min-content min-content;
+  grid-template-columns:
+    [text-start] minmax(6rem, 70vw)
+    [pics-start] minmax(6rem, 30vw)
+    [pics-end];
+
+  &__text {
+    grid-column: text-start / pics-start;
+    padding-right: 20rem;
+    padding-top: 15rem;
+  }
+
+  &__pics {
+    grid-column: pics-start / pics-end;
+    padding-top: 15rem;
+    //grid-row: 2;
+  }
+
+  @include respond(tab-port) {
+    padding: 20rem 0;
+  }
+}
+
+.row {
+  grid-column: 1 / -1;
+  padding-top: 5rem;
+  display: grid;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: min-content min-content;
+  grid-template-columns:
+    [text-start] minmax(6rem, 70vw)
+    [pics-start] minmax(6rem, 30vw)
+    [pics-end];
+}
+
+.u-center-text {
+  grid-column: 1 / -1;
+  //grid-column: text-start / pics-end;
+  text-align: center;
+}

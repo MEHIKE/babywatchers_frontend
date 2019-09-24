@@ -3,33 +3,52 @@
   background-color: $color-primary-dark;
   grid-column: full-start / full-end;
   padding: 3rem;
+  align-self: center;
 }
 
-.nav {
+.footnav {
   list-style: none;
-
+  padding: 1.5rem;
+  padding-left: 5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 0.25fr));
+  grid-gap: 1.5rem;
   align-items: center;
+  text-decoration: none;
+  //border-bottom: 1px solid currentColor;
+  transition: all 0.3s;
+
+  &__item {
+    align-items: center;
+  }
 
   &__link:link,
   &__link:visited {
     font-size: 1.4rem;
-    color: #fff;
+    color: $color-primary-lightest;
     text-decoration: none;
     font-family: $font-display;
     text-transform: uppercase;
     text-align: center;
-    padding: 1.5rem;
-    display: block;
-    transition: all 0.2s;
+    padding: 0.5rem;
+    display: inline-block;
+    background-color: transparent;
+    outline: none;
+    transition: all 0.3s;
   }
 
   &__link:hover,
   &__link:active {
-    background-color: rgba(#fff, 0.05);
-    transform: translateY(-3px);
+    //background-color: rgba(#fff, 0.05);
+    //transform: translateY(-3px);
+    outline: none;
+    background-color: $color-primary-dark;
+
+    //box-shadow: 0 1rem 2rem rbga($color-black, 0.4);
+    //transform: rotate(5deg) scale(1.3);
+    //animation: pulsate 1s infinite;
+    transform: rotate(5deg) scale(1.3);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
   }
 }
 

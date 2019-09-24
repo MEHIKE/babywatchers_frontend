@@ -77,8 +77,21 @@
   }
 }
 
+.bookrow {
+  grid-column: 1 / -1;
+  padding-top: 1.5rem;
+  display: grid;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: min-content;
+  grid-template-columns:
+    [text-start] minmax(6rem, 15vw)
+    [form-start] minmax(6rem, 70vw)
+    [form-end] minmax(6rem, 15vw) [text-end];
+}
+
 .section-book {
-  padding: 15rem 0;
+  grid-column: full-start / full-end;
+  padding: 10rem 0;
   background-image: linear-gradient(
     to right bottom,
     $color-primary-light,
@@ -88,9 +101,21 @@
   @include respond(tab-port) {
     padding: 10rem 0;
   }
+
+  display: grid;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: 80vh;
+  grid-template-columns:
+    [full-start] minmax(6rem, 0.35fr)
+    [just-start] minmax(6rem, 0.05fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end])
+    [center-end] minmax(6rem, 0.35fr)
+    [just-start] minmax(6rem, 0.05fr)
+    [full-end];
 }
 
 .book {
+  grid-column: form-start / form-end;
   //et saaks vasakupoole hägustada ja diagonaalis, siis 2pilti: ja alljärgnev osa
   background-image: linear-gradient(
       105deg,
@@ -98,9 +123,10 @@
       rgba($color-white, 0.9) 50%,
       transparent 50%
     ),
-    url("../img/nat-10.jpg");
+    url("../img/book1.jpg");
   //kas cover või 100% see töhendab tegelt sama
-  background-size: 100%;
+  background-size: cover;
+  background-position: center;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
 
@@ -111,7 +137,7 @@
         rgba($color-white, 0.9) 65%,
         transparent 65%
       ),
-      url("../img/nat-10.jpg");
+      url("../img/book1.jpg");
     background-size: cover;
   }
 
@@ -121,12 +147,12 @@
         rgba($color-white, 0.9) 0%,
         rgba($color-white, 0.9) 100%
       ),
-      url("../img/nat-10.jpg");
+      url("../img/book1.jpg");
   }
 
   &__form {
     width: 50%;
-    padding: 6rem;
+    padding: 3rem;
 
     @include respond(tab-land) {
       width: 65%;

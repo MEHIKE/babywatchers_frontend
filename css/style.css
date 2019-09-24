@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*@import "base/base";
 @import "base/typography";
 @import "base/utilities";
@@ -50,7 +51,7 @@ body {
 }*/
 .container {
   display: grid;
-  grid-template-rows: min-content 50vw 40vw repeat(4, min-content);
+  grid-template-rows: min-content 50vw 40vw repeat(5, min-content);
   grid-template-columns: [full-start] minmax(6rem, 0.35fr) [just-start] minmax(6rem, 0.05fr) [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end]) [center-end] minmax(6rem, 0.35fr) [just-start] minmax(6rem, 0.05fr) [full-end]; }
 
 body {
@@ -459,13 +460,24 @@ body {
     .section-features {
       padding: 10rem 0; } }
 
-.section-tours {
-  background-color: #f7f7f7;
-  padding: 25rem 0 15rem 0;
-  margin-top: -10rem; }
+.section-cards {
+  grid-column: full-start / full-end;
+  padding: 10rem 0 10rem 0;
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: [full-start] minmax(6rem, 0.15fr) [just-start] minmax(6rem, 0.05fr) [card-start] repeat(3, [col-start] minmax(min-content, 52rem) [col-end]) [card-end] minmax(6rem, 0.05fr) [just-start] minmax(6rem, 0.15fr) [full-end];
+  grid-gap: 3rem; }
   @media only screen and (max-width: 56.25em) {
-    .section-tours {
+    .section-cards {
       padding: 20rem 0 10rem 0; } }
+
+.cardrow {
+  grid-column: card-start / card-end;
+  padding-top: 1.5rem;
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: [card-start] repeat(3, [col-start] minmax(max-content, 52rem) [col-end]) [card-end];
+  grid-gap: 10rem; }
 
 .section-stories {
   padding: 15rem 0; }
@@ -642,6 +654,8 @@ body {
   .btn-inline span {
     margin-left: 3px;
     transition: margin-left 0.2s; }
+  .btn-inline--pink {
+    background-color: #e4c6e6; }
   .btn-inline:hover {
     background-color: #e4c6e6;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3); }
@@ -849,16 +863,199 @@ body {
   cursor: pointer;
   text-align: right; }
 
-.bg-video {
-  position: absolute;
+.card {
+  grid-column: col-start / col-end;
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem; }
+  .card__side {
+    height: 52rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back--1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back--2 {
+        background-image: linear-gradient(to right bottom, #e8a1eb, #ad10a6); }
+      .card__side--back--3 {
+        background-image: linear-gradient(to right bottom, #745aeb, #2d1eb6); }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0); }
+  .card__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url("../img/header1.jpg"); }
+    .card__picture--2 {
+      background-image: linear-gradient(to right bottom, #e8a1eb, #ad10a6), url("../img/features1.jpg"); }
+    .card__picture--3 {
+      background-image: linear-gradient(to right bottom, #745aeb, #2d1eb6), url("../img/pilt3.jpg"); }
+  .card__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%; }
+  .card__heading-span {
+    padding: 1rem 1.5rem;
+    /*kuna text ei ole ilusti asetatud vaid on liiga servas siis sellele on trick, kui lase läheb teisele reale, siis parameetreid võetakse mõlemale eraldi. webkit, kuna chromes ei tööta muidu*/
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+    .card__heading-span--2 {
+      background-image: linear-gradient(to right bottom, rgba(232, 161, 235, 0.85), rgba(173, 16, 166, 0.85)); }
+    .card__heading-span--3 {
+      background-image: linear-gradient(to right bottom, rgba(116, 90, 235, 0.85), rgba(45, 30, 182, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; }
+      .card__details ul li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
+  .card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center; }
+  .card__price-box {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8rem; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    .card {
+      height: auto;
+      border-radius: 3px;
+      background-color: #fff;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+      .card__side {
+        height: auto;
+        position: relative;
+        box-shadow: none; }
+        .card__side--back {
+          transform: rotateY(0);
+          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%); }
+      .card:hover .card__side--front {
+        transform: rotateY(0); }
+      .card__details {
+        padding: 1rem 3rem; }
+      .card__cta {
+        position: relative;
+        top: 0%;
+        left: 0;
+        transform: translate(0);
+        width: 100%;
+        padding: 7rem 4rem 4rem 4rem; }
+      .card__price-box {
+        margin-bottom: 3rem; }
+      .card__price-value {
+        font-size: 4rem; } }
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-  opacity: 0.15;
-  overflow: hidden; }
-  .bg-video__content {
-    height: 100%;
-    width: 100%;
-    object-fit: cover; }
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s; }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popup {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); } }
+  .popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    background-color: #eee;
+    box-shadow: 0 2rem 4rem rbga(#000, 0.2);
+    border-radius: 3px;
+    display: table;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.5s 0.2s; }
+  .popup__left {
+    width: 33.33333%;
+    display: table-cell; }
+  .popup__right {
+    width: 66.66667%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem; }
+  .popup__img {
+    display: block;
+    width: 100%; }
+  .popup__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid #eee;
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid #eee;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+  .popup:target .popup__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); }
+  .popup__close:link, .popup__close:visited {
+    color: #777;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    line-height: 1; }
+  .popup__close:hover {
+    color: #c155c5; }

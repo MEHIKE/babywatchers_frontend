@@ -137,6 +137,10 @@
     transition: margin-left 0.2s;
   }
 
+  &--pink {
+    background-color: $color-primary-lightest;
+  }
+
   &:hover {
     //color: var(--color-grey-dark-1);
     background-color: $color-primary-lightest;

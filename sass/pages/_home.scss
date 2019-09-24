@@ -54,17 +54,43 @@
   }
 }
 
-.section-tours {
-  background-color: $color-grey-light-1;
+.section-cards {
+  //background-color: $color-grey-light-1;
+  grid-column: full-start / full-end;
+
   //et about leht algaks eelmise lehe alumisest nrgast
-  padding: 25rem 0 15rem 0;
+  padding: 10rem 0 10rem 0;
 
   //lligutame kogu kupatuse ülespoole, et kataks valge ala mis jäi plemisest ekraanist
-  margin-top: -10rem;
+  //margin-top: -10rem;
 
   @include respond(tab-port) {
     padding: 20rem 0 10rem 0;
   }
+
+  display: grid;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: min-content;
+  grid-template-columns:
+    [full-start] minmax(6rem, 0.15fr)
+    [just-start] minmax(6rem, 0.05fr)
+    [card-start] repeat(3, [col-start] minmax(min-content, 52rem) [col-end])
+    [card-end] minmax(6rem, 0.05fr)
+    [just-start] minmax(6rem, 0.15fr)
+    [full-end];
+  grid-gap: 3rem;
+}
+
+.cardrow {
+  grid-column: card-start / card-end;
+  padding-top: 1.5rem;
+  display: grid;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: min-content;
+  grid-template-columns:
+    [card-start] repeat(3, [col-start] minmax(max-content, 52rem) [col-end])
+    [card-end];
+  grid-gap: 10rem;
 }
 
 .section-stories {

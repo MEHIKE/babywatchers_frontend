@@ -1,0 +1,253 @@
+.card {
+  grid-column: col-start / col-end;
+  //FUNCTIONALITY
+  perspective: 150rem;
+  //et firefoxis ka töötaks
+  -moz-perspective: 150rem;
+
+  //parent peab olema relative ki child on absolute
+  position: relative;
+
+  height: 52rem;
+
+  &__side {
+    height: 52rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    //et laius oleks sama mõlemal poolel
+    width: 100%;
+    //et tagumine pool oleks peidetud
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    //et pilt ei kataks raadiust ära oma teravate servadega
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+
+      //tagumise poole värvi gradient
+      &--1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+
+      &--2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &--3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-blue-light,
+          $color-blue-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  //FRONT SIZE STYLING
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    //et hajutada ühte pilti
+    background-blend-mode: screen;
+    //et läheks tööle clip-path ka teistes brwserites, väga uus asi css-s
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    //et pildi alumine joon ei oleks sirge vaid diagonaali all
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    //clp pathiga kadusid radiused ära, uuesti
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    &--1 {
+      //kaks pilti korraga komaga eraldatult üleval saab hajutatud blend-modega
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url("../img/header1.jpg");
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url("../img/features1.jpg");
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-blue-light,
+          $color-blue-dark
+        ),
+        url("../img/pilt3.jpg");
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    /*kuna text ei ole ilusti asetatud vaid on liiga servas siis sellele on trick, kui lase läheb teisele reale, siis parameetreid võetakse mõlemale eraldi. webkit, kuna chromes ei tööta muidu*/
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-blue-light, 0.85),
+        rgba($color-blue-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+    ul {
+      list-style: none;
+      width: 80%;
+      //et tekst tuleks keskele
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+
+  //BACK SIDE STYLING
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //et oleks täiesti keskel
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 100;
+  }
+
+  //kuna siin on vaja palju ringi kirjutada, siis kopime kogu asja siia ja muudame vajalikku ja kustutame mittevajaliku osa
+  //@include respond(tab-port) {
+  //meil oli card backside ja seal nupud aga tab-del on suur ekraan aga seal pole hoverit, selle saab media queryga ikka kätte
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    //kuna enam pole kahte külge samasuuruseks vaja ajada, siis auto
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &__side {
+      height: auto;
+
+      position: relative;
+      box-shadow: none;
+
+      &--back {
+        transform: rotateY(0);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+      }
+    }
+
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+
+    &__details {
+      padding: 1rem 3rem;
+    }
+
+    //BACK SIDE STYLING
+    &__cta {
+      position: relative;
+      top: 0%;
+      left: 0;
+      //et oleks täiesti keskel
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
+  }
+}

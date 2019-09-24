@@ -27,7 +27,7 @@ body {
 .container {
   display: grid;
   //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
-  grid-template-rows: min-content 50vw 40vw repeat(4, min-content);
+  grid-template-rows: min-content 50vw 40vw repeat(5, min-content);
   grid-template-columns:
     [full-start] minmax(6rem, 0.35fr)
     [just-start] minmax(6rem, 0.05fr)

@@ -4,6 +4,10 @@
   grid-column: full-start / full-end;
   padding: 3rem;
   align-self: center;
+
+  @media only screen and (max-width: $bp-large) {
+    padding: 1rem;
+  }
 }
 
 .footnav {
@@ -17,6 +21,19 @@
   text-decoration: none;
   //border-bottom: 1px solid currentColor;
   transition: all 0.3s;
+  font-weight: 600;
+
+  @media only screen and (max-width: $bp-large) {
+    padding: 1rem;
+    padding-left: 3rem;
+    grid-gap: 1;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0.5rem;
+    padding-left: 1rem;
+    grid-gap: 0.5;
+  }
 
   &__item {
     align-items: center;
@@ -35,6 +52,18 @@
     background-color: transparent;
     outline: none;
     transition: all 0.3s;
+
+    @media only screen and (max-width: $bp-large) {
+      font-size: 1.2rem;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      font-size: 1rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 0.8rem;
+    }
   }
 
   &__link:hover,
@@ -60,4 +89,12 @@
   margin-left: auto;
   text-align: center;
   width: 70%;
+
+  @media only screen and (max-width: $bp-small) {
+    font-size: 1.2rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    font-size: 1rem;
+  }
 }

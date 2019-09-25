@@ -15,7 +15,8 @@
     [pics-start] minmax(6rem, 30vw)
     [pics-end];
 
-  @media only screen and (max-width: $bp-large) {
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0;
   }
 
   &__text {
@@ -26,12 +27,28 @@
     @media only screen and (max-width: $bp-large) {
       padding-right: 10rem;
     }
+
+    @media only screen and (max-width: $bp-medium) {
+      padding-right: 1rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-rows: min-content min-content min-content;
+      grid-template-columns:
+        [text-start] minmax(6rem, 100vw)
+        [text-end];
+    }
   }
 
   &__pics {
     grid-column: pics-start / pics-end;
     padding-top: 10rem;
     //grid-row: 2;
+
+    @media only screen and (max-width: $bp-small) {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
   }
 
   @include respond(tab-port) {
@@ -49,6 +66,15 @@
     [text-start] minmax(6rem, 70vw)
     [pics-start] minmax(6rem, 30vw)
     [pics-end];
+
+  @media only screen and (max-width: $bp-small) {
+    //grid-column: 1 / -1;
+    //grid-row: 3;
+    grid-template-rows: min-content min-content min-content;
+    grid-template-columns:
+      [text-start] minmax(6rem, 100vw)
+      [text-end];
+  }
 }
 
 .u-center-text {

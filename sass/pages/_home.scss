@@ -92,6 +92,18 @@
     [just-start] minmax(6rem, 0.15fr)
     [full-end];
   grid-gap: 3rem;
+
+  @media only screen and (max-width: $bp-large) {
+    padding: 5rem 0 5rem 0;
+    grid-template-columns:
+      [full-start] minmax(3rem, 0.01fr)
+      [just-start] minmax(3rem, 0.02fr)
+      [card-start] repeat(3, [col-start] minmax(min-content, 62rem) [col-end])
+      [card-end] minmax(3rem, 0.02fr)
+      [just-start] minmax(3rem, 0.01fr)
+      [full-end];
+    grid-gap: 2rem;
+  }
 }
 
 .cardrow {
@@ -104,6 +116,22 @@
     [card-start] repeat(3, [col-start] minmax(max-content, 52rem) [col-end])
     [card-end];
   grid-gap: 10rem;
+
+  @media only screen and (max-width: $bp-large) {
+    padding: 5rem 0 5rem 0;
+    grid-template-columns:
+      [card-start] repeat(3, [col-start] minmax(max-content, 52rem) [col-end])
+      [card-end];
+    grid-gap: 2rem;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 5rem 0 5rem 0;
+    grid-template-columns:
+      [card-start] repeat(1, [col-start] minmax(max-content, 152rem) [col-end])
+      [card-end];
+    grid-gap: 2rem;
+  }
 }
 
 .section-stories {

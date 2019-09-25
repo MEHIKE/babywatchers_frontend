@@ -9,6 +9,7 @@
     display: grid;
     //grid-template-columns: repeat(3, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    //grid-template-rows: max-content;
     grid-gap: 6rem;
     align-items: start;
   }
@@ -18,14 +19,14 @@
   //grid-column: full-start / full-end;
   grid-column: center-start / center-end;
 
-  margin: 15rem 10rem;
+  margin: 10rem 10rem;
 
   @supports (display: grid) {
     //grid-column: center-start / center-end;
     display: grid;
     //grid-template-columns: repeat(3, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-    grid-template-rows: max-content;
+    grid-template-rows: min-content;
     grid-gap: 6rem;
     align-items: start;
   }

@@ -24,6 +24,11 @@
     padding-right: 20rem;
     padding-top: 1rem;
 
+    @media only screen and (min-width: $bp-largest) {
+      //padding-top: 1rem;
+      top: -8rem;
+    }
+
     @media only screen and (max-width: $bp-large) {
       padding-right: 10rem;
     }
@@ -44,6 +49,10 @@
     grid-column: pics-start / pics-end;
     padding-top: 10rem;
     //grid-row: 2;
+
+    @media only screen and (min-width: $bp-largest) {
+      padding-top: 1rem;
+    }
 
     @media only screen and (max-width: $bp-small) {
       grid-column: 1 / -1;

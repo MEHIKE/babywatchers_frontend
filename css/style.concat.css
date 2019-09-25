@@ -1137,6 +1137,9 @@ body {
     grid-column: text-start / pics-start;
     padding-right: 20rem;
     padding-top: 1rem; }
+    @media only screen and (min-width: 75em) {
+      .about__text {
+        top: -8rem; } }
     @media only screen and (max-width: 62.5em) {
       .about__text {
         padding-right: 10rem; } }
@@ -1150,6 +1153,9 @@ body {
   .about__pics {
     grid-column: pics-start / pics-end;
     padding-top: 10rem; }
+    @media only screen and (min-width: 75em) {
+      .about__pics {
+        padding-top: 1rem; } }
     @media only screen and (max-width: 37.5em) {
       .about__pics {
         grid-column: 1 / -1;
@@ -1337,6 +1343,9 @@ body {
     .composition__photo--p1 {
       left: 0;
       top: -2rem; }
+      @media only screen and (min-width: 75em) {
+        .composition__photo--p1 {
+          top: -11rem; } }
       @media only screen and (max-width: 62.5em) {
         .composition__photo--p1 {
           top: -2rem;

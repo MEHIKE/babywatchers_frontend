@@ -504,7 +504,6 @@ body {
   grid-template-columns: [full-start] minmax(6rem, 0.05fr) [just-start] minmax(6rem, 0.35fr) [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end]) [center-end] minmax(6rem, 0.35fr) [just-start] minmax(6rem, 0.05fr) [full-end]; }
   @media only screen and (max-width: 62.5em) {
     .container {
-      grid-template-rows: 6rem 180vw min-content 40vw repeat(3, min-content);
       grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; } }
   @media only screen and (max-width: 50em) {
     .container {
@@ -987,15 +986,18 @@ body {
   grid-column: full-start / full-end;
   background-color: #f7f7f7;
   padding: 25rem 0;
-  margin-top: -19vh;
+  margin-top: -20vh;
   display: grid;
-  grid-template-columns: [full-start] minmax(6rem, 0.35fr) [just-start] minmax(6rem, 0.05fr) [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end]) [center-end] minmax(6rem, 0.35fr) [just-start] minmax(6rem, 0.05fr) [full-end]; }
+  grid-template-columns: [full-start] minmax(6rem, 0.05fr) [just-start] minmax(6rem, 0.35fr) [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end]) [center-end] minmax(6rem, 0.35fr) [just-start] minmax(6rem, 0.05fr) [full-end];
+  grid-template-columns: [full-start] minmax(6rem, 0.05fr) [just-start] minmax(6rem, 0.05fr) [center-start] minmax(min-content, 0.8fr) [center-end] minmax(6rem, 0.05fr) [just-start] minmax(6rem, 0.05fr) [full-end]; }
   @media only screen and (max-width: 56.25em) {
     .section-about {
       padding: 20rem 0; } }
 
 .section-features {
+  grid-row: 2;
   grid-column: full-start / full-end;
+  display: grid;
   padding: 20rem 0;
   padding-top: 10rem;
   background-image: linear-gradient(to right bottom, rgba(232, 161, 235, 0.8), rgba(173, 16, 166, 0.8)), url(../img/features1.jpg);
@@ -1083,19 +1085,19 @@ body {
   .about__text {
     grid-column: text-start / pics-start;
     padding-right: 20rem;
-    padding-top: 15rem; }
+    padding-top: 1rem; }
   .about__pics {
     grid-column: pics-start / pics-end;
-    padding-top: 15rem; }
+    padding-top: 10rem; }
   @media only screen and (max-width: 56.25em) {
     .about {
-      padding: 20rem 0; } }
+      padding: 15rem 0; } }
 
 .row {
   grid-column: 1 / -1;
   padding-top: 5rem;
   display: grid;
-  grid-template-rows: min-content min-content;
+  grid-template-rows: min-content;
   grid-template-columns: [text-start] minmax(6rem, 70vw) [pics-start] minmax(6rem, 30vw) [pics-end]; }
 
 .u-center-text {

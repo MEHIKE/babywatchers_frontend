@@ -44,7 +44,7 @@ body {
     [full-end];
 
   @media only screen and (max-width: $bp-large) {
-    grid-template-rows: 6rem 180vw min-content 40vw repeat(3, min-content);
+    //grid-template-rows: 6rem 180vh min-content 40vw repeat(3, min-content);
     grid-template-columns:
       [full-start] minmax(6rem, 1fr) [center-start] repeat(
         8,

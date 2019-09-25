@@ -15,10 +15,17 @@
     [pics-start] minmax(6rem, 30vw)
     [pics-end];
 
+  @media only screen and (max-width: $bp-large) {
+  }
+
   &__text {
     grid-column: text-start / pics-start;
     padding-right: 20rem;
     padding-top: 1rem;
+
+    @media only screen and (max-width: $bp-large) {
+      padding-right: 10rem;
+    }
   }
 
   &__pics {

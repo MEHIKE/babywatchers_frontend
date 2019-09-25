@@ -11,20 +11,20 @@
   //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
   //grid-template-rows: min-content 50vw 40vw repeat(3, min-content);
   //grid-template-rows: min-content;
-  grid-template-columns:
+  /*grid-template-columns:
     [full-start] minmax(6rem, 0.05fr)
     [just-start] minmax(6rem, 0.35fr)
     [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end])
     [center-end] minmax(6rem, 0.35fr)
     [just-start] minmax(6rem, 0.05fr)
     [full-end];
-
+*/
   grid-template-columns:
-    [full-start] minmax(6rem, 0.05fr)
-    [just-start] minmax(6rem, 0.05fr)
-    [center-start] minmax(min-content, 0.8fr)
-    [center-end] minmax(6rem, 0.05fr)
-    [just-start] minmax(6rem, 0.05fr)
+    [full-start] minmax(6rem, 0.01fr)
+    [just-start] minmax(6rem, 0.02fr)
+    [center-start] minmax(min-content, 0.94fr)
+    [center-end] minmax(6rem, 0.02fr)
+    [just-start] minmax(6rem, 0.01fr)
     [full-end];
 
   @include respond(tab-port) {

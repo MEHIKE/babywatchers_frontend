@@ -505,9 +505,6 @@ body {
   @media only screen and (max-width: 62.5em) {
     .container {
       grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; } }
-  @media only screen and (max-width: 50em) {
-    .container {
-      grid-template-rows: 6rem calc(100vh - 6rem); } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -988,8 +985,15 @@ body {
   padding: 25rem 0;
   margin-top: -20vh;
   display: grid;
-  grid-template-columns: [full-start] minmax(6rem, 0.05fr) [just-start] minmax(6rem, 0.35fr) [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end]) [center-end] minmax(6rem, 0.35fr) [just-start] minmax(6rem, 0.05fr) [full-end];
-  grid-template-columns: [full-start] minmax(6rem, 0.05fr) [just-start] minmax(6rem, 0.05fr) [center-start] minmax(min-content, 0.8fr) [center-end] minmax(6rem, 0.05fr) [just-start] minmax(6rem, 0.05fr) [full-end]; }
+  /*grid-template-columns:
+    [full-start] minmax(6rem, 0.05fr)
+    [just-start] minmax(6rem, 0.35fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end])
+    [center-end] minmax(6rem, 0.35fr)
+    [just-start] minmax(6rem, 0.05fr)
+    [full-end];
+*/
+  grid-template-columns: [full-start] minmax(6rem, 0.01fr) [just-start] minmax(6rem, 0.02fr) [center-start] minmax(min-content, 0.94fr) [center-end] minmax(6rem, 0.02fr) [just-start] minmax(6rem, 0.01fr) [full-end]; }
   @media only screen and (max-width: 56.25em) {
     .section-about {
       padding: 20rem 0; } }
@@ -1086,6 +1090,9 @@ body {
     grid-column: text-start / pics-start;
     padding-right: 20rem;
     padding-top: 1rem; }
+    @media only screen and (max-width: 62.5em) {
+      .about__text {
+        padding-right: 10rem; } }
   .about__pics {
     grid-column: pics-start / pics-end;
     padding-top: 10rem; }
@@ -1250,6 +1257,9 @@ body {
     z-index: 10;
     transition: all 0.2s;
     outline-offset: 2rem; }
+    @media only screen and (max-width: 62.5em) {
+      .composition__photo {
+        width: 40%; } }
     @media only screen and (max-width: 56.25em) {
       .composition__photo {
         float: left;
@@ -1259,6 +1269,10 @@ body {
     .composition__photo--p1 {
       left: 0;
       top: -2rem; }
+      @media only screen and (max-width: 62.5em) {
+        .composition__photo--p1 {
+          top: -2rem;
+          left: 10rem; } }
       @media only screen and (max-width: 56.25em) {
         .composition__photo--p1 {
           top: 0;
@@ -1266,6 +1280,10 @@ body {
     .composition__photo--p2 {
       right: 0;
       top: 2rem; }
+      @media only screen and (max-width: 62.5em) {
+        .composition__photo--p2 {
+          right: -5rem;
+          top: 0; } }
       @media only screen and (max-width: 56.25em) {
         .composition__photo--p2 {
           top: -1rem;
@@ -1274,6 +1292,10 @@ body {
     .composition__photo--p3 {
       left: 20%;
       top: 10rem; }
+      @media only screen and (max-width: 62.5em) {
+        .composition__photo--p3 {
+          top: 15rem;
+          left: 30%; } }
       @media only screen and (max-width: 56.25em) {
         .composition__photo--p3 {
           top: 1rem;
@@ -1391,12 +1413,26 @@ body {
   color: #c155c5;
   grid-column: link-start / link-end;
   padding: 0;
-  width: 100%;
   text-decoration: none;
   display: inline-block;
   background-color: transparent;
   outline: none;
-  cursor: pointer; }
+  cursor: pointer;
+  /*&:hover {
+    //color: var(--color-grey-dark-1);
+    background-color: $color-primary-lightest;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+
+    span {
+      margin-left: 8px;
+    }
+  }*/
+  /*&:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+    animation: pulsate 1s infinite;
+  }*/ }
 
 .btnbook-inline__right {
   grid-column: 2 / -1;

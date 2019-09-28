@@ -942,6 +942,13 @@ ul {
         float: left;
         position: relative;
         width: 33.333333%;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+        outline-offset: 1rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .composition__photo {
+        float: left;
+        position: relative;
+        width: 33.333333%;
         box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2); } }
     .composition__photo--p1 {
       left: 0;
@@ -966,7 +973,7 @@ ul {
         .composition__photo--p1 {
           top: 1rem;
           left: 0;
-          transform: scale(1.6); } }
+          transform: scale(2); } }
     .composition__photo--p2 {
       right: 0;
       top: 2rem; }
@@ -989,7 +996,7 @@ ul {
         .composition__photo--p2 {
           top: 1rem;
           left: 0;
-          transform: scale(1.6); } }
+          transform: scale(2); } }
     .composition__photo--p3 {
       left: 20%;
       top: 10rem; }
@@ -1011,7 +1018,7 @@ ul {
         .composition__photo--p3 {
           top: 1rem;
           left: 0;
-          transform: scale(1.6); } }
+          transform: scale(2); } }
     .composition__photo:hover {
       outline: 0.5rem solid #c155c5;
       transform: scale(1.05) translateY(-0.5rem);

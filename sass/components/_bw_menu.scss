@@ -20,6 +20,14 @@
   padding: 1% 5% 1% 5%;
   //left: 20rem;
   z-index: 2000;
+
+  @include respond(phone) {
+    grid-column: 1 / -1;
+    position: relative;
+    align-content: left;
+    align-items: left;
+    padding-top: 5rem;
+  }
 }
 
 .btnbw-inline {
@@ -35,6 +43,11 @@
   background-color: transparent;
   outline: none;
   cursor: pointer;
+
+  @include respond(phone) {
+    //  font-size: 50%;
+    padding: 0;
+  }
 }
 
 .btnbwline-inline {
@@ -53,6 +66,12 @@
   outline: none;
   cursor: pointer;
   transition: all 0.2s;
+
+  @include respond(phone) {
+    //font-size: 50%;
+    border-bottom: none;
+    padding: 1px;
+  }
 
   & span {
     margin-left: 3px;

@@ -66,6 +66,10 @@ body {
     @media only screen and (max-width: 50em) {
       .container__bw {
         grid-template-columns: [page-start] minmax(6rem, 0.1fr) [full-start] minmax(10rem, 0.2fr) [just-start] minmax(6rem, 0.02fr) [center-start] minmax(min-content, 60vw) [center-end] minmax(6rem, 0.02fr) [just-start] minmax(10rem, 0.2fr) [full-end] minmax(6rem, 0.1fr); } }
+    @media only screen and (max-width: 37.5em) {
+      .container__bw {
+        grid-template-rows: repeat(12, min-content);
+        grid-template-columns: [page-start] minmax(1rem, min-content) [full-start] minmax(1rem, min-content) [just-start] minmax(1rem, min-content) [center-start] minmax(min-content, 90vw) [center-end] minmax(1rem, min-content) [just-start] minmax(1rem, min-content) [full-end] minmax(1rem, min-content); } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -1350,6 +1354,13 @@ ul {
   box-sizing: border-box;
   padding: 1% 5% 1% 5%;
   z-index: 2000; }
+  @media only screen and (max-width: 37.5em) {
+    .bw_menu {
+      grid-column: 1 / -1;
+      position: relative;
+      align-content: left;
+      align-items: left;
+      padding-top: 5rem; } }
 
 .btnbw-inline {
   border: none;
@@ -1363,6 +1374,9 @@ ul {
   background-color: transparent;
   outline: none;
   cursor: pointer; }
+  @media only screen and (max-width: 37.5em) {
+    .btnbw-inline {
+      padding: 0; } }
 
 .btnbwline-inline {
   border: none;
@@ -1376,6 +1390,10 @@ ul {
   outline: none;
   cursor: pointer;
   transition: all 0.2s; }
+  @media only screen and (max-width: 37.5em) {
+    .btnbwline-inline {
+      border-bottom: none;
+      padding: 1px; } }
   .btnbwline-inline span {
     margin-left: 3px;
     transition: margin-left 0.3s; }
@@ -1423,6 +1441,10 @@ ul {
     @media only screen and (max-height: 37.5em) {
       .bwheader__text-box {
         grid-row: 1; } }
+    @media only screen and (max-width: 37.5em) {
+      .bwheader__text-box {
+        text-align: left;
+        grid-column: 1; } }
     .bwheader__text-box:hover, .bwheader__text-box:active {
       outline: none;
       background-color: transparent;
@@ -1455,13 +1477,20 @@ ul {
   grid-column: center-start / center-end;
   grid-row: 3;
   padding: 5% 5% 5% 5%;
+  margin-top: 12rem;
   box-sizing: border-box; }
 
 .entry__body {
-  padding-top: 25rem; }
+  padding-top: 35rem; }
   @media only screen and (max-height: 37.5em) {
     .entry__body {
       padding-top: 10rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .entry__body {
+      font-size: 50%;
+      padding-top: 0;
+      padding-left: 0;
+      align-items: left; } }
 
 .footerbw {
   background-color: #ad10a6;

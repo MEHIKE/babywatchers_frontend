@@ -56,6 +56,11 @@
       grid-row: 1;
     }
 
+    @include respond(phone) {
+      text-align: left;
+      grid-column: 1;
+    }
+
     &:hover,
     &:active {
       //background-color: rgba(#fff, 0.05);

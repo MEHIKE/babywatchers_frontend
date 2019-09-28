@@ -12,6 +12,10 @@
 }
 
 .entry__body {
-  padding-top: 35rem;
+  padding-top: 25rem;
   //padding-bottom: 10rem;
+
+  @media only screen and (max-height: $bp-small) {
+    padding-top: 10rem;
+  }
 }

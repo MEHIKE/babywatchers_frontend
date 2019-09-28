@@ -68,5 +68,17 @@ body {
       [center-end] minmax(6rem, 0.03fr)
       [just-start] minmax(10rem, 0.23fr)
       [full-end] minmax(6rem, 0.2fr);
+
+    @media only screen and (max-width: $bp-medium) {
+      //grid-template-rows: 6rem calc(100vh - 6rem);
+      grid-template-columns:
+        [page-start] minmax(6rem, 0.1fr)
+        [full-start] minmax(10rem, 0.2fr)
+        [just-start] minmax(6rem, 0.02fr)
+        [center-start] minmax(min-content, 60vw)
+        [center-end] minmax(6rem, 0.02fr)
+        [just-start] minmax(10rem, 0.2fr)
+        [full-end] minmax(6rem, 0.1fr);
+    }
   }
 }

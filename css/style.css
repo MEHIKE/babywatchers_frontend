@@ -1417,6 +1417,10 @@ ul {
     @media only screen and (max-height: 37.5em) {
       .bwheader__text-box {
         grid-row: 1; } }
+    .bwheader__text-box:hover, .bwheader__text-box:active {
+      outline: none;
+      background-color: transparent;
+      transform: rotate(-5deg) scale(1.2); }
   .bwheader__btn {
     align-self: start;
     justify-self: start; }

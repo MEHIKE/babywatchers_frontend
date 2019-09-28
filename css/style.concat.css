@@ -509,6 +509,13 @@ body {
     display: grid;
     grid-template-rows: min-content 3vh min-content min-content;
     grid-template-columns: [page-start] minmax(6rem, 0.2fr) [full-start] minmax(10rem, 0.23fr) [just-start] minmax(6rem, 0.03fr) [center-start] minmax(min-content, 60vw) [center-end] minmax(6rem, 0.03fr) [just-start] minmax(10rem, 0.23fr) [full-end] minmax(6rem, 0.2fr); }
+    @media only screen and (max-width: 50em) {
+      .container__bw {
+        grid-template-columns: [page-start] minmax(6rem, 0.1fr) [full-start] minmax(10rem, 0.2fr) [just-start] minmax(6rem, 0.02fr) [center-start] minmax(min-content, 60vw) [center-end] minmax(6rem, 0.02fr) [just-start] minmax(10rem, 0.2fr) [full-end] minmax(6rem, 0.1fr); } }
+    @media only screen and (max-width: 37.5em) {
+      .container__bw {
+        grid-template-rows: repeat(12, min-content);
+        grid-template-columns: [page-start] minmax(1rem, min-content) [full-start] minmax(1rem, min-content) [just-start] minmax(1rem, min-content) [center-start] minmax(min-content, 90vw) [center-end] minmax(1rem, min-content) [just-start] minmax(1rem, min-content) [full-end] minmax(1rem, min-content); } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -537,6 +544,12 @@ body {
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary--bwmain {
+        letter-spacing: 1.5rem;
+        font-weight: 250;
+        font-size: 3rem;
+        color: #ad10a6; } }
   .heading-primary--main {
     display: block;
     font-size: 6rem;
@@ -577,7 +590,8 @@ body {
         font-size: 2rem; } }
     @media only screen and (max-width: 37.5em) {
       .heading-primary--main {
-        letter-spacing: 1rem; } }
+        letter-spacing: 1rem;
+        font-weight: 900; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
@@ -1788,6 +1802,13 @@ ul {
   box-sizing: border-box;
   padding: 1% 5% 1% 5%;
   z-index: 2000; }
+  @media only screen and (max-width: 37.5em) {
+    .bw_menu {
+      grid-column: 1 / -1;
+      position: relative;
+      align-content: left;
+      align-items: left;
+      padding-top: 5rem; } }
 
 .btnbw-inline {
   border: none;
@@ -1801,6 +1822,9 @@ ul {
   background-color: transparent;
   outline: none;
   cursor: pointer; }
+  @media only screen and (max-width: 37.5em) {
+    .btnbw-inline {
+      padding: 0; } }
 
 .btnbwline-inline {
   border: none;
@@ -1814,6 +1838,10 @@ ul {
   outline: none;
   cursor: pointer;
   transition: all 0.2s; }
+  @media only screen and (max-width: 37.5em) {
+    .btnbwline-inline {
+      border-bottom: none;
+      padding: 1px; } }
   .btnbwline-inline span {
     margin-left: 3px;
     transition: margin-left 0.3s; }
@@ -1829,12 +1857,20 @@ ul {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
     animation: pulsate 1s infinite; }
 
+.icon-primary {
+  display: inline-block;
+  width: 4.5rem;
+  height: 4.5rem;
+  stroke-width: 0;
+  stroke: #e8a1eb;
+  fill: #e8a1eb; }
+
 .bwheader {
   position: sticky;
   top: 0;
   background-color: #f7f7f7;
   grid-column: full-start / -1;
-  background-image: linear-gradient(to right bottom, rgba(232, 161, 235, 0.4), rgba(173, 16, 166, 0.4)), url(../img/babywatch_header.jpg);
+  background-image: url(../img/babywatch_header.jpg);
   background-size: cover;
   background-position: center;
   padding: 2rem;
@@ -1846,9 +1882,12 @@ ul {
   justify-content: center; }
   @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
     .bwheader {
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 27vh, 0 100%);
-      clip-path: polygon(0 0, 100% 0, 100% 27vh, 0 100%);
       height: 30vh; } }
+  @media only screen and (max-width: 37.5em) {
+    .bwheader {
+      position: relative;
+      grid-template-rows: min-content;
+      height: 20vh; } }
   .bwheader__logo {
     height: 4rem;
     justify-self: center;
@@ -1856,6 +1895,10 @@ ul {
   .bwheader__logo-box {
     top: 5rem;
     left: 5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .bwheader__logo-box {
+        right: 5rem;
+        left: 0; } }
   .bwheader__text-box {
     grid-row: 1;
     grid-column: 2;
@@ -1863,13 +1906,23 @@ ul {
     @media only screen and (max-height: 37.5em) {
       .bwheader__text-box {
         grid-row: 1; } }
+    @media only screen and (max-width: 37.5em) {
+      .bwheader__text-box {
+        text-align: center;
+        grid-column: 1;
+        color: #ad10a6; } }
+    .bwheader__text-box:hover, .bwheader__text-box:active {
+      outline: none;
+      background-color: transparent;
+      transform: rotate(-5deg) scale(1.2); }
   .bwheader__btn {
     align-self: start;
     justify-self: start; }
   @media only screen and (max-height: 37.5em) {
     .bwheader {
       padding: 2rem;
-      padding-top: 1rem; } }
+      padding-top: 1rem;
+      height: 15vh; } }
   @media only screen and (max-width: 112.5em) {
     .bwheader {
       /*grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(
@@ -1878,8 +1931,7 @@ ul {
       ) [center-end] minmax(6rem, 1fr) [full-end];*/
       padding: 2rem;
       padding-top: 2rem;
-      clip-path: polygon(0 0, 100% 0, 100% 25vh, 0 100%);
-      height: 75vh;
+      height: 15vh;
       grid-row-gap: 1rem;
       /*@supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 55vh, 0 100%);
@@ -1891,11 +1943,51 @@ ul {
   grid-column: center-start / center-end;
   grid-row: 3;
   padding: 5% 5% 5% 5%;
+  margin-top: 12rem;
   box-sizing: border-box; }
 
+.phone {
+  display: hidden;
+  background: transparent;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  display: none;
+  opacity: 0;
+  z-index: -1500;
+  text-align: left; }
+  @media only screen and (max-width: 37.5em) {
+    .phone {
+      text-align: left;
+      visibility: visible;
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+      display: contents;
+      background-color: #e4c6e6;
+      color: #c155c5;
+      border-top: 1px solid #ad10a6;
+      border-color: #ad10a6;
+      padding-top: 2px;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+      cursor: pointer; } }
+
+.menu__box {
+  padding-right: 2rem;
+  align-items: top;
+  vertical-align: center; }
+
 .entry__body {
-  padding-top: 35rem;
-  padding-bottom: 10rem; }
+  padding-top: 35rem; }
+  @media only screen and (max-height: 37.5em) {
+    .entry__body {
+      padding-top: 10rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .entry__body {
+      font-size: 50%;
+      padding-top: 0;
+      padding-left: 0;
+      align-items: left; } }
 
 .footerbw {
   background-color: #ad10a6;

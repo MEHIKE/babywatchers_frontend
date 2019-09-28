@@ -19,10 +19,10 @@
   display: none;
   opacity: 0;
   z-index: -1500;
-  text-align: center;
+  text-align: left;
 
   @include respond(phone) {
-    text-align: center;
+    text-align: left;
     visibility: visible;
     opacity: 1;
     width: 100%;
@@ -33,9 +33,9 @@
 }
 
 .menu__box {
-  padding-right: 3rem;
+  padding-right: 2rem;
   align-items: top;
-  vertical-align: 0;
+  vertical-align: center;
 }
 
 .entry-content {

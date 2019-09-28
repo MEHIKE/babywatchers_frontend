@@ -1439,7 +1439,9 @@ ul {
       height: 30vh; } }
   @media only screen and (max-width: 37.5em) {
     .bwheader {
-      position: relative; } }
+      position: relative;
+      grid-template-rows: min-content;
+      height: 20vh; } }
   .bwheader__logo {
     height: 4rem;
     justify-self: center;
@@ -1447,6 +1449,10 @@ ul {
   .bwheader__logo-box {
     top: 5rem;
     left: 5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .bwheader__logo-box {
+        right: 5rem;
+        left: 0; } }
   .bwheader__text-box {
     grid-row: 1;
     grid-column: 2;
@@ -1502,17 +1508,22 @@ ul {
   height: 0;
   display: none;
   opacity: 0;
-  z-index: -1500; }
+  z-index: -1500;
+  text-align: left; }
   @media only screen and (max-width: 37.5em) {
     .phone {
+      text-align: left;
       visibility: visible;
       opacity: 1;
       width: 100%;
       height: 100%;
-      display: contents; } }
+      display: contents;
+      cursor: pointer; } }
 
 .menu__box {
-  padding-right: 3rem; }
+  padding-right: 2rem;
+  align-items: top;
+  vertical-align: center; }
 
 .entry__body {
   padding-top: 35rem; }

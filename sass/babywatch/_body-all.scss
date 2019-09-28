@@ -10,6 +10,34 @@
   }
 }
 
+.phone {
+  display: hidden;
+  background: transparent;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  display: none;
+  opacity: 0;
+  z-index: -1500;
+  text-align: center;
+
+  @include respond(phone) {
+    text-align: center;
+    visibility: visible;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    display: contents;
+    cursor: pointer;
+  }
+}
+
+.menu__box {
+  padding-right: 3rem;
+  align-items: top;
+  vertical-align: 0;
+}
+
 .entry-content {
   //padding-top: 32rem;
 }

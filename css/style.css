@@ -102,7 +102,8 @@ body {
       .heading-primary--bwmain {
         letter-spacing: 1.5rem;
         font-weight: 250;
-        font-size: 3rem; } }
+        font-size: 3rem;
+        color: #ad10a6; } }
   .heading-primary--main {
     display: block;
     font-size: 6rem;
@@ -143,7 +144,8 @@ body {
         font-size: 2rem; } }
     @media only screen and (max-width: 37.5em) {
       .heading-primary--main {
-        letter-spacing: 1rem; } }
+        letter-spacing: 1rem;
+        font-weight: 900; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
@@ -1409,6 +1411,14 @@ ul {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
     animation: pulsate 1s infinite; }
 
+.icon-primary {
+  display: inline-block;
+  width: 4.5rem;
+  height: 4.5rem;
+  stroke-width: 0;
+  stroke: #e8a1eb;
+  fill: #e8a1eb; }
+
 .bwheader {
   position: sticky;
   top: 0;
@@ -1427,6 +1437,9 @@ ul {
   @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
     .bwheader {
       height: 30vh; } }
+  @media only screen and (max-width: 37.5em) {
+    .bwheader {
+      position: relative; } }
   .bwheader__logo {
     height: 4rem;
     justify-self: center;
@@ -1443,8 +1456,9 @@ ul {
         grid-row: 1; } }
     @media only screen and (max-width: 37.5em) {
       .bwheader__text-box {
-        text-align: left;
-        grid-column: 1; } }
+        text-align: center;
+        grid-column: 1;
+        color: #ad10a6; } }
     .bwheader__text-box:hover, .bwheader__text-box:active {
       outline: none;
       background-color: transparent;
@@ -1479,6 +1493,26 @@ ul {
   padding: 5% 5% 5% 5%;
   margin-top: 12rem;
   box-sizing: border-box; }
+
+.phone {
+  display: hidden;
+  background: transparent;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  display: none;
+  opacity: 0;
+  z-index: -1500; }
+  @media only screen and (max-width: 37.5em) {
+    .phone {
+      visibility: visible;
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+      display: contents; } }
+
+.menu__box {
+  padding-right: 3rem; }
 
 .entry__body {
   padding-top: 35rem; }

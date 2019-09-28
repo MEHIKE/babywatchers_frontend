@@ -99,3 +99,12 @@
     animation: pulsate 1s infinite;
   }
 }
+
+.icon-primary {
+  display: inline-block;
+  width: 4.5rem;
+  height: 4.5rem;
+  stroke-width: 0;
+  stroke: $color-primary-light;
+  fill: $color-primary-light;
+}

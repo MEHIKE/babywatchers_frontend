@@ -131,7 +131,7 @@ body {
     @include respond(phone) {
       letter-spacing: 0.5rem;
       font-size: 2rem;
-      color: $color-primary-dark;
+      //color: $color-primary-dark;
       //font-weight: 500;
     }
   }

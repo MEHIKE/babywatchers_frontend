@@ -175,8 +175,7 @@ body {
     @media only screen and (max-width: 37.5em) {
       .heading-primary--sub {
         letter-spacing: 0.5rem;
-        font-size: 2rem;
-        color: #ad10a6; } }
+        font-size: 2rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;

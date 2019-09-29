@@ -4,7 +4,7 @@ COPY index.html /usr/share/nginx/html
 COPY babywatch.html /usr/share/nginx/html
 COPY ./css /usr/share/nginx/html/css
 COPY ./img /usr/share/nginx/html/img
-
+EXPOSE 80
 
 #docker build -t webserver-image:v1 .
 # docker images

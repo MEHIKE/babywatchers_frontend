@@ -65,7 +65,7 @@ font-family: 'Lato', sans-serif;-->
             >
           </li>
           <li class="navigation__item">
-            <a href="#section-book" class="navigation__link" target="_blank"
+            <a href="#section-login" class="navigation__link" target="_blank"
               ><span>05</span>Logi sisse</a
             >
           </li>
@@ -123,7 +123,7 @@ font-family: 'Lato', sans-serif;-->
                 </p>
 
                 <!--a-- href="#" class="btn-text">Lisaks infot &rarr;</!--a-->
-                <div class="btnbook-inline">
+                <div class="btnlogin-inline">
                 <a href="#" class="btn-inline">Lisaks infot &rarr;</a>
                 </div>
                 <!--button-- class="btn-inline">Show all <span>&rarr;</span></!--button-->
@@ -195,8 +195,8 @@ font-family: 'Lato', sans-serif;-->
               </h3>
               <p class="feature-box__text">
                 Üritame hoida erinevate teenuste hinnad mõistlikul tasemel. Tänu
-                meie hindamis ja tagasiside süsteemile, saate võrrelda taset ja
-                kas hinnad on vastavad tasemele.
+                meie hindamise ja tagasiside süsteemile, saate hea võrdlusmomendi,
+                kas hinnad on teile sobival tasemele. Valik on Teie!
               </p>
             </div>
 
@@ -216,11 +216,11 @@ font-family: 'Lato', sans-serif;-->
             <div class="feature-box">
               <i class="feature-box__icon icon-basic-map"></i>
               <h3 class="header-tertiary u-margin-bottom-small">
-                Pildid ja videod
+                Pildid, videod, dokumendid
               </h3>
               <p class="feature-box__text">
-                Tulekul piltide ja videode lisamise võimalus ning
-                kommenteerimine. Saab ise valida, kes neid näeb.
+                Tulekul piltide, videode ja dokumentide lisamise võimalus ning
+                kommenteerimine/tagasiside ning vestlus. Saad ise valida, kes Sinu lisatud faile näeb. Olemas ka kliendilepingud. 
               </p>
             </div>
 
@@ -334,10 +334,10 @@ font-family: 'Lato', sans-serif;-->
           Services
         </!--section-->
 
-        <section class="section-book" id="section-book">
-          <div class="bookrow">
-            <div class="book">
-              <div class="book__form">
+        <section class="section-login" id="section-login">
+          <div class="loginrow">
+            <div class="login">
+              <div class="login__form">
                 <form action="#" class="form">
                   <div class="u-margin-bottom-medium">
                     <h2 class="heading-secondary">
@@ -348,11 +348,11 @@ font-family: 'Lato', sans-serif;-->
                     <input
                       type="text"
                       class="form__input"
-                      placeholder="Kasutajanimi/idkood"
+                      placeholder="kasutajanimi/email/idkood"
                       required
                       id="name"
                     />
-                    <label for="name" class="form__label">Kasutajanimi</label>
+                    <label for="name" class="form__label">Kasutaja</label>
                   </div>
 
                   <!--div-- class="form__group">
@@ -416,12 +416,125 @@ font-family: 'Lato', sans-serif;-->
                   <!--/!--label-->
 
                   <div class="link__group">
-                    <div class="btnbook-inline">
+                    <div class="btnlogin-inline">
                       <a href="#" class="btn-inline">Uus kasutaja &rarr;</a>
                     </div>
-                    <div class="btnbook-inline__right">
+                    <div class="btnlogin-inline__right">
                       <a href="#" class="btn-inline">Uus parool &rarr;</a>
                     </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+                <section class="section-register" id="section-register">
+          <div class="loginrow">
+            <div class="login">
+              <div class="login__form">
+                <form action="#" class="form">
+                  <div class="u-margin-bottom-medium">
+                    <h2 class="heading-secondary">
+                      Uus kasutaja
+                    </h2>
+                  </div>
+                  <div class="form__reggroup">
+                    <input
+                      type="email"
+                      class="form__input  form__inputreg"
+                      placeholder="Emaili aadress"
+                      required
+                      id="email"
+                    />
+                    <label for="name" class="form__label">Email</label>
+                  </div>
+                  <div class="form__reggroup">
+                    <input
+                      type="text"
+                      class="form__input  form__inputreg"
+                      placeholder="Isikukood"
+                      required
+                      id="isikukood"
+                    />
+                    <label for="name" class="form__label">Isikukood</label>
+                  </div>
+                  <!--div-- class="form__group">
+                    <input
+                      type="email"
+                      class="form__input"
+                      placeholder="Emaili aadress"
+                      required
+                      id="email"
+                    />
+                    <label for="email" class="form__label">Emaili aadress</label>
+                  </!--div-->
+
+                  <div class="form__reggroup">
+                    <input
+                      type="password"
+                      class="form__input form__inputreg"
+                      placeholder="Parool"
+                      required
+                      id="password"
+                    />
+                    <label for="password" class="form__label">Parool</label>
+                  </div>
+                  <div class="form__reggroup">
+                    <input
+                      type="password"
+                      class="form__input  form__inputreg"
+                      placeholder="Korda parool"
+                      required
+                      id="passwordconfirm"
+                    />
+                    <label for="passwordconfirm" class="form__label">Korda Parool</label>
+                  </div>
+                  <!--div-- class="form__group u-margin-bottom-medium">
+                    <div class="form__radio-group">
+                      <input
+                        type="radio"
+                        class="form__radio-input"
+                        id="small"
+                        name="size"
+                      />
+                      <label for="small" class="form__radio-label">
+                        <span class="form__radio-button"></span>
+                        Small tour group
+                      </label>
+                    </div>
+
+                    <div class="form__radio-group">
+                      <input
+                        type="radio"
+                        class="form__radio-input"
+                        id="large"
+                        name="size"
+                      />
+                      <label for="large" class="form__radio-label">
+                        <span class="form__radio-button"></span>
+                        Large tour group
+                      </label>
+                    </div>
+                  </!--div-->
+
+                  <div class="form__group">
+                    <button class="btn btn--pink btn--animated">
+                      Loo kasutaja &rarr;
+                    </button>
+                  </div>
+
+                  <!--label-- class="login__line"-->
+                  <div class="login__line">&nbsp;</div>
+                  <!--/!--label-->
+
+                  <div class="link__group">
+                    <div class="btnlogin-inline">
+                      <a href="#" class="btn-inline">Logi sisse &rarr;</a>
+                    </div>
+                    <!--div-- class="btnlogin-inline__right"-->
+                      <!--a href="#" class="btn-inline">Uus parool &rarr;</!--a>
+                    </!--div-->
                   </div>
                 </form>
               </div>
@@ -595,7 +708,7 @@ font-family: 'Lato', sans-serif;-->
                             <br>PS! Ei pea ainult müüma või ostma, meil on ka vahetamise võimalus. Samas on loomulikult võimalus müüa ka uusi asju. <br>
                             Lisaks statistika võimalused lasteaedadele ja rahaliste kulude/tulude arvestus.
                         </p>
-                        <a href="#section-book" class="btn btn-inline btn-inline--pink">Sisene</a>
+                        <a href="#section-login" class="btn btn-inline btn-inline--pink">Sisene</a>
                     </div>
                 </div>
       </div>

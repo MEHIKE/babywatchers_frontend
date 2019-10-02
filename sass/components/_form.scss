@@ -3,6 +3,10 @@
     margin-bottom: 2rem;
   }
 
+  &__reggroup:not(:last-child) {
+    margin-bottom: 0rem;
+  }
+
   &__input {
     font-size: 1.5rem;
     //et font family tuleks ülemuselt. formile ei taha muidu tulla tihti
@@ -40,6 +44,10 @@
     &::-webkit-input-placeholder {
       color: $color-grey-dark-2;
     }
+  }
+
+  &__inputreg {
+    padding: 0.5rem 1.5rem;
   }
 
   &__label {
@@ -102,7 +110,7 @@
 
     &::after {
       //kuna pseudo element siis peab olema content ja display elemendid
-      content: "";
+      content: '';
       display: block;
       //circle jälle
       width: 1.3rem;
@@ -158,7 +166,7 @@
     [link-end] minmax(6rem, 35vw) [linkright-end];
 }
 
-.btnbook-inline {
+.btnlogin-inline {
   border: none;
   margin-top: 0.5rem;
   font-size: $default-font-size;
@@ -190,7 +198,7 @@
   }*/
 }
 
-.btnbook-inline__right {
+.btnlogin-inline__right {
   grid-column: 2 / -1;
   border: none;
   margin-top: 0.5rem;

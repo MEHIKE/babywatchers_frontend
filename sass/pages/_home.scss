@@ -144,7 +144,7 @@
   }
 }
 
-.bookrow {
+.loginrow {
   grid-column: 1 / -1;
   padding-top: 1.5rem;
   display: grid;
@@ -156,7 +156,8 @@
     [form-end] minmax(6rem, 15vw) [text-end];
 }
 
-.section-book {
+.section-login,
+.section-register {
   grid-column: full-start / full-end;
   padding: 10rem 0;
   background-image: linear-gradient(
@@ -181,7 +182,7 @@
     [full-end];
 }
 
-.book {
+.login {
   grid-column: form-start / form-end;
   //et saaks vasakupoole hägustada ja diagonaalis, siis 2pilti: ja alljärgnev osa
   background-image: linear-gradient(
@@ -190,7 +191,7 @@
       rgba($color-white, 0.9) 50%,
       transparent 50%
     ),
-    url("../img/book1.jpg");
+    url('../img/book1.jpg');
   //kas cover või 100% see töhendab tegelt sama
   background-size: cover;
   background-position: center;
@@ -204,7 +205,7 @@
         rgba($color-white, 0.9) 65%,
         transparent 65%
       ),
-      url("../img/book1.jpg");
+      url('../img/book1.jpg');
     background-size: cover;
   }
 
@@ -214,7 +215,7 @@
         rgba($color-white, 0.9) 0%,
         rgba($color-white, 0.9) 100%
       ),
-      url("../img/book1.jpg");
+      url('../img/book1.jpg');
   }
 
   &__form {

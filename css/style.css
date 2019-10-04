@@ -10,6 +10,12 @@
 
 @import "pages/home";
 */
+:root {
+  --color-primary: #c155c5;
+  --color-primary-lightest: #e4c6e6;
+  --color-primary-light: #e8a1eb;
+  --color-primary-dark: #ad10a6; }
+
 /*
 0 - 600px:      Phone
 600 - 900px:    Tablet portrait
@@ -27,11 +33,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 1em = 16px
 */
+* {
+  margin: 0;
+  padding: 0; }
+
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
   box-sizing: inherit; }
 
 html {
@@ -43,10 +51,18 @@ html {
 
 body {
   font-family: "Nunito", sans-serif;
-  color: #5c5757;
+  color: var(--#5c5757);
   font-weight: 300;
   line-height: 1.6;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  /*background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh; }
 
 /*::selection {
   background-color: $color-primary;

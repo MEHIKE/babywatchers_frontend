@@ -1,4 +1,12 @@
 // COLORS
+
+:root {
+  --color-primary: #c155c5;
+  --color-primary-lightest: #e4c6e6;
+  --color-primary-light: #e8a1eb;
+  --color-primary-dark: #ad10a6;
+}
+
 $color-primary: #c155c5;
 $color-primary-lightest: #e4c6e6;
 $color-primary-light: #e8a1eb;
@@ -25,8 +33,8 @@ $color-black: #000;
 // FONT
 $default-font-size: 1.6rem;
 // FONT VARIABLES
-$font-primary: "Nunito", sans-serif;
-$font-display: "Josefin Sans", sans-serif;
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
 
 // GRID
 //$grid-width: 114rem;

@@ -27,11 +27,11 @@ body {
   line-height: 1.6;
   box-sizing: border-box;
   //padding-top: 25rem;
-  /*background-image: linear-gradient(
+  background-image: linear-gradient(
     to right bottom,
-    var(--color-primary-light),
-    var(--color-primary-dark)
-  );*/
+    var(--color-primary-lightest),
+    var(--color-secondary-lightest)
+  );
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -50,13 +50,21 @@ body {
       6,
       min-content
     ); //grid-template-rows: min-content 50vw 40vw repeat(5, min-content);
-  grid-template-columns:
+  /*grid-template-columns:
     [full-start] minmax(6rem, 0.1fr)
     [just-start] minmax(6rem, 0.3fr)
     [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end])
     [center-end] minmax(6rem, 0.3fr)
     [just-start] minmax(6rem, 0.1fr)
-    [full-end];
+    [full-end];*/
+
+  grid-template-columns: [full-start] minmax(6vw, min-content) [just-start] minmax(
+      min-content,
+      max-content
+    ) [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end]) [center-end] minmax(
+      min-content,
+      max-content
+    ) [just-start] minmax(6vw, min-content) [full-end];
 
   @media only screen and (max-width: $bp-large) {
     //grid-template-rows: 6rem 180vh min-content 40vw repeat(3, min-content);

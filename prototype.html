@@ -31,8 +31,8 @@ font-family: 'Lato', sans-serif;-->
     <title>Babywatch Lastehoid Tallinna kesklinnas</title>
   </head>
   <body>
-    <div class="container">
-      <header class="header">
+    <div class="page_container">
+      <header class="page_header">
         <!--img src="img/logo.png" alt="Babywatcher logo" class="logo" /-->
         <svg class="icon-red feature__icon header__logo logo">
           <use xlink:href="img/icons.svg#icon-reddit"></use>
@@ -41,11 +41,11 @@ font-family: 'Lato', sans-serif;-->
           <input
             type="text"
             class="search__input"
-            placeholder="Search hotels"
+            placeholder="Search on page"
           />
           <button class="search__button">
             <svg class="search__icon">
-              <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+              <use xlink:href="img/icons.svg#icon-magnifying-glass"></use>
             </svg>
           </button>
         </form>
@@ -53,13 +53,13 @@ font-family: 'Lato', sans-serif;-->
         <nav class="user-nav">
           <div class="user-nav__icon-box">
             <svg class="user-nav__icon">
-              <use xlink:href="img/sprite.svg#icon-bookmark"></use>
+              <use xlink:href="img/icons.svg#icon-bookmark"></use>
             </svg>
             <span class="user-nav__notification">7</span>
           </div>
           <div class="user-nav__icon-box">
             <svg class="user-nav__icon">
-              <use xlink:href="img/sprite.svg#icon-chat"></use>
+              <use xlink:href="img/icons.svg#icon-chat"></use>
             </svg>
             <span class="user-nav__notification">13</span>
           </div>
@@ -74,39 +74,39 @@ font-family: 'Lato', sans-serif;-->
         </nav>
       </header>
 
-      <div class="content">
-        <nav class="sidebar">
+      <div class="page_content">
+        <nav class="page_sidebar">
           <ul class="side-nav">
             <li class="side-nav__item side-nav__item--active">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-home"></use>
+                  <use xlink:href="img/icons.svg#icon-home"></use>
                 </svg>
-                <span>Hotel</span>
+                <span>Kasutajad</span>
               </a>
             </li>
             <li class="side-nav__item">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-aircraft-take-off"></use>
+                  <use xlink:href="img/icons.svg#icon-aircraft-take-off"></use>
                 </svg>
-                <span>1</span>
+                <span>Lapsehoidjad</span>
               </a>
             </li>
             <li class="side-nav__item">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-key"></use>
+                  <use xlink:href="img/icons.svg#icon-key"></use>
                 </svg>
-                <span>2</span>
+                <span>Kasvatajad</span>
               </a>
             </li>
             <li class="side-nav__item">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-map"></use>
+                  <use xlink:href="img/icons.svg#icon-map"></use>
                 </svg>
-                <span>3</span>
+                <span>Lapsed</span>
               </a>
             </li>
           </ul>
@@ -115,6 +115,172 @@ font-family: 'Lato', sans-serif;-->
             &copy; 2019 by Rünno. All rights reserved.
           </div>
         </nav>
+
+        <main class="page-view">
+          <div class="gallery">
+            <figure class="gallery__item">
+              <img
+                src="img/pic-1.jpg"
+                alt="Photo of  1"
+                class="gallery__photo"
+              />
+            </figure>
+            <figure class="gallery__item">
+              <img
+                src="img/pic-2.jpg"
+                alt="Photo of 2"
+                class="gallery__photo"
+              />
+            </figure>
+            <figure class="gallery__item">
+              <img
+                src="img/pic-3.jpg"
+                alt="Photo of 3"
+                class="gallery__photo"
+              />
+            </figure>
+          </div>
+
+          <div class="overview">
+            <h1 class="overview__heading">
+              Today our babysitters
+            </h1>
+
+            <div class="overview__stars">
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+            </div>
+
+            <div class="overview__location">
+              <svg class="overview__icon-location">
+                <use xlink:href="img/icons.svg#icon-location-pin"></use>
+              </svg>
+              <button class="btn-inline">Tallinn, Vahe 2-1</button>
+            </div>
+
+            <div class="overview__rating">
+              <div class="overview__rating-average">8.6</div>
+              <div class="overview__rating-count">429 votes</div>
+            </div>
+          </div>
+
+          <div class="page_detail">
+            <div class="page_description">
+              <p class="paragraph">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+                nisi dignissimos debitis ratione sapiente saepe. Accusantium
+                cumque, quas, ut corporis incidunt deserunt quae architecto
+                voluptate.
+              </p>
+              <p class="paragraph">
+                Accusantium cumque, quas, ut corporis incidunt deserunt quae
+                architecto voluptate delectus, inventore iure aliquid aliquam.
+              </p>
+              <ul class="list">
+                <li class="list__item">Close to the city center</li>
+                <li class="list__item">Breakfast included</li>
+                <li class="list__item">Free</li>
+                <li class="list__item">Free</li>
+                <li class="list__item">Kuivd ja soojad ruumid</li>
+                <li class="list__item">Lahked kasvatajad</li>
+                <li class="list__item">We speak all languages</li>
+                <li class="list__item">Perfect for all families</li>
+              </ul>
+              <div class="recommend">
+                <p class="recommend__count">
+                  Lucy and 3 other friends recommend this Babywatch.
+                </p>
+                <div class="recommend__friends">
+                  <img
+                    src="img/user-3.jpg"
+                    alt="Friend 1"
+                    class="recommend__photo"
+                  />
+                  <img
+                    src="img/user-4.jpg"
+                    alt="Friend 2"
+                    class="recommend__photo"
+                  />
+                  <img
+                    src="img/user-5.jpg"
+                    alt="Friend 3"
+                    class="recommend__photo"
+                  />
+                  <img
+                    src="img/user-6.jpg"
+                    alt="Friend 4"
+                    class="recommend__photo"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="page_user-reviews">
+              <figure class="review">
+                <blockquote class="review__text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
+                  doloremque architecto dicta animi, totam, itaque officia ex.
+                </blockquote>
+                <figcaption class="review__user">
+                  <img
+                    src="img/user-1.jpg"
+                    alt="User 1"
+                    class="review__photo"
+                  />
+                  <div class="review__user-box">
+                    <p class="review__user-name">Nick Smith</p>
+                    <p class="review__user-date">Feb 23rd, 2017</p>
+                  </div>
+                  <div class="review__rating">7.8</div>
+                </figcaption>
+              </figure>
+
+              <figure class="review">
+                <blockquote class="review__text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
+                  doloremque architecto dicta animi.
+                </blockquote>
+                <figcaption class="review__user">
+                  <img
+                    src="img/user-2.jpg"
+                    alt="User 1"
+                    class="review__photo"
+                  />
+                  <div class="review__user-box">
+                    <p class="review__user-name">Mary Thomas</p>
+                    <p class="review__user-date">Sept 13th, 2017</p>
+                  </div>
+                  <div class="review__rating">9.3</div>
+                </figcaption>
+              </figure>
+
+              <button class="btn-inline">Show all <span>&rarr;</span></button>
+            </div>
+          </div>
+
+          <div class="cta">
+            <h2 class="cta__book-now">
+              Bad news! We have 4 childs left here. Don't be last parent!
+            </h2>
+            <button class="pagebtn">
+              <span class="pagebtn__visible">Book now</span>
+              <span class="pagebtn__invisible">Only 4 childs left</span>
+            </button>
+          </div>
+        </main>
       </div>
     </div>
   </body>

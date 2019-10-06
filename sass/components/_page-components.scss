@@ -28,6 +28,22 @@
   /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
   opacity: 0;
   transition: opacity 1s;
+
+  @media only screen and (max-width: $bp-largest) {
+    visibility: hidden;
+    width: 120px;
+    height: 2.7rem;
+    background-color: var(--color-blue-dark);
+    color: var(--color-secondary-light-2);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 75%;
+    left: 50%;
+    margin-left: -60px;
+  }
 }
 
 .tooltip:hover .tooltiptext {
@@ -44,6 +60,16 @@
   border-width: 5px;
   border-style: solid;
   border-color: black transparent transparent transparent;
+  @media only screen and (max-width: $bp-largest) {
+    top: 40%; /* At the top of the tooltip */
+    content: " ";
+    position: absolute;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+  }
 }
 
 ///////////////////////////////////

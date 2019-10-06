@@ -1746,9 +1746,9 @@ ul {
     @media only screen and (max-width: 50em) {
       .user-nav__notification {
         height: 1.5rem;
-        width: 1.5em;
+        width: 1.8em;
         font-size: 0.7rem;
-        right: 0.5rem; } }
+        right: 0.3rem; } }
   .user-nav__user {
     border-left: var(--line); }
   .user-nav__user-photo {

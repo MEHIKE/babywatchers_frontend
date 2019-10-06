@@ -244,7 +244,7 @@
 
     @media only screen and (max-width: $bp-medium) {
       height: 1.5rem;
-      width: 1.5em;
+      width: 1.7rem;
       font-size: 0.7rem;
       right: 0.3rem;
       //margin-right: 0.5rem;
@@ -632,6 +632,19 @@
     @media only screen and (max-width: $bp-small) {
       height: 5rem;
       width: 5rem;
+      //bottom: -0.5rem;
+      //&:last-child {
+      padding-bottom: 1rem;
+      //margin-bottom: 1rem;
+      //}
+    }
+
+    @include respond(phone) {
+      //letter-spacing: 1rem;
+      //font-weight: 900;
+      //color: $color-primary-dark;
+      //font-family: 5rem;
+      padding-bottom: 1rem;
     }
   }
 }

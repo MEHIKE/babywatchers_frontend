@@ -1702,6 +1702,9 @@ ul {
     background-color: var(--color-primary-lightest); }
   .user-nav__icon-box {
     position: relative; }
+    @media only screen and (max-width: 50em) {
+      .user-nav__icon-box {
+        border-left: var(--line); } }
   .user-nav__icon {
     height: 2.25rem;
     width: 2.25rem;
@@ -1713,11 +1716,11 @@ ul {
       @media only screen and (max-width: 50em) {
         .user-nav__icon__out {
           height: 1.5rem;
-          width: 1.5em; } }
+          width: 1.5rem; } }
       @media only screen and (max-width: 37.5em) {
         .user-nav__icon__out {
           height: 1rem;
-          width: 1em; } }
+          width: 1rem; } }
     .user-nav__icon__role {
       fill: var(--color-blue-dark);
       height: 2.25rem;
@@ -1746,7 +1749,7 @@ ul {
     @media only screen and (max-width: 50em) {
       .user-nav__notification {
         height: 1.5rem;
-        width: 1.8em;
+        width: 1.7rem;
         font-size: 0.7rem;
         right: 0.3rem; } }
   .user-nav__user {
@@ -2004,7 +2007,11 @@ ul {
     @media only screen and (max-width: 37.5em) {
       .babysitters__photo {
         height: 5rem;
-        width: 5rem; } }
+        width: 5rem;
+        padding-bottom: 1rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .babysitters__photo {
+        padding-bottom: 1rem; } }
 
 .recommend {
   font-size: 1.3rem;

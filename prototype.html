@@ -34,10 +34,23 @@ font-family: 'Lato', sans-serif;-->
     <div class="page_container">
       <header class="page_header">
         <!--img src="img/logo.png" alt="Babywatcher logo" class="logo" /-->
-        <svg class="icon-red feature__icon header__logo logo">
-          <use xlink:href="img/icons.svg#icon-reddit"></use>
-        </svg>
-        <form action="#" class="search">
+        <nav class="user-nav">
+          <div class="user-nav__icon-box">
+            <svg class="icon-red feature__icon header__logo logo">
+              <use xlink:href="img/icons.svg#icon-reddit"></use>
+            </svg>
+            <span class="user-nav__user-name">Babywatcher lastehoid</span>
+          </div>
+        </nav>
+        <!--nav-- class="user-nav">
+          <div class="user-nav__user">
+            <svg class="user-nav__user-photo user-nav__icon__role">
+              <use xlink:href="img/icons.svg#icon-mask"></use>
+            </svg>
+            <span class="user-nav__user-name">Babywatcher lastehoid</span>
+          </div>
+        </!--nav-->
+        <!--form-- action="#" class="search">
           <input
             type="text"
             class="search__input"
@@ -48,29 +61,69 @@ font-family: 'Lato', sans-serif;-->
               <use xlink:href="img/icons.svg#icon-magnifying-glass"></use>
             </svg>
           </button>
-        </form>
-
-        <nav class="user-nav">
-          <div class="user-nav__icon-box">
+        </!--form-->
+        <span class="my-spacer"> </span>
+        <nav class="user-nav user-nav__right">
+          <!--span class="user-nav user-nav__noti"-->
+          <div class="user-nav__icon-box tooltip">
+            <span class="tooltiptext">Uudised</span>
             <svg class="user-nav__icon">
-              <use xlink:href="img/icons.svg#icon-bookmark"></use>
+              <use xlink:href="img/icons.svg#icon-new"></use>
+            </svg>
+            <span class="user-nav__notification">1</span>
+          </div>
+          <div class="user-nav__icon-box tooltip">
+            <span class="tooltiptext">Kirjad</span>
+            <svg class="user-nav__icon">
+              <use xlink:href="img/icons.svg#icon-mail"></use>
             </svg>
             <span class="user-nav__notification">7</span>
           </div>
-          <div class="user-nav__icon-box">
+          <div class="user-nav__icon-box tooltip">
+            <span class="tooltiptext">Sõnumid</span>
             <svg class="user-nav__icon">
               <use xlink:href="img/icons.svg#icon-chat"></use>
             </svg>
             <span class="user-nav__notification">13</span>
           </div>
+          <div class="user-nav__icon-box tooltip">
+            <span class="tooltiptext">Teated</span>
+            <svg class="user-nav__icon">
+              <use xlink:href="img/icons.svg#icon-bell"></use>
+            </svg>
+            <span class="user-nav__notification">3</span>
+          </div>
+          <!--/span-->
+        </nav>
+        <nav class="user-nav user-nav__right">
+          <!--span-- class="user-nav user-nav__noti"-->
           <div class="user-nav__user">
             <img
               src="img/user.jpg"
               alt="User photo"
               class="user-nav__user-photo"
             />
-            <span class="user-nav__user-name">Rünno</span>
+            <span class="user-nav__user-name">Rünno Ruul, isa</span>
           </div>
+          <div class="user-nav__user">
+            <svg class="user-nav__user-photo user-nav__icon__role">
+              <use xlink:href="img/icons.svg#icon-mask"></use>
+            </svg>
+            <span class="user-nav__user-name">Administrator</span>
+          </div>
+          <div class="user-nav__user">
+            <svg class="user-nav__user-photo user-nav__icon__role">
+              <use xlink:href="img/icons.svg#icon-open-book"></use>
+            </svg>
+            <span class="user-nav__user-name">Eesti</span>
+          </div>
+          <div class="user-nav__user">
+            <svg class="user-nav__user-photo user-nav__icon__out">
+              <use xlink:href="img/icons.svg#icon-log-out"></use>
+            </svg>
+            <span class="user-nav__user-name">Logi välja</span>
+          </div>
+          <!--/!--span-->
         </nav>
       </header>
 
@@ -80,23 +133,39 @@ font-family: 'Lato', sans-serif;-->
             <li class="side-nav__item side-nav__item--active">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/icons.svg#icon-home"></use>
+                  <use xlink:href="img/icons.svg#icon-users1"></use>
                 </svg>
-                <span>Kasutajad</span>
+                <span>Sinu lapsed</span>
               </a>
             </li>
             <li class="side-nav__item">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/icons.svg#icon-aircraft-take-off"></use>
+                  <use xlink:href="img/icons.svg#icon-cake"></use>
                 </svg>
-                <span>Lapsehoidjad</span>
+                <span>Mis toimub täna</span>
               </a>
             </li>
             <li class="side-nav__item">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/icons.svg#icon-key"></use>
+                  <use xlink:href="img/icons.svg#icon-calendar"></use>
+                </svg>
+                <span>Sündmused</span>
+              </a>
+            </li>
+            <li class="side-nav__item">
+              <a href="#" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/icons.svg#icon-image"></use>
+                </svg>
+                <span>Galerii</span>
+              </a>
+            </li>
+            <li class="side-nav__item">
+              <a href="#" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/icons.svg#icon-users"></use>
                 </svg>
                 <span>Kasvatajad</span>
               </a>
@@ -104,9 +173,17 @@ font-family: 'Lato', sans-serif;-->
             <li class="side-nav__item">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/icons.svg#icon-map"></use>
+                  <use xlink:href="img/icons.svg#icon-coin-euro"></use>
                 </svg>
-                <span>Lapsed</span>
+                <span>Arveldus</span>
+              </a>
+            </li>
+            <li class="side-nav__item">
+              <a href="#" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/icons.svg#icon-wrench"></use>
+                </svg>
+                <span>Seaded</span>
               </a>
             </li>
           </ul>
@@ -117,7 +194,7 @@ font-family: 'Lato', sans-serif;-->
         </nav>
 
         <main class="page-view">
-          <div class="gallery">
+          <!--div-- class="gallery">
             <figure class="gallery__item">
               <img
                 src="img/pic-1.jpg"
@@ -139,42 +216,49 @@ font-family: 'Lato', sans-serif;-->
                 class="gallery__photo"
               />
             </figure>
-          </div>
+          </!--div-->
 
-          <div class="overview">
+          <div class="overview babysitters">
             <h1 class="overview__heading">
               Today our babysitters
             </h1>
 
-            <div class="overview__stars">
-              <svg class="overview__icon-star">
-                <use xlink:href="img/icons.svg#icon-star"></use>
-              </svg>
-              <svg class="overview__icon-star">
-                <use xlink:href="img/icons.svg#icon-star"></use>
-              </svg>
-              <svg class="overview__icon-star">
-                <use xlink:href="img/icons.svg#icon-star"></use>
-              </svg>
-              <svg class="overview__icon-star">
-                <use xlink:href="img/icons.svg#icon-star"></use>
-              </svg>
-              <svg class="overview__icon-star">
-                <use xlink:href="img/icons.svg#icon-star"></use>
-              </svg>
+            <div class="babysitters__friends">
+              <img src="img/siret.jpg" alt="Siret" class="babysitters__photo" />
+              <img src="img/gerry.jpg" alt="Gerry" class="babysitters__photo" />
+              <img src="img/elina.jpg" alt="Elina" class="babysitters__photo" />
+              <img src="img/kart.jpg" alt="Kärt" class="babysitters__photo" />
             </div>
 
-            <div class="overview__location">
+            <!--div-- class="overview__stars">
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+              <svg class="overview__icon-star">
+                <use xlink:href="img/icons.svg#icon-star"></use>
+              </svg>
+            </!--div-->
+
+            <!--div-- class="overview__location">
               <svg class="overview__icon-location">
                 <use xlink:href="img/icons.svg#icon-location-pin"></use>
               </svg>
               <button class="btn-inline">Tallinn, Vahe 2-1</button>
-            </div>
+            </!--div-->
 
-            <div class="overview__rating">
+            <!--div-- class="overview__rating">
               <div class="overview__rating-average">8.6</div>
               <div class="overview__rating-count">429 votes</div>
-            </div>
+            </!--div-->
           </div>
 
           <div class="page_detail">
@@ -203,7 +287,7 @@ font-family: 'Lato', sans-serif;-->
                 <p class="recommend__count">
                   Lucy and 3 other friends recommend this Babywatch.
                 </p>
-                <div class="recommend__friends">
+                <!--div-- class="recommend__friends">
                   <img
                     src="img/user-3.jpg"
                     alt="Friend 1"
@@ -224,7 +308,7 @@ font-family: 'Lato', sans-serif;-->
                     alt="Friend 4"
                     class="recommend__photo"
                   />
-                </div>
+                </!--div-->
               </div>
             </div>
 
@@ -234,7 +318,7 @@ font-family: 'Lato', sans-serif;-->
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
                   doloremque architecto dicta animi, totam, itaque officia ex.
                 </blockquote>
-                <figcaption class="review__user">
+                <!--figcaption-- class="review__user">
                   <img
                     src="img/user-1.jpg"
                     alt="User 1"
@@ -245,7 +329,7 @@ font-family: 'Lato', sans-serif;-->
                     <p class="review__user-date">Feb 23rd, 2017</p>
                   </div>
                   <div class="review__rating">7.8</div>
-                </figcaption>
+                </!--figcaption-->
               </figure>
 
               <figure class="review">
@@ -253,7 +337,7 @@ font-family: 'Lato', sans-serif;-->
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
                   doloremque architecto dicta animi.
                 </blockquote>
-                <figcaption class="review__user">
+                <!--figcaption-- class="review__user">
                   <img
                     src="img/user-2.jpg"
                     alt="User 1"
@@ -264,7 +348,7 @@ font-family: 'Lato', sans-serif;-->
                     <p class="review__user-date">Sept 13th, 2017</p>
                   </div>
                   <div class="review__rating">9.3</div>
-                </figcaption>
+                </!--figcaption-->
               </figure>
 
               <button class="btn-inline">Show all <span>&rarr;</span></button>

@@ -24,9 +24,22 @@
   justify-content: space-between;
   align-items: center;
 
+  @media only screen and (max-width: $bp-medium) {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: stretch;
+    align-content: space-around;
+    //padding: 1rem;
+    //border-bottom: var(--line);
+    height: 11rem;
+  }
+
   @media only screen and (max-width: $bp-smallest) {
     flex-wrap: wrap;
+    flex-direction: column;
     align-content: space-around;
+    align-self: stretch;
+    //border-bottom: var(--line);
     height: 11rem;
   }
 }

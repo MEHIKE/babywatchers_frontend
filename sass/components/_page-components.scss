@@ -133,6 +133,7 @@
   align-items: center;
   align-self: stretch;
   justify-content: space-between;
+
   //flex-direction: row;
 
   //&__noti {
@@ -168,6 +169,7 @@
       //height: 1.5rem;
       //width: 1.5em;
       padding: 0 1rem;
+      //border-bottom: var(--line);
       //margin-right: 0.5rem;
     }
     @media only screen and (max-width: $bp-small) {
@@ -175,6 +177,10 @@
       //width: 1.5em;
       padding: 0 0.5rem;
       //margin-right: 0.5rem;
+    }
+
+    @include respond(phone) {
+      padding: 0 0.7rem;
     }
   }
 
@@ -185,10 +191,11 @@
 
   &__icon-box {
     position: relative;
-    @media only screen and (max-width: $bp-medium) {
-      border-left: var(--line);
-      //margin-right: 0.5rem;
-    }
+    //border-left: var(--line);
+    //@media only screen and (max-width: $bp-medium) {
+    //border-left: var(--line);
+    //margin-right: 0.5rem;
+    //}
   }
 
   &__icon {

@@ -1694,15 +1694,21 @@ ul {
     align-items: center; }
     @media only screen and (max-width: 50em) {
       .user-nav > * {
-        padding: 0 1rem;
-        border-bottom: var(--line); } }
+        padding: 0 1rem; } }
     @media only screen and (max-width: 37.5em) {
       .user-nav > * {
         padding: 0 0.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .user-nav > * {
+        padding: 0 0.7rem; } }
   .user-nav > *:hover {
     background-color: var(--color-primary-lightest); }
   .user-nav__icon-box {
     position: relative; }
+    @media only screen and (max-width: 37.5em) {
+      .user-nav__icon-box {
+        padding: 0 0.7rem;
+        border-left: var(--line); } }
   .user-nav__icon {
     height: 2.25rem;
     width: 2.25rem;

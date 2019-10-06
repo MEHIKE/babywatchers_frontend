@@ -52,6 +52,10 @@
     //border-bottom: var(--line);
     height: 11rem;
   }
+
+  @include respond(phone) {
+    height: 7rem;
+  }
 }
 
 .page_content {

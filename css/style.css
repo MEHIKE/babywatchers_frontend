@@ -687,6 +687,9 @@ ul {
       align-content: space-around;
       align-self: stretch;
       height: 11rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .page_header {
+      height: 7rem; } }
 
 .page_content {
   display: flex; }
@@ -1623,6 +1626,21 @@ ul {
       top: 75%;
       left: 50%;
       margin-left: -60px; } }
+  @media only screen and (max-width: 37.5em) {
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      height: 2.7rem;
+      background-color: var(--color-blue-dark);
+      color: var(--color-secondary-light-2);
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      top: 75%;
+      left: 50%;
+      margin-left: -60px; } }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
@@ -1639,6 +1657,17 @@ ul {
   border-style: solid;
   border-color: black transparent transparent transparent; }
   @media only screen and (max-width: 75em) {
+    .tooltip .tooltiptext::after {
+      top: 40%;
+      /* At the top of the tooltip */
+      content: " ";
+      position: absolute;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent black transparent; } }
+  @media only screen and (max-width: 37.5em) {
     .tooltip .tooltiptext::after {
       top: 40%;
       /* At the top of the tooltip */

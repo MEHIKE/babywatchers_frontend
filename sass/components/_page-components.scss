@@ -49,14 +49,14 @@
     visibility: hidden;
     width: 120px;
     height: 2.7rem;
-    background-color: var(--color-blue-dark);
-    color: var(--color-secondary-light-2);
+    color: var(--color-blue-dark);
+    background-color: var(-color-secondary-light);
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    top: 75%;
+    top: 100%;
     left: 50%;
     margin-left: -60px;
   }
@@ -87,7 +87,7 @@
     border-color: transparent transparent black transparent;
   }
   @include respond(phone) {
-    top: 40%; /* At the top of the tooltip */
+    top: 100%; /* At the top of the tooltip */
     content: " ";
     position: absolute;
     left: 50%;

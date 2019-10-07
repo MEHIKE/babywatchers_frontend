@@ -9,6 +9,7 @@
 
   @media only screen and (max-width: $bp-largest) {
     margin: 0;
+    //margin-top: 2%;
     max-width: 100%;
     width: 100%;
   }
@@ -24,6 +25,16 @@
   justify-content: space-between;
   align-items: center;
 
+  @media only screen and (max-width: $bp-largest) {
+    flex-wrap: wrap;
+    //flex-direction: column;
+    align-self: stretch;
+    align-content: space-around;
+    //padding: 1rem;
+    //border-bottom: var(--line);
+    height: 7rem;
+  }
+
   @media only screen and (max-width: $bp-medium) {
     flex-wrap: wrap;
     //flex-direction: column;
@@ -31,7 +42,7 @@
     align-content: space-around;
     //padding: 1rem;
     //border-bottom: var(--line);
-    height: 11rem;
+    height: 7rem;
   }
 
   @media only screen and (max-width: $bp-small) {
@@ -41,7 +52,7 @@
     align-content: space-around;
     //padding: 1rem;
     //border-bottom: var(--line);
-    height: 11rem;
+    height: 7rem;
   }
 
   @media only screen and (max-width: $bp-smallest) {
@@ -50,7 +61,7 @@
     align-content: space-around;
     align-self: stretch;
     //border-bottom: var(--line);
-    height: 11rem;
+    height: 7rem;
   }
 
   @include respond(phone) {

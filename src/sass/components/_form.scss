@@ -1,0 +1,215 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__reggroup:not(:last-child) {
+    margin-bottom: 0rem;
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    //et font family tuleks ülemuselt. formile ei taha muidu tulla tihti
+    font-family: inherit;
+    color: inherit;
+    padding: 1.5rem 1.5rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+    //border siia ka et ei tekiks teksti hüppamist ja kõrgus oleks sama, aga siin läbipaistev
+    border-bottom: 4px solid transparent;
+    //las olla täispikkuses, siis tuleb selgitus alla
+    width: 90%;
+    display: block;
+    transition: all 0.3s;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    //fookuse saanud sisestamiskastil tuleb ümber sinine border aga seda me ei taha
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      //joon alla
+      border-bottom: 4px solid $color-primary;
+    }
+
+    //kui väli ei vasta nõuetele. email @ jne
+    &:focus:invalid {
+      border-bottom: 4px solid $color-secondary-dark;
+    }
+
+    //pseudo element, hetkel töötab aind safari ja chromega
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__inputreg {
+    padding: 0.5rem 1.5rem;
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    //alloeva animeerimiseks
+    transition: all 0.3s;
+  }
+
+  // + märk võtab samal tasemel olevad
+  //kui placeholder on nähe, siis
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    //vajub nagu alla st. on peaaegu samal kohal kus placeholder aga peidetud enne
+    transform: translateY(-3rem);
+  }
+
+  &__radio-group {
+    width: 49%;
+    //et oleksid kõrvuti
+    display: inline-block;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+
+  //et tavalist nuppu ei oleks näha üldse, vaid ainult meie tehtud nupp
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer;
+    //et töötaks postion absolute alamal
+    position: relative;
+    //absolute positioni pärast tuli tekst liiga lähedale
+    padding-left: 4.5rem;
+  }
+
+  &__radio-button {
+    //mõõtmed samas, kuna ring
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    //et oleks ymar
+    border-radius: 50%;
+    //et tuleks õige kujuga
+    display: inline-block;
+    //et saaks täpselt paika sättida ringi
+    position: absolute;
+    left: 0;
+    top: -0.4rem;
+
+    &::after {
+      //kuna pseudo element siis peab olema content ja display elemendid
+      content: '';
+      display: block;
+      //circle jälle
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 50%;
+      //tahame panna täpselt keskele
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      //kuna aluses ei tohi näha olla siis kaotame
+      opacity: 0;
+    }
+  }
+
+  //et leida millal on radio nupp checked ja teha nähtavaks täpp ringi keskel
+  //kuna checked on teine element, siis on vaja leida see ja span on selle alam, see ka + osas siis
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
+  }
+}
+
+.login__line {
+  //ransform: translateX(100rem);
+  background-color: $color-primary;
+  //height: 7rem;
+  //width: 7rem;
+  //position: fixed;
+  //top: 6rem;
+  //right: 6rem;
+  //border-radius: 50%;
+  //z-index: 2000;
+  left: 1.5rem;
+  //right: 2rem;
+  //padding-right: 3rem 0;
+  width: 90%;
+  height: 2px;
+  box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+
+  //et jutid oleksid keskel
+  text-align: center;
+  cursor: pointer;
+}
+
+.link__group {
+  display: grid;
+  width: 90%;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: min-content;
+  grid-template-columns:
+    [link-start] minmax(6rem, 35vw)
+    [link-end] minmax(6rem, 35vw) [linkright-end];
+}
+
+.btnlogin-inline {
+  border: none;
+  margin-top: 0.5rem;
+  font-size: $default-font-size;
+  color: $color-primary;
+  grid-column: link-start / link-end;
+  padding: 0;
+  //width: 100%;
+  text-decoration: none;
+  display: inline-block;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+
+  /*&:hover {
+    //color: var(--color-grey-dark-1);
+    background-color: $color-primary-lightest;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+
+    span {
+      margin-left: 8px;
+    }
+  }*/
+
+  /*&:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+    animation: pulsate 1s infinite;
+  }*/
+}
+
+.btnlogin-inline__right {
+  grid-column: 2 / -1;
+  border: none;
+  margin-top: 0.5rem;
+  font-size: $default-font-size;
+  color: $color-primary;
+  padding: 0;
+  width: 100%;
+  text-decoration: none;
+  display: inline-block;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  text-align: right;
+}

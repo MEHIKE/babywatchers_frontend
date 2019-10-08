@@ -1,0 +1,66 @@
+.body-all {
+  grid-column: center-start / center-end;
+  grid-row: 3;
+  padding: 5% 5% 5% 5%;
+  margin-top: 12rem;
+  //top: 22rem;
+  box-sizing: border-box;
+
+  @include respond(phone) {
+  }
+}
+
+.phone {
+  display: hidden;
+  background: transparent;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  display: none;
+  opacity: 0;
+  z-index: -1500;
+  text-align: left;
+
+  @include respond(phone) {
+    text-align: left;
+    visibility: visible;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    display: contents;
+    background-color: $color-primary-lightest;
+    color: $color-primary;
+    border-top: 1px solid $color-primary-dark;
+    border-color: $color-primary-dark;
+    padding-top: 2px;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    cursor: pointer;
+  }
+}
+
+.menu__box {
+  padding-right: 2rem;
+  align-items: top;
+  vertical-align: center;
+}
+
+.entry-content {
+  //padding-top: 32rem;
+}
+
+.entry__body {
+  padding-top: 35rem;
+  //margin-top: 20rem;
+  //padding-bottom: 10rem;
+
+  @media only screen and (max-height: $bp-small) {
+    padding-top: 10rem;
+  }
+
+  @include respond(phone) {
+    font-size: 50%;
+    padding-top: 0;
+    padding-left: 0;
+    align-items: left;
+  }
+}

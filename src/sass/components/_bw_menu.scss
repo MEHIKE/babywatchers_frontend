@@ -1,0 +1,110 @@
+.linkbw__group {
+  display: grid;
+  width: 100%;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: min-content;
+  //grid-template-columns:
+  //  [link-start] minmax(6rem, 35vw)
+  //  [link-end] minmax(6rem, 35vw) [linkright-end];
+}
+
+.bw_menu {
+  grid-column: full-start / center-start;
+  //grid-row: 2 / 3;
+  //position: sticky;
+  position: fixed;
+  //top: 22rem;
+  //top: 0; //to make it stick to the top of the screen
+  //height: 100vh; // make the height equal to 100 view height
+  box-sizing: border-box;
+  padding: 1% 5% 1% 5%;
+  //left: 20rem;
+  z-index: 2000;
+
+  @include respond(phone) {
+    grid-column: 1 / -1;
+    position: relative;
+    align-content: left;
+    align-items: left;
+    padding-top: 5rem;
+  }
+}
+
+.btnbw-inline {
+  border: none;
+  margin-top: 1rem;
+  font-size: $default-font-size;
+  color: $color-primary;
+  grid-column: link-start / link-end;
+  padding: 0.5rem;
+  //width: 100%;
+  text-decoration: none;
+  display: inline-block;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+
+  @include respond(phone) {
+    //  font-size: 50%;
+    padding: 0;
+  }
+}
+
+.btnbwline-inline {
+  border: none;
+  //color: var(--color-primary);
+  font-size: $default-font-size;
+  color: $color-primary;
+  //font-size: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  //padding-bottom: 2px;
+  padding: 3px;
+  //width: 100%;
+  display: inline-block;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  @include respond(phone) {
+    //font-size: 50%;
+    border-bottom: none;
+    padding: 1px;
+  }
+
+  & span {
+    margin-left: 3px;
+    transition: margin-left 0.3s;
+  }
+
+  &--pink {
+    background-color: $color-primary-lightest;
+  }
+
+  &:hover {
+    //color: var(--color-grey-dark-1);
+    background-color: $color-primary-lightest;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+
+    span {
+      margin-left: 8px;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+    animation: pulsate 1s infinite;
+  }
+}
+
+.icon-primary {
+  display: inline-block;
+  width: 4.5rem;
+  height: 4.5rem;
+  stroke-width: 0;
+  stroke: $color-primary-light;
+  fill: $color-primary-light;
+}

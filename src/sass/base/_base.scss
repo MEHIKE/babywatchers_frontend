@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  //margin: 0;
+  //padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: $font-primary;
+  color: var(--$color-grey-dark-2);
+  font-weight: 300;
+  line-height: 1.6;
+  box-sizing: border-box;
+  //padding-top: 25rem;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-lightest),
+    var(--color-secondary-lightest)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+}
+
+/*::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}*/
+
+.container {
+  display: grid;
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-rows: min-content min-content min-content min-content repeat(
+      6,
+      min-content
+    ); //grid-template-rows: min-content 50vw 40vw repeat(5, min-content);
+  /*grid-template-columns:
+    [full-start] minmax(6rem, 0.1fr)
+    [just-start] minmax(6rem, 0.3fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end])
+    [center-end] minmax(6rem, 0.3fr)
+    [just-start] minmax(6rem, 0.1fr)
+    [full-end];*/
+
+  grid-template-columns: [full-start] minmax(6vw, min-content) [just-start] minmax(
+      min-content,
+      max-content
+    ) [center-start] repeat(8, [col-start] minmax(min-content, 22rem) [col-end]) [center-end] minmax(
+      min-content,
+      max-content
+    ) [just-start] minmax(6vw, min-content) [full-end];
+
+  @media only screen and (max-width: $bp-large) {
+    //grid-template-rows: 6rem 180vh min-content 40vw repeat(3, min-content);
+    grid-template-columns:
+      [full-start] minmax(6rem, 1fr) [center-start] repeat(
+        8,
+        [col-start] minmax(min-content, 14rem) [col-end]
+      )
+      [center-end] minmax(6rem, 1fr) [full-end];
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    //grid-template-rows: 6rem calc(100vh - 6rem);
+  }
+
+  &__bw {
+    display: grid;
+    grid-template-rows: min-content 3vh min-content min-content; // repeat(5, min-content); //grid-template-rows: min-content 50vw 40vw repeat(5, min-content);
+    grid-template-columns:
+      [page-start] minmax(6rem, 0.2fr)
+      [full-start] minmax(10rem, 0.23fr)
+      [just-start] minmax(6rem, 0.03fr)
+      [center-start] minmax(min-content, 60vw)
+      [center-end] minmax(6rem, 0.03fr)
+      [just-start] minmax(10rem, 0.23fr)
+      [full-end] minmax(6rem, 0.2fr);
+
+    @media only screen and (max-width: $bp-medium) {
+      //grid-template-rows: 6rem calc(100vh - 6rem);
+      grid-template-columns:
+        [page-start] minmax(6rem, 0.1fr)
+        [full-start] minmax(10rem, 0.2fr)
+        [just-start] minmax(6rem, 0.02fr)
+        [center-start] minmax(min-content, 60vw)
+        [center-end] minmax(6rem, 0.02fr)
+        [just-start] minmax(10rem, 0.2fr)
+        [full-end] minmax(6rem, 0.1fr);
+    }
+
+    @include respond(phone) {
+      //letter-spacing: 1rem;
+      //margin-top: 25rem;
+      grid-template-rows: repeat(
+        12,
+        min-content
+      ); //min-content min-content min-content; // repeat(5, min-content); //grid-template-rows: min-content 50vw 40vw repeat(5, min-content);
+      grid-template-columns:
+        [page-start] minmax(1rem, min-content)
+        [full-start] minmax(1rem, min-content)
+        [just-start] minmax(1rem, min-content)
+        [center-start] minmax(min-content, 90vw)
+        [center-end] minmax(1rem, min-content)
+        [just-start] minmax(1rem, min-content)
+        [full-end] minmax(1rem, min-content);
+      //font-family: 5rem;
+    }
+  }
+}

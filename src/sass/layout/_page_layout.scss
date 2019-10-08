@@ -1,0 +1,139 @@
+.page_container {
+  //max-width: 120rem;
+  max-width: 80%;
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+
+  min-height: 50rem;
+
+  @media only screen and (max-width: $bp-largest) {
+    margin: 0;
+    //margin-top: 2%;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.page_header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: var(--line);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width: $bp-largest) {
+    flex-wrap: wrap;
+    //flex-direction: column;
+    align-self: stretch;
+    align-content: space-around;
+    //padding: 1rem;
+    //border-bottom: var(--line);
+    height: 7rem;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    flex-wrap: wrap;
+    //flex-direction: column;
+    align-self: stretch;
+    align-content: space-around;
+    //padding: 1rem;
+    //border-bottom: var(--line);
+    height: 7rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    flex-wrap: wrap;
+    //flex-direction: column;
+    align-self: stretch;
+    align-content: space-around;
+    //padding: 1rem;
+    //border-bottom: var(--line);
+    height: 7rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-around;
+    align-self: stretch;
+    //border-bottom: var(--line);
+    height: 7rem;
+  }
+
+  @include respond(phone) {
+    height: 7rem;
+  }
+}
+
+.page_content {
+  display: flex;
+
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+  }
+}
+
+.page_sidebar {
+  background-color: var(--color-blue-dark);
+
+  flex: 0 0 20%;
+
+  //selleks et lükata copyright text alla space-between
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-view {
+  background-color: #fff;
+  //height: 80rem;
+
+  flex: 1;
+}
+
+.page_detail {
+  font-size: 1.4rem;
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    flex-direction: column;
+  }
+}
+
+.page_description {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-right: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin-right: 3px;
+    margin-bottom: 3rem;
+  }
+}
+
+.page_user-reviews {
+  //background-color: yellowgreen;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

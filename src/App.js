@@ -1,10 +1,16 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+//import { Switch, Route, Redirect } from "react-router-dom";
+//import { Route } from "react-router-dom";
+
 //import logo from "./logo.svg";
 import "./css/style.css";
 
-import HomePage from "./pages/homepage/homepage.component";
+//import HomePage from "./pages/homepage/homepage.component";
 import Header from "./components/header/header.component";
+import Sidebar from "./components/sidebar/sidebar.component";
+import Overview from "./components/overview/overview.component";
+import PageDetail from "./components/pagedetail/pagedetail.component";
+import Footer from "./components/footer/footer.component";
 
 //function App() {
 class App extends React.Component {
@@ -12,9 +18,18 @@ class App extends React.Component {
     return (
       <div className="page_container">
         <Header />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-        </Switch>
+        <div className="page_content">
+          <Sidebar />
+          <main className="page-view">
+            <Overview></Overview>
+            <PageDetail></PageDetail>
+            <Footer />
+          </main>
+
+          {/*<Switch>
+            <Route exact path="/" component={HomePage} />
+          </Switch>*/}
+        </div>
         {/*
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

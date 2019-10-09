@@ -1,0 +1,24 @@
+{
+  "ee": {
+      "bw": "Babywatcher lastehoid",
+      "news": "Uudised",
+      "mails": "Kirjad",
+      "chats": "Sõnumid",
+      "noti": "Teated",
+      "role": "Administraator",
+      "lang": "Eesti",
+      "logout": "Logi välja",
+      "login": "Logi sisse"
+    },
+   "en": {
+      "bw": "Babywatch babysitter",
+      "news": "News",
+      "mails": "Mails",
+      "chats": "Chats",
+      "noti": "Notifications",
+      "role": "Administrator",
+      "lang": "English",
+      "logout": "Log out",
+      "login": "Login"
+    }
+}

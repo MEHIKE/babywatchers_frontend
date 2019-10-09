@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 //import { Switch, Route, Redirect } from "react-router-dom";
 //import { Route } from "react-router-dom";
-
+//import { useSSR } from "react-i18next";
+//import { hydrate } from "react-dom";
 //import logo from "./logo.svg";
 import "./css/style.css";
+//import { withNamespaces } from "react-i18next";
 
 //import HomePage from "./pages/homepage/homepage.component";
 import Header from "./components/header/header.component";
@@ -12,25 +14,28 @@ import Overview from "./components/overview/overview.component";
 import PageDetail from "./components/pagedetail/pagedetail.component";
 import Footer from "./components/footer/footer.component";
 
+import logo from "./img/babywatch_header.jpg";
+
 //function App() {
 class App extends React.Component {
   render() {
     return (
-      <div className="page_container">
-        <Header />
-        <div className="page_content">
-          <Sidebar />
-          <main className="page-view">
-            <Overview></Overview>
-            <PageDetail></PageDetail>
-            <Footer />
-          </main>
+      <Suspense fallback={<Loader />}>
+        <div className="page_container">
+          <Header />
+          <div className="page_content">
+            <Sidebar />
+            <main className="page-view">
+              <Overview></Overview>
+              <PageDetail></PageDetail>
+              <Footer />
+            </main>
 
-          {/*<Switch>
+            {/*<Switch>
             <Route exact path="/" component={HomePage} />
           </Switch>*/}
-        </div>
-        {/*
+          </div>
+          {/*
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -45,9 +50,25 @@ class App extends React.Component {
             Learn React
           </a>
       </header> */}
-      </div>
+        </div>
+      </Suspense>
     );
   }
 }
 
-export default App;
+export default App; //withNamespaces()(App);
+
+//hydrate(<BaseApp />, document.getElementById("root"));
+//if (module.hot) {
+//  module.hot.accept();
+//}
+
+// loading component for suspense fallback
+const Loader = () => (
+  <div className="App">
+    <img src={logo} className="App-logo" alt="logo" />
+    <div>loading...</div>
+  </div>
+);
+
+// here app catches the suspense from page in case translations are not yet loaded

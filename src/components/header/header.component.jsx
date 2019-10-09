@@ -1,8 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 //import { connect } from "react-redux";
 //import { createStructuredSelector } from "reselect";
-import LocalizedStrings from "react-localization";
-import language from "./header.json";
+//import LocalizedStrings from "react-localization";
+//import language from "./header.json";
+
+import { useTranslation } from "react-i18next";
+//import { withNamespaces } from 'react-i18next';
 
 //import { Link } from "react-router-dom";
 
@@ -25,18 +28,17 @@ import { ReactComponent as LogOut } from "../../img/log-out.svg";
 
 //export default getHeaderData;
 
-let strings = new LocalizedStrings(language);
-let lang = "";
-//let test = strings.setLanguage(language).getHeaderData;
+//let strings = new LocalizedStrings(language);
+//let lang = "";
 
 const Header = ({ currentUser, hidden }) => {
-  const handleChangeLang = event => {
+  const { t, i18n } = useTranslation();
+
+  /*  const handleChangeLang = event => {
     event.preventDefault();
     const { value, name } = event.target;
     lang = value;
     console.log("lang=" + value + " name=" + name);
-    //strings = new LocalizedStrings(language);
-    //this.setState({ [name]: value });
     console.log("enne, strings.getlanguage=" + strings.getLanguage());
     strings.getLanguage() === "ee"
       ? strings.setLanguage("en")
@@ -48,13 +50,25 @@ const Header = ({ currentUser, hidden }) => {
     console.log("strings.availablelangs=" + strings.getAvailableLanguages());
     console.log("strings.getlanguage=" + strings.getLanguage());
     console.log("strings.bw=" + strings.bw);
-    //strings = new LocalizedStrings(language);
-    //history.push();
+  };
+*/
+
+  const handleChangeLang = event => {
+    event.preventDefault();
+    const { value, name } = event.target;
+    //let prevLang = i18n.getLanguage();
+    console.log("hetke keel:" + i18n.language);
+    let langu = i18n.language;
+    langu === "ee" ? (langu = "en") : (langu = "ee");
+    i18n.changeLanguage(langu);
+    console.log("uus keel: " + i18n.language);
   };
 
-  lang === "" ? strings.setLanguage("ee") : strings.setLanguage(lang);
+  {
+    /*lang === "" ? strings.setLanguage("ee") : strings.setLanguage(lang);
   lang === "" ? (lang = "ee") : (lang = "en");
-  console.log(strings.bw);
+console.log(strings.bw);*/
+  }
 
   return (
     <header className="page_header">
@@ -62,7 +76,9 @@ const Header = ({ currentUser, hidden }) => {
         <div className="user-nav__icon-box" to="/">
           <Logo className="icon-red feature__icon header__logo logo"></Logo>
           <span className="user-nav__user-name">
-            {strings.bw}+{strings.getLanguage()}
+            {/*strings.bw*/}
+            {/*strings.getLanguage()*/}
+            {t("header:bw")}
           </span>
         </div>
         {/*<span class="user-nav__user-name">Babywatcher lastehoid</span>*/}
@@ -71,25 +87,25 @@ const Header = ({ currentUser, hidden }) => {
 
       <nav className="user-nav user-nav__right">
         <div className="user-nav__icon-box tooltip">
-          <span className="tooltiptext">{strings.news}</span>
+          <span className="tooltiptext">{t("header:news")}</span>
           <News className="user-nav__icon"></News>
           <span className="user-nav__notification">1</span>
         </div>
 
         <div className="user-nav__icon-box tooltip">
-          <span className="tooltiptext">{strings.mails}</span>
+          <span className="tooltiptext">{t("header:mails")}</span>
           <Mail className="user-nav__icon"></Mail>
           <span className="user-nav__notification">7</span>
         </div>
 
         <div className="user-nav__icon-box tooltip">
-          <span className="tooltiptext">{strings.chats}</span>
+          <span className="tooltiptext">{t("header:chats")}</span>
           <Chat className="user-nav__icon"></Chat>
           <span className="user-nav__notification">13</span>
         </div>
 
         <div className="user-nav__icon-box tooltip">
-          <span className="tooltiptext">{strings.noti}</span>
+          <span className="tooltiptext">{t("header:noti")}</span>
           <Bell className="user-nav__icon"></Bell>
           <span className="user-nav__notification">3</span>
         </div>
@@ -102,17 +118,19 @@ const Header = ({ currentUser, hidden }) => {
             alt="User pic"
             className="user-nav__user-photo"
           />
-          <span className="user-nav__user-name">Rünno Ruul, isa</span>
+          <span className="user-nav__user-name">
+            Rünno Ruul - {t("header:father")}
+          </span>
         </div>
 
         <div className="user-nav__user" to="/">
           <Role className="user-nav__user-photo user-nav__icon__role"></Role>
-          <span className="user-nav__user-name">{strings.role}</span>
+          <span className="user-nav__user-name">{t("header:role")}</span>
         </div>
 
         <div className="user-nav__user" to="/" onClick={handleChangeLang}>
           <Lang className="user-nav__user-photo user-nav__icon__role"></Lang>
-          <span className="user-nav__user-name">{strings.lang}</span>
+          <span className="user-nav__user-name">{t("header:lang")}</span>
         </div>
 
         <div className="user-nav__user" to="/">
@@ -122,7 +140,7 @@ const Header = ({ currentUser, hidden }) => {
             className="user-nav__user-photo user-nav__icon__role"
           ></img>*/}
 
-          <span className="user-nav__user-name">{strings.logout}</span>
+          <span className="user-nav__user-name">{t("header:logout")}</span>
         </div>
       </nav>
       {/*<div className="options">

@@ -24,6 +24,8 @@ import { ReactComponent as Bell } from '../../img/bell.svg';
 import { ReactComponent as Role } from '../../img/mask.svg';
 import { ReactComponent as Lang } from '../../img/open-book.svg';
 
+//import IconUmbrella from './IconUmbrella';
+
 //import { ReactComponent as LangEST } from '../../img/Est';
 //import { ReactComponent as LangENG } from '../../img/open-book.svg';
 
@@ -116,9 +118,10 @@ const Header = ({ currentUser, hidden }) => {
             {collections.map(({ id, ...otherCollectionProps }) => (
               //<CollectionPreview key={id} {...otherCollectionProps} />
               //collections: FIRST_DATA;
-              <span className='title'>{collections.title}</span>
+              <span className='title'>{collections.id}</span>
               //<span className="price">{collection.price}</span>
             ))}
+            {console.log('COLLECTIONS: ' + collections)}
           </span>
           <Bell className='user-nav__icon'></Bell>
           <span className='user-nav__notification'>3</span>

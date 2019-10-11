@@ -9,34 +9,34 @@
 
 @import "pages/home";
 */
-@import "abstracts/variables";
-@import "abstracts/mixins";
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
 
-@import "base/base";
-@import "base/typography";
-@import "base/animations";
-@import "base/features";
-@import "base/utilities";
+@import 'base/base';
+@import 'base/typography';
+@import 'base/animations';
+@import 'base/features';
+@import 'base/utilities';
 
-@import "layout/header";
-@import "layout/navigation";
-@import "layout/footer";
+@import 'layout/header';
+@import 'layout/navigation';
+@import 'layout/footer';
 //@import "layout/footer1";
-@import "layout/page_layout";
+@import 'layout/page_layout';
 
-@import "pages/home";
-@import "pages/about";
+@import 'pages/home';
+@import 'pages/about';
 
-@import "components/button";
-@import "components/feature-box";
-@import "components/composition";
-@import "components/form";
+@import 'components/button';
+@import 'components/feature-box';
+@import 'components/composition';
+@import 'components/form';
 //@import "components/bg-video";
-@import "components/card";
-@import "components/popup";
-@import "components/bw_menu";
-@import "components/page-components";
+@import 'components/card';
+@import 'components/popup';
+@import 'components/bw_menu';
+@import 'components/page-components';
 
-@import "babywatch/bwheader";
-@import "babywatch/body-all";
-@import "babywatch/footerbw";
+@import 'babywatch/bwheader';
+@import 'babywatch/body-all';
+@import 'babywatch/footerbw';

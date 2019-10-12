@@ -1,66 +1,264 @@
 {
-  "logs": [
+  "users": [
     {
-      "message": "Changed network card in server 007",
-      "attention": false,
-      "tech": "Sam Smith",
-      "date": "2019-05-31T15:46:10.179Z",
+      "username": "mehike",
+      "firstname": "Rünno",
+      "lastname": "Ruul",
+      "email": "ruul.rynno@mail.ee",
+      "idcode": "",
+      "bday": "1972.04.28",
+      "password": "mehike",
+      "userroles": "admin,boss,babysitter,teacher,parent,anon",
       "id": 1
     },
     {
-      "id": 2,
-      "message": "Fixed hard drive on workstation 002",
-      "attention": false,
-      "tech": "John Doe",
-      "date": "2019-05-31T16:18:04.245Z"
+      "username": "tester",
+      "firstname": "Tester",
+      "lastname": "Anonymous",
+      "email": "ruul.rynno@mail.ee",
+      "password": "tester",
+      "userroles": "anon",
+      "id": 2
     },
     {
-      "message": "1122 wireless down",
-      "attention": true,
-      "tech": "Sara Wilson",
-      "date": "2019-05-31T15:46:48.690Z",
+      "username": "parent",
+      "firstname": "Parent",
+      "lastname": "Father",
+      "email": "ruul.rynno@mail.ee",
+      "password": "parent",
+      "userroles": "parent",
       "id": 3
     },
     {
-      "id": 4,
-      "message": "Workstation 026 is up and running",
-      "attention": false,
-      "tech": "Sara Wilson",
-      "date": "2019-05-31T19:57:35.544Z"
-    },
-    {
-      "id": 5,
-      "message": "No more Test Message",
-      "attention": true,
-      "tech": "Rynno Ruul",
-      "date": "2019-07-28T18:04:50.232Z"
-    }
-  ],
-  "techs": [
-    {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Doe"
-    },
-    {
-      "id": 2,
-      "firstName": "Sam",
-      "lastName": "Smith"
-    },
-    {
-      "id": 3,
-      "firstName": "Sara",
-      "lastName": "Wilson"
-    },
-    {
-      "firstName": "Rynno",
-      "lastName": "Ruul",
+      "username": "teacher",
+      "firstname": "Teacher",
+      "lastname": "",
+      "email": "ruul.rynno@mail.ee",
+      "password": "teacher",
+      "userroles": "teacher",
       "id": 4
     },
     {
-      "firstName": "Testtech",
-      "lastName": "tech2",
+      "username": "boss",
+      "firstname": "Boss",
+      "lastname": "",
+      "email": "ruul.rynno@mail.ee",
+      "password": "boss",
+      "userroles": "boss",
       "id": 5
+    },
+    {
+      "username": "sitter",
+      "firstname": "Baby",
+      "lastname": "Sitter",
+      "email": "ruul.rynno@mail.ee",
+      "password": "sitter",
+      "userroles": "babysitter",
+      "id": 6
     }
+  ],
+
+  "user_settings": [
+    {
+      "user_id": "mehike",
+      "last_active_role": 7,
+      "last_active_rolename": "Administrator",
+      "last_active_company": 16,
+      "last_active_companyname": "Babywatchers lastehoid",
+      "last_active_company_group": 17,
+      "last_active_company_groupname": "Muumid",
+      "last_active_language": "ee",
+      "last_active_colorscheme": "default"
+    },
+    {}
+  ],
+
+  "roles": [
+    {
+      "id": 7,
+      "rolename": "admin",
+      "rolefullname": "Administrator"
+    },
+    {
+      "id": 8,
+      "rolename": "boss",
+      "rolefullname": "Boss"
+    },
+    {
+      "id": 9,
+      "rolename": "babysitter",
+      "rolefullname": "Babysitter"
+    },
+    {
+      "id": 10,
+      "rolename": "parent",
+      "rolefullname": "Parent"
+    },
+    {
+      "id": 11,
+      "rolename": "teacher",
+      "rolefullname": "Teacher"
+    },
+    {
+      "id": 12,
+      "rolename": "anon",
+      "rolefullname": "Anonymous"
+    }
+  ],
+  "kids": [
+    {
+      "id": 13,
+      "sex": "M",
+      "name": "Ron Remii",
+      "alias": "ron",
+      "idcode": "5",
+      "bday": "27.12.2016"
+    },
+    {}
+  ],
+  "userkids": [
+    {
+      "kid_id": 13,
+      "user_id": 1,
+      "role": "Father",
+      "desc": "vanemaid, vanavanemaid jne siduv tabel lastega"
+    },
+    {}
+  ],
+  "watcherkids": [
+    {
+      "kid_id": 14,
+      "watcher_id": 15,
+      "start_time": "",
+      "desc": "lapsehoidjaid lastega siduv tabel, kes keda hoiab. kas kasutada sama tabelit ka hoidudele?"
+    },
+    {}
+  ],
+  "babywatchers": [
+    {
+      "id": 15,
+      "name": "Lapsehoidja 1",
+      "start_time": "",
+      "desc": "Lapsehoidja - vb pole vaja vaid saab võtta pigem users tabelist"
+    },
+    {}
+  ],
+  "companies": [
+    {
+      "id": 16,
+      "comp_id": 0,
+      "name": "Babywatch lastehoid",
+      "start_time": "",
+      "desc": "lastehoiud või firmad, saab siduda kokku mitu"
+    },
+    {}
+  ],
+  "companygroups": [
+    {
+      "id": 17,
+      "comp_id": 16,
+      "group_name": "Muumid",
+      "ages": "2a-6a",
+      "start_time": "",
+      "end_time": "",
+      "desc": "Lastehoiu grupid. äki minage ja maxage, et saaks koostada vanused"
+    },
+    {}
+  ],
+  "companygrpup_kids": [
+    {
+      "compgroup_id": 17,
+      "kid_id": 14,
+      "start_time": "",
+      "end_time": "",
+      "desc": "Lapsehoiu lapsed gruppides"
+    },
+    {}
+  ],
+
+  "companysitters": [
+    {
+      "comp_id": 16,
+      "user_id": 1,
+      "compgroup_id": 17,
+      "start_time": "",
+      "end_time": "",
+      "desc": "Lapsehoiu töötajate sidumine hoiuga ja grupiga. kas lübi useri või babywatchers tabeli"
+    },
+    {}
+  ],
+
+  "logins": [
+    {
+      "id": 18,
+      "userid": 1,
+      "type": "fb",
+      "username": "ruul.rynno@mail.ee",
+      "password": "mehike"
+    },
+    {}
+  ],
+  "comments": [
+    {
+      "id": 19,
+      "comment_id": 0,
+      "user_id": 1,
+      "kid_id": 14,
+      "comp_id": 0,
+      "compgroup_id": 0,
+      "gallery_id": 0,
+      "type": "NOTY",
+      "variant": "1USER",
+      "lang": "EE",
+      "time": "",
+      "is_new": true,
+      "like_type": "",
+      "start_time": "",
+      "end_time": "",
+      "message": "Kommentaar, saab panna kommentaarile alamkommentaare. kes näeb: 1USER,1COMP,1COMPGROUP,ALL,ME",
+      "desc": "NOTY,NEWS,COMMENT,MAIL-type"
+    },
+    {}
+  ],
+  "gallery": [
+    {
+      "id": 20,
+      "name": "Minu pildid",
+      "type": "PIC",
+      "user_id": 1,
+      "kid_id": 14,
+      "comp_id": 0,
+      "compgroup_id": 0,
+      "variant": "1USER",
+      "lang": "EE",
+      "time": "",
+      "is_new": true,
+      "start_time": "",
+      "end_time": "",
+      "message": "Kommentaar, saab panna kommentaarile alamkommentaare. kes näeb: 1USER,1COMP,1COMPGROUP,ALL,ME",
+      "desc": "PIC/VIDEO.  mille kohta"
+    },
+    {}
+  ],
+  "pics": [
+    {
+      "id": 21,
+      "gallery_id": 20,
+      "name": "pic1.jpg",
+      "type": "PIC",
+      "user_id": 1,
+      "kid_id": 14,
+      "comp_id": 0,
+      "compgroup_id": 0,
+      "variant": "1USER",
+      "lang": "EE",
+      "time": "",
+      "is_new": true,
+      "start_time": "",
+      "end_time": "",
+      "message": "Kommentaar, saab panna kommentaarile alamkommentaare. kes näeb: 1USER,1COMP,1COMPGROUP,ALL,ME",
+      "desc": "PIC/VIDEO.  mille kohta. is_new tuleks viia ja like uude eraldi tabelisse, kuna vaatajaid on palju"
+    },
+    {}
   ]
 }

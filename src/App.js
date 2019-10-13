@@ -16,6 +16,8 @@ import Footer from "./components/footer/footer.component";
 
 import logo from "./img/babywatch_header.jpg";
 
+import Loader from "./assets/Loader";
+
 //function App() {
 class App extends React.Component {
   render() {
@@ -64,11 +66,11 @@ export default App; //withNamespaces()(App);
 //}
 
 // loading component for suspense fallback
-const Loader = () => (
+/*const Loader = () => (
   <div className="App">
     <img src={logo} className="App-logo" alt="logo" />
     <div>loading...</div>
   </div>
-);
+);*/
 
 // here app catches the suspense from page in case translations are not yet loaded

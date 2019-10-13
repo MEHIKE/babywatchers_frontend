@@ -23,7 +23,7 @@ import { ReactComponent as Mail } from "../../img/mail.svg";
 import { ReactComponent as Chat } from "../../img/chat.svg";
 import { ReactComponent as Bell } from "../../img/bell.svg";
 import { ReactComponent as Role } from "../../img/mask.svg";
-import { ReactComponent as Lang } from "../../img/open-book.svg";
+//import { ReactComponent as Lang } from "../../img/open-book.svg";
 
 //import IconUmbrella from './IconUmbrella';
 
@@ -37,6 +37,11 @@ import PropTypes from "prop-types";
 
 import { getCurrentHeader } from "../../redux/header/header.actions";
 
+//import logo from "../../img/user.jpg";
+
+import Loader from "../../assets/Loader";
+import BLoader from "../../assets/BarLoader";
+
 //import { getEnabledCategories } from "trace_events";
 //import mySvg from "../../img/log-out.svg";
 
@@ -48,13 +53,18 @@ import { getCurrentHeader } from "../../redux/header/header.actions";
 //let lang = "";
 
 //const Header = ({ currentUser, hidden }) => {
-const Header = ({ header: { header, loading }, getCurrentHeader }) => {
+const Header = ({
+  header: { header, loading, currentHeader },
+  getCurrentHeader,
+  addHeader
+}) => {
   const { t, i18n } = useTranslation();
   //const [users, setUsers] = useState([]);
   //const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getCurrentHeader();
+    if (header != null) getCurrentHeader(currentHeader.username);
+    else getCurrentHeader("mehike");
     // eslint-disable-next-line
   }, []);
 
@@ -69,7 +79,15 @@ const Header = ({ header: { header, loading }, getCurrentHeader }) => {
 */
 
   if (loading || header === null) {
-    return <h4>Loading....</h4>;
+    /*const Loader = () => (
+      <div className="App">
+        <img src={logo} className="App-logo" alt="logo" />
+        <div>loading...</div>
+      </div>
+    );*/
+
+    return <Loader />;
+    //return "<h4>Loading....</h4> <Loader></Loader>";
   }
 
   //this.state = {
@@ -101,7 +119,9 @@ const Header = ({ header: { header, loading }, getCurrentHeader }) => {
     event.preventDefault();
     const { value, name } = event.target;
     //let prevLang = i18n.getLanguage();
-    console.log("hetke keel:" + i18n.language);
+    console.log(
+      "hetke keel:" + i18n.language + " value=" + value + " name=" + name
+    );
     let langu = i18n.language;
     langu === "ee" ? (langu = "en") : (langu = "ee");
     i18n.changeLanguage(langu);
@@ -243,7 +263,9 @@ export default connect(mapStateToProps)(Header);
 */
 
 Header.propTypes = {
-  header: PropTypes.object.isRequired
+  header: PropTypes.object.isRequired,
+  getCurrentHeader: PropTypes.func.isRequired,
+  addHeader: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -60,9 +60,12 @@
 
   "user_settings": [
     {
-      "user_id": "mehike",
+      "user_id": 1,
+      "company": "Babywatch lastehoid",
+      "username": "mehike",
+      "name": "Rünno Ruul - isa",
       "last_active_role": 7,
-      "last_active_rolename": "Administrator",
+      "last_active_rolename": "Admin",
       "last_active_company": 16,
       "last_active_companyname": "Babywatchers lastehoid",
       "last_active_company_group": 17,
@@ -70,14 +73,27 @@
       "last_active_language": "ee",
       "last_active_colorscheme": "default"
     },
-    {}
+    {
+      "user_id": 0,
+      "company": null,
+      "username": "logimata",
+      "name": "Sisse logimata",
+      "last_active_role": 0,
+      "last_active_rolename": null,
+      "last_active_company": 16,
+      "last_active_companyname": "Babywatchers lastehoid",
+      "last_active_company_group": 0,
+      "last_active_company_groupname": null,
+      "last_active_language": "ee",
+      "last_active_colorscheme": "default"
+    }
   ],
 
   "roles": [
     {
       "id": 7,
       "rolename": "admin",
-      "rolefullname": "Administrator"
+      "rolefullname": "Admin"
     },
     {
       "id": 8,

@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-//import { Switch, Route, Redirect } from "react-router-dom";
-//import { Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 //import { useSSR } from "react-i18next";
 //import { hydrate } from "react-dom";
 //import logo from "./logo.svg";
@@ -14,7 +14,9 @@ import Overview from "./components/overview/overview.component";
 import PageDetail from "./components/pagedetail/pagedetail.component";
 import Footer from "./components/footer/footer.component";
 
-import logo from "./img/babywatch_header.jpg";
+import Loginpage from "./pages/loginpage/loginpage.component";
+
+//import logo from "./img/babywatch_header.jpg";
 
 import Loader from "./assets/Loader";
 
@@ -24,19 +26,29 @@ class App extends React.Component {
     return (
       <Suspense fallback={<Loader />}>
         <div className="page_container">
-          <Header />
-          <div className="page_content">
-            <Sidebar />
-            <main className="page-view">
-              <Overview></Overview>
-              <PageDetail></PageDetail>
-              <Footer />
-            </main>
+          <Router>
+            <Switch>
+              <Route exact path="/login" component={Loginpage} />
 
-            {/*<Switch>
+              <div>
+                <Header />
+
+                <div className="page_content">
+                  <Sidebar />
+
+                  <main className="page-view">
+                    <Overview></Overview>
+                    <PageDetail></PageDetail>
+                    <Footer />
+                  </main>
+
+                  {/*<Switch>
             <Route exact path="/" component={HomePage} />
           </Switch>*/}
-          </div>
+                </div>
+              </div>
+            </Switch>
+          </Router>
           {/*
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

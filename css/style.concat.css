@@ -1016,6 +1016,9 @@ ul {
     top: 1rem; }
   .navigation__checkbox:checked + .navigation__button .navigation__icon {
     background-color: transparent; }
+  .navigation__checkbox:checked + .navigation__button:hover {
+    background-color: blue;
+    transform: translate(8%, 8%) scale(0.8); }
   .navigation__checkbox:checked + .navigation__button .navigation__icon::before {
     top: 0;
     transform: rotate(135deg); }
@@ -1967,6 +1970,81 @@ ul {
     transition: all 0.2s;
     line-height: 1; }
   .popup__close:hover {
+    color: #c155c5; }
+
+.modal-wrapper {
+  transform: translateY(-100vh);
+  opacity: 0; }
+
+.modal-wrapper-show {
+  opacity: 1; }
+
+.popuplogin {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transition: all 0.3s; }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popuplogin {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); } }
+  .popuplogin__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    background-color: #eee;
+    box-shadow: 0 2rem 4rem rbga(#000, 0.2);
+    border-radius: 3px;
+    display: table;
+    overflow: hidden;
+    transition: all 0.5s 0.2s; }
+  .popuplogin__left {
+    width: 33.33333%;
+    display: table-cell;
+    padding: 0 0; }
+  .popuplogin__right {
+    width: 66.66667%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 0; }
+  .popuplogin__img {
+    display: block;
+    width: 100%; }
+  .popuplogin__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid #eee;
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid #eee;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
+  .popuplogin:target {
+    opacity: 1;
+    visibility: visible; }
+  .popuplogin:target .popuplogin__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); }
+  .popuplogin__close:link, .popuplogin__close:visited {
+    color: #777;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    line-height: 1; }
+  .popuplogin__close:hover {
     color: #c155c5; }
 
 .linkbw__group {

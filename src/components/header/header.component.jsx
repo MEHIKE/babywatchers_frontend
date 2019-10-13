@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Suspense } from "react";
-//import React from "react";
+import React, { useState, useEffect, Suspense, Component } from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 //import { createStructuredSelector } from "reselect";
 //import LocalizedStrings from "react-localization";
@@ -17,11 +17,16 @@ import { useTranslation } from "react-i18next";
 //import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 //import "./header.styles.scss";
-import { ReactComponent as Logo } from "../../img/reddit.svg";
-import { ReactComponent as News } from "../../img/new.svg";
+//import { ReactComponent as Logo_reddit } from "../../img/reddit.svg";
+//import { ReactComponent as Baby } from "../../img/baby_PNG51765.png";
+
+import Loginpage from "../../pages/loginpage/loginpage.component";
+import Logo from "../logo/logo.component";
+import NewsIcon from "../widgets/News/news.component";
+//import { ReactComponent as News } from "../../img/new.svg";
 import { ReactComponent as Mail } from "../../img/mail.svg";
 import { ReactComponent as Chat } from "../../img/chat.svg";
-import { ReactComponent as Bell } from "../../img/bell.svg";
+//import { ReactComponent as Bell } from "../../img/bell.svg";
 import { ReactComponent as Role } from "../../img/mask.svg";
 //import { ReactComponent as Lang } from "../../img/open-book.svg";
 
@@ -31,6 +36,8 @@ import { ReactComponent as Role } from "../../img/mask.svg";
 //import { ReactComponent as LangENG } from '../../img/open-book.svg';
 
 import { ReactComponent as LogOut } from "../../img/log-out.svg";
+import { ReactComponent as LogIn } from "../../img/login.svg";
+import { ReactComponent as Register } from "../../img/user-plus.svg";
 import Moment from "react-moment";
 
 import PropTypes from "prop-types";
@@ -60,11 +67,11 @@ const Header = ({
 }) => {
   const { t, i18n } = useTranslation();
   //const [users, setUsers] = useState([]);
-  //const [loading, setLoading] = useState(false);
+  const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
     if (header != null) getCurrentHeader(currentHeader.username);
-    else getCurrentHeader("mehike");
+    else getCurrentHeader("logimata");
     // eslint-disable-next-line
   }, []);
 
@@ -81,12 +88,17 @@ const Header = ({
   if (loading || header === null) {
     /*const Loader = () => (
       <div className="App">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img
+          src={require("../../img/baby_PNG51765.png")}
+          className="App-logo"
+          alt="logo"
+        />
         <div>loading...</div>
       </div>
     );*/
 
-    return <Loader />;
+    //return <Preloader color="multi"></Preloader>;
+    return <BLoader />;
     //return "<h4>Loading....</h4> <Loader></Loader>";
   }
 
@@ -114,6 +126,7 @@ const Header = ({
     console.log("strings.bw=" + strings.bw);
   };
 */
+  //isShowing = false;
 
   const handleChangeLang = event => {
     event.preventDefault();
@@ -128,41 +141,72 @@ const Header = ({
     console.log("uus keel: " + i18n.language);
   };
 
+  const handleLogin = event => {
+    event.preventDefault();
+    //isShowing =
+    setIsShowing(!isShowing);
+    console.log("login " + isShowing);
+    //setIsShowing(isShowing);
+    //return <Redirect to="/login" />;
+    //React.history.push("/login");
+    //return <Loginpage></Loginpage>;
+  };
+
+  if (isShowing) {
+    /*
+    return (
+      <div>
+        <Loginpage
+          className={isShowing ? "modal-wrapper-show" : "modal-wrapper"}
+          show={isShowing}
+          close={handleLogin}
+        >
+          Test
+        </Loginpage>
+      </div>
+    );*/
+  }
+
   return (
-    <header className="page_header">
-      <nav className="user-nav">
-        <div className="user-nav__icon-box" to="/">
-          <Logo className="icon-red feature__icon header__logo logo"></Logo>
-          <span className="user-nav__user-name">
-            {/*strings.bw*/}
-            {/*strings.getLanguage()*/}
-            {t("header:bw")}
-          </span>
-        </div>
-        {/*<span class="user-nav__user-name">Babywatcher lastehoid</span>*/}
-      </nav>
-      <span className="my-spacer"> </span>
+    <div>
+      <Loginpage
+        className={isShowing ? "modal-wrapper-show" : "modal-wrapper"}
+        show={isShowing}
+        close={handleLogin}
+      >
+        Test
+      </Loginpage>
+      <header className="page_header">
+        {/*isShowing && <Loginpage></Loginpage>*/}
+        <nav className="user-nav">
+          <Logo
+            company={
+              currentHeader.company ? currentHeader.company : t("header:bw")
+            }
+          ></Logo>
+        </nav>
+        <span className="my-spacer"> </span>
 
-      <nav className="user-nav user-nav__right">
-        <div className="user-nav__icon-box tooltip">
-          <span className="tooltiptext">{t("header:news")}</span>
-          <News className="user-nav__icon"></News>
-          <span className="user-nav__notification">1</span>
-        </div>
+        <nav className="user-nav user-nav__right">
+          <NewsIcon tooltip={t("header:news")} number="!"></NewsIcon>
 
-        <div className="user-nav__icon-box tooltip">
-          <span className="tooltiptext">{t("header:mails")}</span>
-          <Mail className="user-nav__icon"></Mail>
-          <span className="user-nav__notification">7</span>
-        </div>
+          {currentHeader.company && (
+            <div className="user-nav__icon-box tooltip">
+              <span className="tooltiptext">{t("header:mails")}</span>
+              <Mail className="user-nav__icon"></Mail>
+              <span className="user-nav__notification">7</span>
+            </div>
+          )}
 
-        <div className="user-nav__icon-box tooltip">
-          <span className="tooltiptext">{t("header:chats")}</span>
-          <Chat className="user-nav__icon"></Chat>
-          <span className="user-nav__notification">13</span>
-        </div>
+          {currentHeader.company && (
+            <div className="user-nav__icon-box tooltip">
+              <span className="tooltiptext">{t("header:chats")}</span>
+              <Chat className="user-nav__icon"></Chat>
+              <span className="user-nav__notification">13</span>
+            </div>
+          )}
 
-        <div className="user-nav__icon-box tooltip">
+          {/*<div className="user-nav__icon-box tooltip">
           <span className="tooltiptext">
             {t("header:noti")}
             {
@@ -177,67 +221,86 @@ const Header = ({
           </span>
           <Bell className="user-nav__icon"></Bell>
           <span className="user-nav__notification">3</span>
-        </div>
-      </nav>
+          </div>*/}
+        </nav>
 
-      <nav className="user-nav user-nav__right">
-        <div className="user-nav__user" to="/">
-          <img
-            src={require("../../img/user.jpg")}
-            alt="User pic"
-            className="user-nav__user-photo"
-          />
-          <span className="user-nav__user-name">
-            {!loading && header.lenght === 0 ? (
-              <p>Pole kasutajat</p>
-            ) : (
-              header.map(user => (
-                <li>
+        <nav className="user-nav user-nav__right">
+          {currentHeader.company && (
+            <div className="user-nav__user" to="/">
+              <img
+                src={require("../../img/user.jpg")}
+                alt="User pic"
+                className="user-nav__user-photo"
+              />
+              <span className="user-nav__user-name">
+                {!loading && header.lenght === 0 ? (
+                  <p>Pole kasutajat</p>
+                ) : (
+                  /*header.map(user => (
+                <li key={user.username}>
                   {user.firstname}{" "}
                   <Moment format="DD MMMM YYYY">{user.bday}</Moment>
                 </li>
-              ))
-            )}
-            Rünno Ruul - {t("header:father")}
-            {console.log(header)}
-          </span>
-        </div>
+              ))*/
+                  header.username
+                )}
+                Rünno Ruul - {t("header:father")}
+                {console.log(header)}
+              </span>
+            </div>
+          )}
+          {currentHeader.company && (
+            <div className="user-nav__user" to="/">
+              <Role className="user-nav__user-photo user-nav__icon__role"></Role>
+              <span className="user-nav__user-name">{t("header:role")}</span>
+            </div>
+          )}
 
-        <div className="user-nav__user" to="/">
-          <Role className="user-nav__user-photo user-nav__icon__role"></Role>
-          <span className="user-nav__user-name">{t("header:role")}</span>
-        </div>
+          <div className="user-nav__user" to="/" onClick={handleChangeLang}>
+            {/*<Lang className='user-nav__user-photo user-nav__icon__role'></Lang>*/}
+            <img
+              src={require("../../img/" +
+                (i18n.language === "ee" ? "Estonia" : "english") +
+                ".png")}
+              alt="Lang"
+              className="user-nav__user-lang user-nav__icon__lang"
+            ></img>
+            <span className="user-nav__user-name">{t("header:lang")}</span>
+          </div>
 
-        <div className="user-nav__user" to="/" onClick={handleChangeLang}>
-          {/*<Lang className='user-nav__user-photo user-nav__icon__role'></Lang>*/}
-          <img
-            src={require("../../img/" +
-              (i18n.language === "ee" ? "Estonia" : "english") +
-              ".png")}
-            alt="Lang"
-            className="user-nav__user-lang user-nav__icon__lang"
-          ></img>
-          <span className="user-nav__user-name">{t("header:lang")}</span>
-        </div>
+          {currentHeader.company ? (
+            <div className="user-nav__user" to="/">
+              <LogOut className="user-nav__user-photo user-nav__icon__out"></LogOut>
+              <span className="user-nav__user-name">{t("header:logout")}</span>
+            </div>
+          ) : (
+            <div className="user-nav__user" to="/login" onClick={handleLogin}>
+              <LogIn className="user-nav__user-photo user-nav__icon__out"></LogIn>
+              <span className="user-nav__user-name">{t("header:login")}</span>
+            </div>
+          )}
 
-        <div className="user-nav__user" to="/">
-          <LogOut className="user-nav__user-photo user-nav__icon__out"></LogOut>
-          {/*<img
-            src={mySvg}
-            className="user-nav__user-photo user-nav__icon__role"
-          ></img>*/}
-
-          <span className="user-nav__user-name">{t("header:logout")}</span>
-        </div>
-      </nav>
-      {/*<div className="options">
+          {!currentHeader.company && (
+            <div
+              className="user-nav__user"
+              to="/register"
+              onClick={handleLogin}
+            >
+              <Register className="user-nav__user-photo user-nav__icon__out"></Register>
+              <span className="user-nav__user-name">
+                {t("header:register")}
+              </span>
+            </div>
+          )}
+        </nav>
+        {/*<Link className="options">
       <Link className="option" to="/shop">
         SHOP
       </Link>
       <Link className="option" to="/shop">
         CONTACT
 </Link>*/}
-      {/*currentUser ? (
+        {/*currentUser ? (
         <div className="option" onClick={() => auth.signOut()}>
           SIGN OUT
         </div>
@@ -246,10 +309,11 @@ const Header = ({
           SIGN IN
         </Link>
       )*/}
-      {/*<CartIcon />*/}
-      {/*</div>*/}
-      {/*hidden ? null : <CartDropdown />*/}
-    </header>
+        {/*<CartIcon />*/}
+        {/*</Link>*/}
+        {/*hidden ? null : <CartDropdown />*/}
+      </header>
+    </div>
   );
 };
 
@@ -264,12 +328,13 @@ export default connect(mapStateToProps)(Header);
 
 Header.propTypes = {
   header: PropTypes.object.isRequired,
-  getCurrentHeader: PropTypes.func.isRequired,
-  addHeader: PropTypes.func.isRequired
+  getCurrentHeader: PropTypes.func.isRequired
+  //addHeader: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  header: state.header
+  header: state.header,
+  isShowing: state.isShowing
 });
 
 export default connect(

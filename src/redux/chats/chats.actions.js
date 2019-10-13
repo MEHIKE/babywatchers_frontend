@@ -1,8 +1,8 @@
-import { HeaderActionTypes } from "./header.types";
+import { ChatActionTypes } from "./chat.types";
 
-export const setCurrentHeader = header => ({
-  type: HeaderActionTypes.SET_CURRENT_HEADER,
-  payload: header
+export const setChat = chat => ({
+  type: ChatActionTypes.SET_CHAT,
+  payload: chat
 });
 
 /*export const getCurrentHeader = () => {
@@ -19,56 +19,77 @@ export const setCurrentHeader = header => ({
 };
 */
 
-//get settings from server to make a header
-export const getCurrentHeader = name => async dispatch => {
+//get settings from server to make a chat
+export const getUserNewChats = id => async dispatch => {
   try {
     setLoading();
-    const res = await fetch(`/user_settings?username=${name}`);
+    const res = await fetch(`/chats?user_id=${id}`);
     const data = await res.json();
     //console.log(`/user_settings?username=${name}`);
     //console.log("data=" + data);
     //console.log(`${name}`);
     dispatch({
-      type: HeaderActionTypes.GET_CURRENT_HEADER,
-      payload: data[0]
+      type: ChatActionTypes.GET_CHAT,
+      payload: data
     });
   } catch (error) {
     dispatch({
-      type: HeaderActionTypes.HEADER_ERROR,
+      type: ChatActionTypes.CHAT_ERROR,
       payload: error.response.data
     });
   }
 };
 
-//add settings to server to make a header settings
-export const addHeader = header => async dispatch => {
+//get settings from server to make a chat
+export const getUserChats = user => async dispatch => {
   try {
     setLoading();
-    const res = await fetch("/user_settings", {
+    const res = await fetch(`/chats?user_id=${user.id}`);
+    const data = await res.json();
+    //console.log(`/user_settings?username=${name}`);
+    //console.log("data=" + data);
+    //console.log(`${name}`);
+    dispatch({
+      type: ChatActionTypes.GET_CHAT,
+      payload: data
+    });
+  } catch (error) {
+    dispatch({
+      type: ChatActionTypes.CHAT_ERROR,
+      payload: error.response.data
+    });
+  }
+};
+
+//add chats to server to make a chat
+export const addChat = chat => async dispatch => {
+  try {
+    setLoading();
+    const res = await fetch("/chats", {
       method: "POST",
-      body: JSON.stringify(header),
+      body: JSON.stringify(chat),
       headers: {
         "Content-Type": "application/json"
       }
     });
     const data = await res.json();
     dispatch({
-      type: HeaderActionTypes.ADD_HEADER,
+      type: ChatActionTypes.ADD_CHAT,
       payload: data
     });
   } catch (error) {
     dispatch({
-      type: HeaderActionTypes.HEADER_ERROR,
+      type: ChatActionTypes.CHAT_ERROR,
       payload: error.response.data
     });
   }
 };
 
-//delete Header
-export const deleteHeader = name => async dispatch => {
+//delete Chat
+export const deleteChat = id => async dispatch => {
   try {
     setLoading();
-    await fetch(`/user_settings?username=${name}`, {
+    await fetch(`/chats/${id}`, {
       method: "DELETE"
     });
 
@@ -76,24 +97,24 @@ export const deleteHeader = name => async dispatch => {
     //console.log("data=" + data);
     //console.log(`${name}`);
     dispatch({
-      type: HeaderActionTypes.DELETE_HEADER,
-      payload: name
+      type: ChatActionTypes.DELETE_CHAT,
+      payload: id
     });
   } catch (error) {
     dispatch({
-      type: HeaderActionTypes.HEADER_ERROR,
+      type: ChatActionTypes.CHAT_ERROR,
       payload: error.response.data
     });
   }
 };
 
 //update header
-export const updateHeader = header => async dispatch => {
+export const updateChat = chat => async dispatch => {
   try {
     setLoading();
-    const res = await fetch(`/user_settings?username=${header.name}`, {
+    const res = await fetch(`/chat/${chat.id}`, {
       method: "PUT",
-      body: JSON.stringify(header),
+      body: JSON.stringify(chat),
       headers: {
         "Content-Type": "application/json"
       }
@@ -103,12 +124,12 @@ export const updateHeader = header => async dispatch => {
     //console.log("data=" + data);
     //console.log(`${name}`);
     dispatch({
-      type: HeaderActionTypes.UPDATE_HEADER,
+      type: ChatActionTypes.UPDATE_CHAT,
       payload: data
     });
   } catch (error) {
     dispatch({
-      type: HeaderActionTypes.HEADER_ERROR,
+      type: ChatActionTypes.CHAT_ERROR,
       payload: error.response.data
     });
   }
@@ -117,6 +138,6 @@ export const updateHeader = header => async dispatch => {
 //set loading to true
 export const setLoading = () => {
   return {
-    type: HeaderActionTypes.SET_LOADING
+    type: ChatActionTypes.SET_LOADING
   };
 };

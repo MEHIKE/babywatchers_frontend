@@ -1,5 +1,5 @@
 {
-  "bw": "Babywatcher lastehoid",
+  "bw": "Babywatch Lastehoid",
   "news": "Uudised",
   "mails": "Kirjad",
   "chats": "Sõnumid",
@@ -8,5 +8,17 @@
   "lang": "Eesti",
   "logout": "Logi välja",
   "login": "Logi sisse",
-  "father": "isa"
+  "father": "isa",
+  "mother": "ema",
+  "grandfather": "vanaisa",
+  "grandmother": "vanaema",
+  "unkle": "onu",
+  "aunt": "tädi",
+  "babysitter": "lapsehoidja",
+  "relative": "sugulane",
+  "familiar": "tuttav",
+  "stranger": "võõras",
+  "siblings": "lähisugulane",
+  "cousin": "nõbu",
+  "register": "Uus kasutaja"
 }

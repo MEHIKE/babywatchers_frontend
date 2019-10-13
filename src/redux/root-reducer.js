@@ -5,6 +5,7 @@ import settingsReducer from "./settings/settings.reducer";
 import pageReducer from "./page/page.reducer";
 import loadingReducer from "./loading/loading.reducer";
 import headerReducer from "./header/header.reducer";
+import chatsReducer from "./chats/chats.reducer";
 //import cartReducer from "./cart/cart.reducer";
 
 export default combineReducers({
@@ -12,6 +13,7 @@ export default combineReducers({
   settings: settingsReducer,
   page: pageReducer,
   loading: loadingReducer,
-  header: headerReducer
+  header: headerReducer,
+  chats: chatsReducer
   //cart: cartReducer
 });

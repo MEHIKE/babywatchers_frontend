@@ -200,6 +200,11 @@
     background-color: transparent;
   }
 
+  &__checkbox:checked + &__button:hover {
+    background-color: blue;
+    transform: translate(8%, 8%) scale(0.8);
+  }
+
   //järgmistega panen ülemise ja alumise joone keerama end, et tekiks rist. top:0 et läheksid kohakuti
   //norm oleks keerata 45deg aga et efekt oleks parem keerame rohkem 135deg
   &__checkbox:checked + &__button &__icon::before {

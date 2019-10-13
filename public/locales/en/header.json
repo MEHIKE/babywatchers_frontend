@@ -1,5 +1,5 @@
 {
-  "bw": "Babywatch babysitter",
+  "bw": "Babywatch Babysitting",
   "news": "News",
   "mails": "Mails",
   "chats": "Chats",
@@ -8,5 +8,17 @@
   "lang": "English",
   "logout": "Log out",
   "login": "Login",
-  "father": "father"
+  "father": "father",
+  "mother": "mother",
+  "grandfather": "grandfather",
+  "grandmother": "grandmother",
+  "unkle": "unkle",
+  "aunt": "aunt",
+  "babysitter": "babysitter",
+  "relative": "relative",
+  "familiar": "familiar",
+  "stranger": "stranger",
+  "siblings": "siglings",
+  "cousin": "cousin",
+  "register": "New user"
 }

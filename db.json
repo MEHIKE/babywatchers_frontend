@@ -61,17 +61,19 @@
   "user_settings": [
     {
       "user_id": 1,
-      "company": "Babywatch lastehoid",
+      "company": "Babywatch Lastehoid",
       "username": "mehike",
       "name": "Rünno Ruul - isa",
       "last_active_role": 7,
       "last_active_rolename": "Admin",
       "last_active_company": 16,
-      "last_active_companyname": "Babywatchers lastehoid",
+      "last_active_companyname": "Babywatch Lastehoid",
       "last_active_company_group": 17,
       "last_active_company_groupname": "Muumid",
       "last_active_language": "ee",
-      "last_active_colorscheme": "default"
+      "last_active_colorscheme": "default",
+      "last_logged_in_time": null,
+      "last_logged_in_ip": null
     },
     {
       "user_id": 0,
@@ -81,11 +83,13 @@
       "last_active_role": 0,
       "last_active_rolename": null,
       "last_active_company": 16,
-      "last_active_companyname": "Babywatchers lastehoid",
+      "last_active_companyname": "Babywatch Lastehoid",
       "last_active_company_group": 0,
       "last_active_company_groupname": null,
       "last_active_language": "ee",
-      "last_active_colorscheme": "default"
+      "last_active_colorscheme": "default",
+      "last_logged_in_time": null,
+      "last_logged_in_ip": null
     }
   ],
 
@@ -121,6 +125,56 @@
       "rolefullname": "Anonymous"
     }
   ],
+  "parent_roles": [
+    {
+      "id": 21,
+      "role": "father"
+    },
+    {
+      "id": 22,
+      "role": "mother"
+    },
+    {
+      "id": 23,
+      "role": "grandfather"
+    },
+    {
+      "id": 24,
+      "role": "grandmother"
+    },
+    {
+      "id": 25,
+      "role": "unkle"
+    },
+    {
+      "id": 26,
+      "role": "aunt"
+    },
+    {
+      "id": 27,
+      "role": "babysitter"
+    },
+    {
+      "id": 28,
+      "role": "relative"
+    },
+    {
+      "id": 29,
+      "role": "familiar"
+    },
+    {
+      "id": 30,
+      "role": "stranger"
+    },
+    {
+      "id": 31,
+      "role": "siblings"
+    },
+    {
+      "id": 32,
+      "role": "cousin"
+    }
+  ],
   "kids": [
     {
       "id": 13,
@@ -134,8 +188,8 @@
   ],
   "userkids": [
     {
-      "kid_id": 13,
-      "user_id": 1,
+      "kidId": 13,
+      "userId": 1,
       "role": "Father",
       "desc": "vanemaid, vanavanemaid jne siduv tabel lastega"
     },
@@ -143,14 +197,14 @@
   ],
   "watcherkids": [
     {
-      "kid_id": 14,
-      "watcher_id": 15,
+      "kidId": 14,
+      "watcherId": 15,
       "start_time": "",
       "desc": "lapsehoidjaid lastega siduv tabel, kes keda hoiab. kas kasutada sama tabelit ka hoidudele?"
     },
     {}
   ],
-  "babywatchers": [
+  "watchers": [
     {
       "id": 15,
       "name": "Lapsehoidja 1",
@@ -162,7 +216,7 @@
   "companies": [
     {
       "id": 16,
-      "comp_id": 0,
+      "compId": 0,
       "name": "Babywatch lastehoid",
       "start_time": "",
       "desc": "lastehoiud või firmad, saab siduda kokku mitu"
@@ -172,7 +226,7 @@
   "companygroups": [
     {
       "id": 17,
-      "comp_id": 16,
+      "companieId": 16,
       "group_name": "Muumid",
       "ages": "2a-6a",
       "start_time": "",
@@ -181,10 +235,10 @@
     },
     {}
   ],
-  "companygrpup_kids": [
+  "companygroup_kids": [
     {
-      "compgroup_id": 17,
-      "kid_id": 14,
+      "companygroupId": 17,
+      "kidId": 14,
       "start_time": "",
       "end_time": "",
       "desc": "Lapsehoiu lapsed gruppides"
@@ -194,27 +248,26 @@
 
   "companysitters": [
     {
-      "comp_id": 16,
-      "user_id": 1,
-      "compgroup_id": 17,
+      "companyId": 16,
+      "userId": 1,
+      "companygroupId": 17,
       "start_time": "",
       "end_time": "",
       "desc": "Lapsehoiu töötajate sidumine hoiuga ja grupiga. kas lübi useri või babywatchers tabeli"
-    },
-    {}
+    }
   ],
 
   "logins": [
     {
       "id": 18,
-      "userid": 1,
+      "userId": 1,
       "type": "fb",
       "username": "ruul.rynno@mail.ee",
-      "password": "mehike"
-    },
-    {}
+      "password": "mehike",
+      "last_login_time": null
+    }
   ],
-  "comments": [
+  "chats": [
     {
       "id": 19,
       "comment_id": 0,
@@ -227,24 +280,32 @@
       "variant": "1USER",
       "lang": "EE",
       "time": "",
-      "is_new": true,
       "like_type": "",
       "start_time": "",
       "end_time": "",
       "message": "Kommentaar, saab panna kommentaarile alamkommentaare. kes näeb: 1USER,1COMP,1COMPGROUP,ALL,ME",
       "desc": "NOTY,NEWS,COMMENT,MAIL-type"
-    },
-    {}
+    }
   ],
-  "gallery": [
+  "my_chats": [
+    {
+      "id": 1,
+      "chatId": 19,
+      "type": "NOTY",
+      "userId": 1,
+      "is_new": true
+    }
+  ],
+  "gallerys": [
     {
       "id": 20,
+      "galleryId": 0,
       "name": "Minu pildid",
       "type": "PIC",
-      "user_id": 1,
-      "kid_id": 14,
-      "comp_id": 0,
-      "compgroup_id": 0,
+      "userId": 1,
+      "kidId": 14,
+      "companieId": 0,
+      "companygroupId": 0,
       "variant": "1USER",
       "lang": "EE",
       "time": "",
@@ -259,13 +320,13 @@
   "pics": [
     {
       "id": 21,
-      "gallery_id": 20,
+      "galleryId": 20,
       "name": "pic1.jpg",
       "type": "PIC",
-      "user_id": 1,
-      "kid_id": 14,
-      "comp_id": 0,
-      "compgroup_id": 0,
+      "userId": 1,
+      "kidId": 14,
+      "companieId": 0,
+      "companygroupId": 0,
       "variant": "1USER",
       "lang": "EE",
       "time": "",
@@ -274,7 +335,6 @@
       "end_time": "",
       "message": "Kommentaar, saab panna kommentaarile alamkommentaare. kes näeb: 1USER,1COMP,1COMPGROUP,ALL,ME",
       "desc": "PIC/VIDEO.  mille kohta. is_new tuleks viia ja like uude eraldi tabelisse, kuna vaatajaid on palju"
-    },
-    {}
+    }
   ]
 }

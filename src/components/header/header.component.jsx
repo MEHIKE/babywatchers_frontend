@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Suspense, Component } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+//import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 //import { createStructuredSelector } from "reselect";
 //import LocalizedStrings from "react-localization";
@@ -49,11 +49,6 @@ import { getCurrentHeader } from "../../redux/header/header.actions";
 import Loader from "../../assets/Loader";
 import BLoader from "../../assets/BarLoader";
 
-//import { getEnabledCategories } from "trace_events";
-//import mySvg from "../../img/log-out.svg";
-
-//import FIRST_DATA from "./first.data.js";
-
 //export default getHeaderData;
 
 //let strings = new LocalizedStrings(language);
@@ -62,8 +57,9 @@ import BLoader from "../../assets/BarLoader";
 //const Header = ({ currentUser, hidden }) => {
 const Header = ({
   header: { header, loading, currentHeader },
-  getCurrentHeader,
-  addHeader
+  getCurrentHeader
+
+  //addHeader
 }) => {
   const { t, i18n } = useTranslation();
   //const [users, setUsers] = useState([]);
@@ -72,6 +68,7 @@ const Header = ({
   useEffect(() => {
     if (header != null) getCurrentHeader(currentHeader.username);
     else getCurrentHeader("logimata");
+    //getUsers("mehike");
     // eslint-disable-next-line
   }, []);
 
@@ -145,7 +142,7 @@ const Header = ({
     event.preventDefault();
     //isShowing =
     setIsShowing(!isShowing);
-    console.log("login " + isShowing);
+    console.log("header handleLogin=" + isShowing);
     //setIsShowing(isShowing);
     //return <Redirect to="/login" />;
     //React.history.push("/login");

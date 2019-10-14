@@ -1,4 +1,4 @@
-import { UserActionTypes } from './user.types';
+import { UserActionTypes } from "./user.types";
 
 const INITIAL_STATE = {
   currentUser: null,
@@ -51,6 +51,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         current: null
       };
+    /*case UserActionTypes.GET_CURRENT:
+      return {
+        ...state,
+        currentUser: action.payload
+      };*/
     case UserActionTypes.USERS_ERROR:
       console.error(action.payload);
       return {

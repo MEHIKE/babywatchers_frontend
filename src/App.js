@@ -27,27 +27,27 @@ class App extends React.Component {
       <Suspense fallback={<Loader />}>
         <div className="page_container">
           <Router>
-            <Switch>
-              <Route exact path="/login" component={Loginpage} />
+            {/*<Switch>*/}
+            {/*<Route exact path="/login" component={Loginpage} />*/}
 
-              <div>
-                <Header />
+            <div>
+              <Header />
 
-                <div className="page_content">
-                  <Sidebar />
+              <div className="page_content">
+                <Sidebar />
 
-                  <main className="page-view">
-                    <Overview></Overview>
-                    <PageDetail></PageDetail>
-                    <Footer />
-                  </main>
+                <main className="page-view">
+                  <Overview></Overview>
+                  <PageDetail></PageDetail>
+                  <Footer />
+                </main>
 
-                  {/*<Switch>
+                {/*<Switch>
             <Route exact path="/" component={HomePage} />
           </Switch>*/}
-                </div>
               </div>
-            </Switch>
+            </div>
+            {/*</Switch>*/}
           </Router>
           {/*
         <header className="App-header">

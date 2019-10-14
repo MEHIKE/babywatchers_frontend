@@ -1,9 +1,14 @@
-import { UserActionTypes } from './user.types';
+import { UserActionTypes } from "./user.types";
 
-export const setCurrent = user => ({
+export const setCurrentUser = user => ({
   type: UserActionTypes.SET_CURRENT,
   payload: user
 });
+
+/*export const getCurrentUser = () => ({
+  type: UserActionTypes.GET_CURRENT,
+  payload: user
+});*/
 
 //get users from server t
 export const getUsers = username => async dispatch => {
@@ -28,16 +33,17 @@ export const getUsers = username => async dispatch => {
 };
 
 //get users from server t
-export const userLogin = user => async dispatch => {
+export const getUserLogin = currentUser => async dispatch => {
   try {
+    console.log("useractionreducer userLogin method");
     setLoading();
     const res = await fetch(
-      `/users?username=${user.username}&password=${user.password}`
+      `/users?username=${currentUser.username}&password=${currentUser.password}`
     );
     const data = await res.json();
     //console.log(`/user_settings?username=${name}`);
-    //console.log("data=" + data);
-    //console.log(`${name}`);
+    console.log("data=" + data);
+    console.log(`${currentUser.username}`);
     dispatch({
       type: UserActionTypes.USER_LOGIN,
       payload: data
@@ -56,10 +62,10 @@ export const updateUser = user => async dispatch => {
   try {
     setLoading();
     const res = await fetch(`/users/${user.username}`, {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify(user),
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       }
     });
     const data = await res.json();

@@ -57,7 +57,8 @@ import BLoader from "../../assets/BarLoader";
 //const Header = ({ currentUser, hidden }) => {
 const Header = ({
   header: { header, loading, currentHeader },
-  getCurrentHeader
+  getCurrentHeader,
+  currentUser
 
   //addHeader
 }) => {
@@ -68,6 +69,10 @@ const Header = ({
   useEffect(() => {
     if (header != null) getCurrentHeader(currentHeader.username);
     else getCurrentHeader("logimata");
+
+    if (header !== null) {
+      console.log("Header user_id=" + currentHeader.user_id);
+    }
     //getUsers("mehike");
     // eslint-disable-next-line
   }, []);
@@ -141,12 +146,31 @@ const Header = ({
   const handleLogin = event => {
     event.preventDefault();
     //isShowing =
-    setIsShowing(!isShowing);
+    if (header != null && currentHeader.user_id === 0) setIsShowing(!isShowing);
     console.log("header handleLogin=" + isShowing);
     //setIsShowing(isShowing);
     //return <Redirect to="/login" />;
     //React.history.push("/login");
     //return <Loginpage></Loginpage>;
+  };
+
+  const handleLogout = event => {
+    event.preventDefault();
+    //isShowing =
+    //if (header != null && currentHeader.ser_id > 0) setIsShowing(!isShowing);
+    header = null;
+    currentHeader = null;
+    getCurrentHeader("logimata");
+    console.log("header handleLogin=" + isShowing);
+    //setIsShowing(isShowing);
+    //return <Redirect to="/login" />;
+    //React.history.push("/login");
+    //return <Loginpage></Loginpage>;
+  };
+
+  const handleCurrentUser = loginname => {
+    getCurrentHeader(loginname);
+    setIsShowing(false);
   };
 
   if (isShowing) {
@@ -170,6 +194,7 @@ const Header = ({
         className={isShowing ? "modal-wrapper-show" : "modal-wrapper"}
         show={isShowing}
         close={handleLogin}
+        current={handleCurrentUser}
       >
         Test
       </Loginpage>
@@ -266,7 +291,7 @@ const Header = ({
           </div>
 
           {currentHeader.company ? (
-            <div className="user-nav__user" to="/">
+            <div className="user-nav__user" to="/logout" onClick={handleLogout}>
               <LogOut className="user-nav__user-photo user-nav__icon__out"></LogOut>
               <span className="user-nav__user-name">{t("header:logout")}</span>
             </div>

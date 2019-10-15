@@ -9,6 +9,11 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case UserActionTypes.SET_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     case UserActionTypes.GET_USERS:
       return {
         ...state,
@@ -19,6 +24,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         users: action.payload,
+        currentUser: action.payload[0],
         loading: false
       };
     case UserActionTypes.ADD_USER:
@@ -36,7 +42,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserActionTypes.SET_CURRENT:
       return {
         ...state,
-        currentUser: action.payload
+        currentUser: action.payload,
+        loading: false
       };
     case UserActionTypes.UPDATE_USER:
       return {
@@ -49,7 +56,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserActionTypes.CLEAR_CURRENT:
       return {
         ...state,
-        current: null
+        currentUser: null,
+        loading: false
       };
     /*case UserActionTypes.GET_CURRENT:
       return {

@@ -9,7 +9,10 @@ import { connect } from "react-redux";
 } from "../../redux/user/user.actions";
 */
 import { getUserLogin } from "../../redux/user/user.actions";
-import { setCurrentUser } from "../../redux/user/user.actions";
+import {
+  setCurrentUser,
+  clearCurrentUser
+} from "../../redux/user/user.actions";
 
 import PropTypes from "prop-types";
 
@@ -21,10 +24,17 @@ import { useTranslation } from "react-i18next";
 
 //{ users: { currentUser, loading, users }, setCurrent, getUsers, getUserLogin }
 //const Loginpage = ({ getUsers }, props) => {
-const Loginpage = ({ getUserLogin, currentUser, setCurrentUser, ...props }) => {
+const Loginpage = ({
+  user: { currentUser, users, loading },
+  getUserLogin,
+  clearCurrentUser,
+  setCurrentUser,
+
+  ...props
+}) => {
   const { t, i18n } = useTranslation();
   const [username, setUsername] = useState("");
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
   //const [currentUser, setCurrentUser] = useState("");
 
@@ -36,17 +46,30 @@ const Loginpage = ({ getUserLogin, currentUser, setCurrentUser, ...props }) => {
       setUsername(currentUser.username);
       setPassword(currentUser.password);
       console.log("useeffect currentuser.usernam=" + currentUser.username);
+      console.log("LOADING2=" + loading);
     } //else getUserLogin((currentUser = { username: "meh", password: "pass" }));
     //console.log("useeffect props=" + props.show);
     //getUsers("mehike");
   }, [currentUser]);
 
   if (loading || currentUser === null) {
-    return <h4>Loading....</h4>;
+    console.log("LOADING=TRUE");
+    //return <h4>Loading....</h4>;
+  }
+
+  if (loading == false && (currentUser !== undefined && currentUser !== null)) {
+    console.log("CURRENT=" + currentUser.username);
+    console.log("LOADING2=TRUE");
+    props.current(currentUser.username);
+    clearCurrentUser();
+    props.show = false;
+    //clearCurrentUser();
+    //return;
   }
 
   const handleLogin = () => {
     //event.preventDefault();
+    console.log("loginpage hetke keel:" + i18n.language);
     console.log(
       "Loginpage handleLogin event    username=" +
         username +
@@ -58,23 +81,30 @@ const Loginpage = ({ getUserLogin, currentUser, setCurrentUser, ...props }) => {
     } else {
       //console.log("currentUser=" + currentUser);
 
-      const currentUser = {
+      /*const currentUser = {
         username: username,
         password: password
-      };
+      };*/
       console.log("new currentUser=" + currentUser);
 
-      getUserLogin(currentUser);
+      getUserLogin({
+        username: username,
+        password: password
+      });
 
-      console.log("salvestatud currentUser=" + currentUser);
+      console.log("salvestatud currentUser=" + users);
 
-      setCurrentUser(currentUser);
+      //setCurrentUser(user.users[0]);
       console.log("salvestatud currentUser=" + currentUser);
 
       //getUsers(username);
       setPassword("");
       props.show = true;
     }
+    if (currentUser)
+      console.log("submite end currentUser=" + currentUser.username);
+    else console.log("subite=POLE CURRENTUSERIT");
+    return false;
   };
 
   return (
@@ -126,7 +156,7 @@ const Loginpage = ({ getUserLogin, currentUser, setCurrentUser, ...props }) => {
                 &times;
 </a>*/}
               <div className="login">
-                <div className="login__form">
+                <form className="login__form">
                   <div action="#" className="form">
                     <div className="u-margin-bottom-medium">
                       <h2 className="heading-secondary">Logi sisse</h2>
@@ -137,6 +167,8 @@ const Loginpage = ({ getUserLogin, currentUser, setCurrentUser, ...props }) => {
                         className="form__input"
                         placeholder="kasutajanimi/email/idkood"
                         required
+                        title="This field can not be empty"
+                        autoFocus="true"
                         id="name"
                         name="username"
                         value={username}
@@ -168,6 +200,7 @@ const Loginpage = ({ getUserLogin, currentUser, setCurrentUser, ...props }) => {
                         className="btn btn--pink btn--animated"
                         onClick={handleLogin}
                       >
+                        {/*onClick={handleLogin}*/}
                         Logi sisse &rarr;
                       </button>
                     </div>
@@ -187,7 +220,7 @@ const Loginpage = ({ getUserLogin, currentUser, setCurrentUser, ...props }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </section>
@@ -200,16 +233,17 @@ const Loginpage = ({ getUserLogin, currentUser, setCurrentUser, ...props }) => {
 Loginpage.propTypes = {
   setCurrentUser: PropTypes.func,
   getUserLogin: PropTypes.func.isRequired,
+  clearCurrentUser: PropTypes.func.isRequired,
   currentUser: PropTypes.object,
   users: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
-  //users: state.users
+  //currentUser: state.user.currentUser
+  user: state.user
 });
 
 export default connect(
   mapStateToProps,
-  { getUserLogin, setCurrentUser }
+  { getUserLogin, setCurrentUser, clearCurrentUser }
 )(Loginpage);

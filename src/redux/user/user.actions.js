@@ -5,6 +5,13 @@ export const setCurrentUser = user => ({
   payload: user
 });
 
+//clear current User
+export const clearCurrentUser = () => {
+  return {
+    type: UserActionTypes.CLEAR_CURRENT
+  };
+};
+
 /*export const getCurrentUser = () => ({
   type: UserActionTypes.GET_CURRENT,
   payload: user

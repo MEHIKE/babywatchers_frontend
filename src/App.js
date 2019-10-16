@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, Fragment } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 //import { useSSR } from "react-i18next";
@@ -26,30 +26,33 @@ class App extends React.Component {
     return (
       <Suspense fallback={<Loader />}>
         <div className="page_container">
-          <Router>
-            {/*<Switch>*/}
-            {/*<Route exact path="/login" component={Loginpage} />*/}
+          {/*<Router>*/}
+          {/*<Switch>*/}
+          {/*<Route exact path="/login" component={Loginpage} />*/}
 
-            <div>
-              <Header />
+          {/*<F>*/}
+          <Header />
 
-              <div className="page_content">
-                <Sidebar />
+          <div className="page_content">
+            <Sidebar />
 
-                <main className="page-view">
-                  <Overview></Overview>
-                  <PageDetail></PageDetail>
-                  <Footer />
-                </main>
+            <main className="page-view">
+              <Router>
+                {/*<Overview></Overview>*/}
+                {/*<PageDetail></PageDetail>*/}
+                <Route exact path="/" component={PageDetail} />
+              </Router>
+              <Footer />
+            </main>
 
-                {/*<Switch>
+            {/*<Switch>
             <Route exact path="/" component={HomePage} />
           </Switch>*/}
-              </div>
-            </div>
-            {/*</Switch>*/}
-          </Router>
-          {/*
+          </div>
+        </div>
+        {/*</Switch>*/}
+        {/*} </Router>*/}
+        {/*
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -64,7 +67,7 @@ class App extends React.Component {
             Learn React
           </a>
       </header> */}
-        </div>
+        {/* </Fragment>*/}
       </Suspense>
     );
   }

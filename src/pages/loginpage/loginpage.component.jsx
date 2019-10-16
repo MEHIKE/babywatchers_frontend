@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 //import React from "react";
 import { connect } from "react-redux";
 
@@ -76,8 +77,10 @@ const Loginpage = ({
         " password=" +
         password
     );
+    //console.log(this.refs.username.value);
     if (username === "" || password === "") {
       console.log("palun sisesta ikka kasutajanimi ja prool");
+      //console.log(this.refs.username.value);
     } else {
       //console.log("currentUser=" + currentUser);
 
@@ -106,6 +109,8 @@ const Loginpage = ({
     else console.log("subite=POLE CURRENTUSERIT");
     return false;
   };
+
+  //var input = withAutoFocus("focus", ["next"], ["prev"])(AutoFocusContainer);
 
   return (
     <div className={props.show ? "modal-wrapper-show" : "modal-wrapper"}>
@@ -199,6 +204,7 @@ const Loginpage = ({
                       <button
                         className="btn btn--pink btn--animated"
                         onClick={handleLogin}
+                        autoFocusOrder={3}
                       >
                         {/*onClick={handleLogin}*/}
                         Logi sisse &rarr;

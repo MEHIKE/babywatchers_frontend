@@ -31,24 +31,30 @@ class App extends React.Component {
           {/*<Route exact path="/login" component={Loginpage} />*/}
 
           {/*<F>*/}
-          <Header />
+          <Router>
+            <Fragment>
+              <Header />
 
-          <div className="page_content">
-            <Sidebar />
+              <div className="page_content">
+                <Sidebar />
 
-            <main className="page-view">
-              <Router>
-                {/*<Overview></Overview>*/}
-                {/*<PageDetail></PageDetail>*/}
-                <Route exact path="/" component={PageDetail} />
-              </Router>
-              <Footer />
-            </main>
+                <main className="page-view">
+                  {/*</main><Router>*/}
+                  {/*<Overview></Overview>*/}
+                  {/*<PageDetail></PageDetail>*/}
+                  <Switch>
+                    <Route exact path="/" component={PageDetail} />
+                  </Switch>
+                  {/*</Router>*/}
+                  <Footer />
+                </main>
 
-            {/*<Switch>
+                {/*<Switch>
             <Route exact path="/" component={HomePage} />
           </Switch>*/}
-          </div>
+              </div>
+            </Fragment>
+          </Router>
         </div>
         {/*</Switch>*/}
         {/*} </Router>*/}

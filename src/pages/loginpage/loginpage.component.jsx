@@ -39,6 +39,14 @@ const Loginpage = ({
   const [password, setPassword] = useState("");
   //const [currentUser, setCurrentUser] = useState("");
 
+  //tekitame ühise muutuja, ja järgmisena saame selle lahti jagada  muutujateks
+  //const [currentUser, setCurrentUser] = useState({
+  //  username: "",
+  //  password: ""
+  //});
+  //saame laiali
+  //const { username, password } = currentUser;
+
   useEffect(() => {
     //f (header != null) getCurrentHeader(currentHeader.username);
     // else getCurrentHeader("logimata");
@@ -111,6 +119,10 @@ const Loginpage = ({
   };
 
   //var input = withAutoFocus("focus", ["next"], ["prev"])(AutoFocusContainer);
+
+  //onChange meetad iga inputi juurde
+  const onChange = e =>
+    setUsername({ ...currentUser, [e.target.name]: e.target.value });
 
   return (
     <div className={props.show ? "modal-wrapper-show" : "modal-wrapper"}>

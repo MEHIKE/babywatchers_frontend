@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 //import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 //import { createStructuredSelector } from "reselect";
@@ -46,6 +46,7 @@ import PropTypes from "prop-types";
 
 import { getCurrentHeader } from "../../redux/header/header.actions";
 
+import LoadingContext from "../../contexts/loading.context";
 //import logo from "../../img/user.jpg";
 
 import Loader from "../../assets/Loader";
@@ -64,14 +65,16 @@ const Header = ({
 
   //addHeader
 }) => {
+  const { showLoading, hideLoading } = useContext(LoadingContext);
   const { t, i18n } = useTranslation();
   //const [users, setUsers] = useState([]);
   const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
+    showLoading();
     if (header != null) getCurrentHeader(currentHeader.username);
     else getCurrentHeader("logimata");
-
+    hideLoading();
     if (header !== null) {
       console.log("Header user_id=" + currentHeader.user_id);
     }

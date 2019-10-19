@@ -16,6 +16,11 @@ import Footer from "./components/footer/footer.component";
 
 import Loginpage from "./pages/loginpage/loginpage.component";
 
+import Spinner from "./assets/spinner.component";
+
+import LoadingProvider from "./contexts/loadingProvider.component";
+import UserDetailsProvider from "./contexts/userDetailsProvider.component";
+
 //import logo from "./img/babywatch_header.jpg";
 
 import Loader from "./assets/Loader";
@@ -24,41 +29,45 @@ import Loader from "./assets/Loader";
 class App extends React.Component {
   render() {
     return (
-      <Suspense fallback={<Loader />}>
-        <div className="page_container">
-          {/*<Router>*/}
-          {/*<Switch>*/}
-          {/*<Route exact path="/login" component={Loginpage} />*/}
+      <>
+        <LoadingProvider>
+          <Spinner />
+          <UserDetailsProvider>
+            <Suspense fallback={<Loader />}>
+              <div className="page_container">
+                {/*<Router>*/}
+                {/*<Switch>*/}
+                {/*<Route exact path="/login" component={Loginpage} />*/}
 
-          {/*<F>*/}
-          <Router>
-            <Fragment>
-              <Header />
+                {/*<F>*/}
+                <Router>
+                  <Fragment>
+                    <Header />
 
-              <div className="page_content">
-                <Sidebar />
+                    <div className="page_content">
+                      <Sidebar />
 
-                <main className="page-view">
-                  {/*</main><Router>*/}
-                  {/*<Overview></Overview>*/}
-                  {/*<PageDetail></PageDetail>*/}
-                  <Switch>
-                    <Route exact path="/" component={PageDetail} />
-                  </Switch>
-                  {/*</Router>*/}
-                  <Footer />
-                </main>
+                      <main className="page-view">
+                        {/*</main><Router>*/}
+                        {/*<Overview></Overview>*/}
+                        {/*<PageDetail></PageDetail>*/}
+                        <Switch>
+                          <Route exact path="/" component={PageDetail} />
+                        </Switch>
+                        {/*</Router>*/}
+                        <Footer />
+                      </main>
 
-                {/*<Switch>
+                      {/*<Switch>
             <Route exact path="/" component={HomePage} />
           </Switch>*/}
+                    </div>
+                  </Fragment>
+                </Router>
               </div>
-            </Fragment>
-          </Router>
-        </div>
-        {/*</Switch>*/}
-        {/*} </Router>*/}
-        {/*
+              {/*</Switch>*/}
+              {/*} </Router>*/}
+              {/*
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -73,8 +82,11 @@ class App extends React.Component {
             Learn React
           </a>
       </header> */}
-        {/* </Fragment>*/}
-      </Suspense>
+              {/* </Fragment>*/}
+            </Suspense>
+          </UserDetailsProvider>
+        </LoadingProvider>
+      </>
     );
   }
 }

@@ -8,6 +8,10 @@
   "lang": "Eesti",
   "logout": "Logi välja",
   "login": "Logi sisse",
+  "login_ph": "kasutajanimi/email/idkood",
+  "login_title": "See väli ei tohi olla tühi",
+  "login_label": "Kasutaja",
+  "password": "Parool",
   "father": "isa",
   "mother": "ema",
   "grandfather": "vanaisa",
@@ -20,5 +24,6 @@
   "stranger": "võõras",
   "siblings": "lähisugulane",
   "cousin": "nõbu",
-  "register": "Uus kasutaja"
+  "register": "Uus kasutaja",
+  "new_password": "Uus parool"
 }

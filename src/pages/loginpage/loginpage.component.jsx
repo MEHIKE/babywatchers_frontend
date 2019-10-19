@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 //import React from "react";
 import { connect } from "react-redux";
@@ -9,6 +9,8 @@ import { connect } from "react-redux";
   getUserLogin
 } from "../../redux/user/user.actions";
 */
+import LoadingContext from "../../contexts/loading.context";
+
 import { getUserLogin } from "../../redux/user/user.actions";
 import {
   setCurrentUser,
@@ -33,6 +35,8 @@ const Loginpage = ({
 
   ...props
 }) => {
+  const { showLoading, hideLoading } = useContext(LoadingContext);
+
   const { t, i18n } = useTranslation();
   const [username, setUsername] = useState("");
   //const [loading, setLoading] = useState(false);
@@ -90,12 +94,14 @@ const Loginpage = ({
       console.log("palun sisesta ikka kasutajanimi ja prool");
       //console.log(this.refs.username.value);
     } else {
+      showLoading();
       //console.log("currentUser=" + currentUser);
 
       /*const currentUser = {
         username: username,
         password: password
       };*/
+
       console.log("new currentUser=" + currentUser);
 
       getUserLogin({
@@ -109,8 +115,16 @@ const Loginpage = ({
       console.log("salvestatud currentUser=" + currentUser);
 
       //getUsers(username);
+
       setPassword("");
+      const timer = setTimeout(() => {
+        hideLoading();
+      }, 2500);
+
       props.show = true;
+      //hideLoading();
+      return () => clearTimeout(timer);
+      //showLoading();
     }
     if (currentUser)
       console.log("submite end currentUser=" + currentUser.username);
@@ -176,15 +190,15 @@ const Loginpage = ({
                 <form className="login__form">
                   <div action="#" className="form">
                     <div className="u-margin-bottom-medium">
-                      <h2 className="heading-secondary">Logi sisse</h2>
+                      <h2 className="heading-secondary">{t("header:login")}</h2>
                     </div>
                     <div className="form__group">
                       <input
                         type="text"
                         className="form__input"
-                        placeholder="kasutajanimi/email/idkood"
+                        placeholder={t("header:login_ph")}
                         required
-                        title="This field can not be empty"
+                        title={t("header:login_title")}
                         autoFocus="true"
                         id="name"
                         name="username"
@@ -192,7 +206,7 @@ const Loginpage = ({
                         onChange={e => setUsername(e.target.value)}
                       />
                       <label htmlFor="name" className="form__label">
-                        Kasutaja
+                        {t("header:login_label")}
                       </label>
                     </div>
 
@@ -200,7 +214,8 @@ const Loginpage = ({
                       <input
                         type="password"
                         className="form__input"
-                        placeholder="Parool"
+                        placeholder={t("header:password")}
+                        title={t("header:login_title")}
                         required
                         id="password"
                         name="password"
@@ -208,7 +223,7 @@ const Loginpage = ({
                         onChange={e => setPassword(e.target.value)}
                       />
                       <label htmlFor="password" className="form__label">
-                        Parool
+                        {t("header:password")}
                       </label>
                     </div>
 
@@ -219,7 +234,7 @@ const Loginpage = ({
                         autoFocusOrder={3}
                       >
                         {/*onClick={handleLogin}*/}
-                        Logi sisse &rarr;
+                        {t("header:login")} &rarr;
                       </button>
                     </div>
 
@@ -228,12 +243,12 @@ const Loginpage = ({
                     <div className="link__group">
                       <div className="btnlogin-inline">
                         <a href="#" className="btn-inline">
-                          Uus kasutaja &rarr;
+                          {t("header:register")} &rarr;
                         </a>
                       </div>
                       <div className="btnlogin-inline__right">
                         <a href="#" className="btn-inline">
-                          Uus parool &rarr;
+                          {t("header:new_password")} &rarr;
                         </a>
                       </div>
                     </div>

@@ -8,6 +8,10 @@
   "lang": "English",
   "logout": "Log out",
   "login": "Login",
+  "login_ph": "username/email/idcode",
+  "login_title": "This field can not be empty",
+  "login_label": "Username",
+  "password": "Password",
   "father": "father",
   "mother": "mother",
   "grandfather": "grandfather",
@@ -20,5 +24,6 @@
   "stranger": "stranger",
   "siblings": "siglings",
   "cousin": "cousin",
-  "register": "New user"
+  "register": "New user",
+  "new_password": "New password"
 }

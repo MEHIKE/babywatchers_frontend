@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 
 //import React from "react";
 import { connect } from "react-redux";
@@ -11,12 +11,16 @@ import { connect } from "react-redux";
 */
 import LoadingContext from "../../contexts/loading.context";
 
-import { getUserLogin } from "../../redux/user/user.actions";
+import FormInput from "../../components/form-input/form-input.component";
+
+import { getUserLogin, setLoading } from "../../redux/user/user.actions";
 import {
   setCurrentUser,
   clearCurrentUser
 } from "../../redux/user/user.actions";
 import UserDetailsContext from "../../contexts/userDetails.context";
+import { validateAll } from "indicative";
+import { validate } from "indicative/validator";
 
 import PropTypes from "prop-types";
 
@@ -43,7 +47,10 @@ const Loginpage = ({
   const [username, setUsername] = useState("");
   //const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
-  //const [currentUser, setCurrentUser] = useState("");
+  const [currentuser, setCurrentuser] = useState({
+    username: "",
+    password: ""
+  });
 
   //tekitame ühise muutuja, ja järgmisena saame selle lahti jagada  muutujateks
   //const [currentUser, setCurrentUser] = useState({
@@ -53,6 +60,9 @@ const Loginpage = ({
   //saame laiali
   //const { username, password } = currentUser;
 
+  //const textInput = useRef();
+
+  //const focusTextInput = () => textInput.current.focus();
   useEffect(() => {
     //f (header != null) getCurrentHeader(currentHeader.username);
     // else getCurrentHeader("logimata");
@@ -60,8 +70,12 @@ const Loginpage = ({
     if (currentUser) {
       setUsername(currentUser.username);
       setPassword(currentUser.password);
-      console.log("useeffect currentuser.usernam=" + currentUser.username);
+      setCurrentuser(currentUser);
+      //setLoading(loading);
+      console.log("useeffect currentUser.username=" + currentUser.username);
+      console.log("useeffect currentuser.username=" + currentuser.username);
       console.log("LOADING2=" + loading);
+      //focusTextInput();
     } //else getUserLogin((currentUser = { username: "meh", password: "pass" }));
     //console.log("useeffect props=" + props.show);
     //getUsers("mehike");
@@ -72,7 +86,10 @@ const Loginpage = ({
     //return <h4>Loading....</h4>;
   }
 
-  if (loading == false && (currentUser !== undefined && currentUser !== null)) {
+  if (
+    loading === false &&
+    (currentUser !== undefined && currentUser !== null)
+  ) {
     console.log("CURRENT=" + currentUser.username);
     console.log("LOADING2=TRUE");
     props.current(currentUser.username);
@@ -82,17 +99,67 @@ const Loginpage = ({
     //return;
   }
 
-  const handleLogin = () => {
-    //event.preventDefault();
+  const handleLogin = event => {
+    event.preventDefault();
     console.log("loginpage hetke keel:" + i18n.language);
     console.log(
       "Loginpage handleLogin event    username=" +
         username +
         " password=" +
-        password
+        password +
+        "crrentuser.username=" +
+        currentuser.username
     );
+
+    const schema = {
+      username: "required|alpha",
+      password: "required|min:4|max:40"
+    };
+
+    const data1 = {
+      username: "virk",
+      password: "supersecret"
+    };
+
+    validate(data1, schema)
+      .then(console.log)
+      .catch(console.error);
+
+    const rules = {
+      username: "required|string|min:7",
+      password: "required|string|min:7"
+    };
+    const data = {
+      username: currentuser.username,
+      password: password
+    };
+    console.log("data=" + data.username);
+
+    const messages = {
+      required: field => `${field} is required`,
+      "username.string": "Username contains unallowed characters",
+
+      "password.min": "Password is too short"
+    };
+
+    /*const formatDate = date => {
+    const newDate = new Date(date).toLocaleDateString('en-US');
+    const newTime = new Date(date).toLocaleTimeString('en-US');
+    //console.log(`${newDate} at ${newTime}`);
+    console.log({newDate} +" "+ {newTime});
+}*/
+    //const data1=this.state;
+    //const data1=getState();
+
+    //validateAll(data, rules, messages);
+    /*      .then(() => {
+        console.log("sucess");
+      })
+      .catch(errors => {
+        console.log(errors);
+      });*/
     //console.log(this.refs.username.value);
-    if (username === "" || password === "") {
+    if (currentuser.username === "" || password === "") {
       console.log("palun sisesta ikka kasutajanimi ja prool");
       //console.log(this.refs.username.value);
     } else {
@@ -107,7 +174,7 @@ const Loginpage = ({
       console.log("new currentUser=" + currentUser);
 
       getUserLogin({
-        username: username,
+        username: currentuser.username,
         password: password
       });
 
@@ -144,8 +211,12 @@ const Loginpage = ({
   //var input = withAutoFocus("focus", ["next"], ["prev"])(AutoFocusContainer);
 
   //onChange meetad iga inputi juurde
-  const onChange = e =>
-    setUsername({ ...currentUser, [e.target.name]: e.target.value });
+  const onChange = e => setCurrentuser({ [e.target.name]: e.target.value });
+
+  const handleChange = event => {
+    const { value, name } = event;
+    //setState({ [name]: value });
+  };
 
   return (
     <div className={props.show ? "modal-wrapper-show" : "modal-wrapper"}>
@@ -179,45 +250,31 @@ const Loginpage = ({
             >
               <span className="navigation__icon">&nbsp;</span>
             </label>
-            {/*<div className="pouplogin__left">
-              <img
-                src={require("../../img/header1.jpg")}
-                alt="Laps1"
-                className="popuplogin__img"
-              />
-              <img
-                src={require("../../img/features1.jpg")}
-                alt="Laps2"
-                className="popuplogin__img"
-  />
-  </div>*/}
+
             <div className="popuplogin__right loginrow">
               {/*<a href="#" class="popup__close">
                 &times;
 </a>*/}
               <div className="login">
-                <form className="login__form">
+                <form className="login__form" onSubmit={handleLogin}>
                   <div action="#" className="form">
                     <div className="u-margin-bottom-medium">
                       <h2 className="heading-secondary">{t("header:login")}</h2>
                     </div>
-                    <div className="form__group">
-                      <input
-                        type="text"
-                        className="form__input"
-                        placeholder={t("header:login_ph")}
-                        required
-                        title={t("header:login_title")}
-                        autoFocus="true"
-                        id="name"
-                        name="username"
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
-                      />
-                      <label htmlFor="name" className="form__label">
-                        {t("header:login_label")}
-                      </label>
-                    </div>
+
+                    <FormInput
+                      type="text"
+                      placeholder={t("header:login_ph")}
+                      required
+                      title={t("header:login_title")}
+                      autoFocus={true}
+                      id="name"
+                      name="username"
+                      value={currentuser.username}
+                      onChange={onChange}
+                      htmlFor="name"
+                      label={t("header:login_label")}
+                    ></FormInput>
 
                     <div className="form__group">
                       <input
@@ -239,8 +296,7 @@ const Loginpage = ({
                     <div className="form__group">
                       <button
                         className="btn btn--pink btn--animated"
-                        onClick={handleLogin}
-                        autoFocusOrder={3}
+                        type="submit"
                       >
                         {/*onClick={handleLogin}*/}
                         {t("header:login")} &rarr;

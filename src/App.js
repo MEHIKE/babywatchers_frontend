@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import "./css/style.css";
+import { Provider } from "react-redux";
 
 import Header from "./components/header";
 import Sidebar from "./components/sidebar/sidebar.component";
@@ -20,40 +21,45 @@ import UserDetailsProvider from "./contexts/userDetailsProvider.component";
 //import logo from "./img/babywatch_header.jpg";
 
 import Loader from "./assets/Loader";
+import store from "./redux/store";
+import ContextInfo from "./components/contextInfo";
 
 //function App() {
 //class App extends React.Component {
 const App = () => (
-  <Fragment>
-    <LoadingProvider>
-      <Spinner />
-      <UserDetailsProvider>
-        <Suspense fallback={<Loader />}>
-          <div className="page_container">
-            {/*<Route exact path="/login" component={Loginpage} />*/}
+  <Provider store={store}>
+    <Fragment>
+      <LoadingProvider>
+        <Spinner />
+        <UserDetailsProvider>
+          <Suspense fallback={<Loader />}>
+            <div className="page_container">
+              {/*<Route exact path="/login" component={Loginpage} />*/}
 
-            <Router>
-              <Fragment>
-                <Header />
+              <Router>
+                <Fragment>
+                  <Header />
 
-                <div className="page_content">
-                  <Sidebar />
+                  <div className="page_content">
+                    <Sidebar />
 
-                  <main className="page-view">
-                    <Switch>
-                      <Route exact path="/" component={PageDetail} />
-                    </Switch>
+                    <main className="page-view">
+                      <Switch>
+                        <Route exact path="/" component={PageDetail} />
+                      </Switch>
 
-                    <Footer />
-                  </main>
-                </div>
-              </Fragment>
-            </Router>
-          </div>
-        </Suspense>
-      </UserDetailsProvider>
-    </LoadingProvider>
-  </Fragment>
+                      <Footer />
+                    </main>
+                  </div>
+                </Fragment>
+              </Router>
+              <ContextInfo />
+            </div>
+          </Suspense>
+        </UserDetailsProvider>
+      </LoadingProvider>
+    </Fragment>
+  </Provider>
 );
 
 export default App; //withNamespaces()(App);

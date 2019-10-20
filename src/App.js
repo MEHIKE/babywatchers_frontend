@@ -1,16 +1,12 @@
 import React, { Suspense, Fragment } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-//import { useSSR } from "react-i18next";
-//import { hydrate } from "react-dom";
-//import logo from "./logo.svg";
-import "./css/style.css";
-//import { withNamespaces } from "react-i18next";
 
-//import HomePage from "./pages/homepage/homepage.component";
+import "./css/style.css";
+
 import Header from "./components/header/header.component";
 import Sidebar from "./components/sidebar/sidebar.component";
-import Overview from "./components/overview/overview.component";
+//import Overview from "./components/overview/overview.component";
 import PageDetail from "./components/pagedetail/pagedetail.component";
 import Footer from "./components/footer/footer.component";
 
@@ -26,70 +22,39 @@ import UserDetailsProvider from "./contexts/userDetailsProvider.component";
 import Loader from "./assets/Loader";
 
 //function App() {
-class App extends React.Component {
-  render() {
-    return (
-      <>
-        <LoadingProvider>
-          <Spinner />
-          <UserDetailsProvider>
-            <Suspense fallback={<Loader />}>
-              <div className="page_container">
-                {/*<Router>*/}
-                {/*<Switch>*/}
-                {/*<Route exact path="/login" component={Loginpage} />*/}
+//class App extends React.Component {
+const App = () => (
+  <Fragment>
+    <LoadingProvider>
+      <Spinner />
+      <UserDetailsProvider>
+        <Suspense fallback={<Loader />}>
+          <div className="page_container">
+            {/*<Route exact path="/login" component={Loginpage} />*/}
 
-                {/*<F>*/}
-                <Router>
-                  <Fragment>
-                    <Header />
+            <Router>
+              <Fragment>
+                <Header />
 
-                    <div className="page_content">
-                      <Sidebar />
+                <div className="page_content">
+                  <Sidebar />
 
-                      <main className="page-view">
-                        {/*</main><Router>*/}
-                        {/*<Overview></Overview>*/}
-                        {/*<PageDetail></PageDetail>*/}
-                        <Switch>
-                          <Route exact path="/" component={PageDetail} />
-                        </Switch>
-                        {/*</Router>*/}
-                        <Footer />
-                      </main>
+                  <main className="page-view">
+                    <Switch>
+                      <Route exact path="/" component={PageDetail} />
+                    </Switch>
 
-                      {/*<Switch>
-            <Route exact path="/" component={HomePage} />
-          </Switch>*/}
-                    </div>
-                  </Fragment>
-                </Router>
-              </div>
-              {/*</Switch>*/}
-              {/*} </Router>*/}
-              {/*
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-      </header> */}
-              {/* </Fragment>*/}
-            </Suspense>
-          </UserDetailsProvider>
-        </LoadingProvider>
-      </>
-    );
-  }
-}
+                    <Footer />
+                  </main>
+                </div>
+              </Fragment>
+            </Router>
+          </div>
+        </Suspense>
+      </UserDetailsProvider>
+    </LoadingProvider>
+  </Fragment>
+);
 
 export default App; //withNamespaces()(App);
 

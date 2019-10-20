@@ -16,6 +16,7 @@ import {
   setCurrentUser,
   clearCurrentUser
 } from "../../redux/user/user.actions";
+import UserDetailsContext from "../../contexts/userDetails.context";
 
 import PropTypes from "prop-types";
 
@@ -36,6 +37,7 @@ const Loginpage = ({
   ...props
 }) => {
   const { showLoading, hideLoading } = useContext(LoadingContext);
+  const { setUserDetails } = useContext(UserDetailsContext);
 
   const { t, i18n } = useTranslation();
   const [username, setUsername] = useState("");
@@ -121,6 +123,13 @@ const Loginpage = ({
         hideLoading();
       }, 2500);
 
+      setUserDetails({
+        name: username,
+        dateOfBirth: "",
+        email: "",
+        secretQuestion: "",
+        secretAnswer: ""
+      });
       props.show = true;
       //hideLoading();
       return () => clearTimeout(timer);

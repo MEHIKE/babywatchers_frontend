@@ -12,6 +12,8 @@ import { connect } from "react-redux";
 import LoadingContext from "../../contexts/loading.context";
 
 import FormInput from "../../components/form-input/form-input.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
+import CustomLink from "../../components/custom-link/custom-link.component";
 
 import { getUserLogin, setLoading } from "../../redux/user/user.actions";
 import {
@@ -290,29 +292,19 @@ const Loginpage = ({
                       label={t("header:password")}
                     ></FormInput>
 
-                    <div className="form__group">
-                      <button
-                        className="btn btn--pink btn--animated"
-                        type="submit"
-                      >
-                        {/*onClick={handleLogin}*/}
-                        {t("header:login")} &rarr;
-                      </button>
-                    </div>
+                    <CustomButton type="submit">
+                      {t("header:login")} &rarr;
+                    </CustomButton>
 
                     <div className="login__line">&nbsp;</div>
 
                     <div className="link__group">
-                      <div className="btnlogin-inline">
-                        <a href="#" className="btn-inline">
-                          {t("header:register")} &rarr;
-                        </a>
-                      </div>
-                      <div className="btnlogin-inline__right">
-                        <a href="#" className="btn-inline">
-                          {t("header:new_password")} &rarr;
-                        </a>
-                      </div>
+                      <CustomLink klass="btnlogin-inline">
+                        {t("header:register")}
+                      </CustomLink>
+                      <CustomLink klass="btnlogin-inline__right">
+                        {t("header:new_password")}
+                      </CustomLink>
                     </div>
                   </div>
                 </form>

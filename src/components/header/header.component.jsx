@@ -193,12 +193,17 @@ const Header = ({
     );*/
   }
 
+  const hideThis = () => {
+    setIsShowing(false);
+  };
+
   return (
     <div>
       <Loginpage
         className={isShowing ? "modal-wrapper-show" : "modal-wrapper"}
         show={isShowing}
         close={handleLogin}
+        hideThis={hideThis}
         current={handleCurrentUser}
       >
         Test

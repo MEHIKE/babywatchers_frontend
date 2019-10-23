@@ -50,7 +50,7 @@ export const getUserLogin = currentUser => async dispatch => {
     const data = await res.json();
     //console.log(`/user_settings?username=${name}`);
     console.log("data=" + data);
-    console.log(`${currentUser.username}`);
+    console.log("userAction getUserLogin = " + `${currentUser.username}`);
     dispatch({
       type: UserActionTypes.USER_LOGIN,
       payload: data

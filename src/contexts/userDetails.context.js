@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 const UserDetailsContext = createContext({
   /**
@@ -7,11 +7,12 @@ const UserDetailsContext = createContext({
    * this particular context has available
    */
 
-  name: "",
-  dateOfBirth: "",
-  email: "",
-  secretQuestion: "",
-  secretAnswer: "",
+  name: '',
+  dateOfBirth: '',
+  email: '',
+  secretQuestion: '',
+  secretAnswer: '',
+  role: '',
 
   /**
    * {Object} userDetails i.e. {[name], [dateOfBirth], [email], [secretQuestion], [secretAnswer]}

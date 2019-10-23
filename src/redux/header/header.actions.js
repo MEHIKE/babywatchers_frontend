@@ -25,9 +25,9 @@ export const getCurrentHeader = name => async dispatch => {
     setLoading();
     const res = await fetch(`/user_settings?username=${name}`);
     const data = await res.json();
-    //console.log(`/user_settings?username=${name}`);
-    //console.log("data=" + data);
-    //console.log(`${name}`);
+    console.log(`/user_settings?username=${name}`);
+    console.log("data=" + data);
+    console.log(`${name}`);
     dispatch({
       type: HeaderActionTypes.GET_CURRENT_HEADER,
       payload: data[0]

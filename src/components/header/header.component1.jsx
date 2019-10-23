@@ -70,12 +70,21 @@ const Header = ({
   //const [users, setUsers] = useState([]);
   const [isShowing, setIsShowing] = useState(false);
 
+  console.log("header=" + { header });
+  console.log("currentHeader=" + currentHeader);
+
   useEffect(() => {
     showLoading();
-    if (header != null) getCurrentHeader(currentHeader.username);
+    console.log("header=" + header);
+    if (header !== null && header !== undefined)
+      getCurrentHeader(currentHeader.username);
     else getCurrentHeader("logimata");
     hideLoading();
-    if (header !== null) {
+    if (
+      header !== null &&
+      currentHeader !== undefined &&
+      currentHeader.user_id != null
+    ) {
       console.log("Header user_id=" + currentHeader.user_id);
     }
     //getUsers("mehike");
@@ -92,7 +101,7 @@ const Header = ({
   };
 */
 
-  if (loading || header === null) {
+  if (loading || header === null || header === undefined) {
     /*const Loader = () => (
       <div className="App">
         <img
@@ -166,6 +175,7 @@ const Header = ({
     header = null;
     currentHeader = null;
     getCurrentHeader("logimata");
+    setIsShowing(false);
     console.log("header handleLogin=" + isShowing);
     //setIsShowing(isShowing);
     //return <Redirect to="/login" />;
@@ -175,6 +185,10 @@ const Header = ({
 
   const handleCurrentUser = loginname => {
     getCurrentHeader(loginname);
+    setIsShowing(false);
+  };
+
+  const hideThis = () => {
     setIsShowing(false);
   };
 
@@ -193,11 +207,14 @@ const Header = ({
     );*/
   }
 
+  console.log("TEST=" + currentHeader.company);
+
   return (
     <div>
       <Loginpage
         className={isShowing ? "modal-wrapper-show" : "modal-wrapper"}
         show={isShowing}
+        hideThis={hideThis}
         close={handleLogin}
         current={handleCurrentUser}
       >
@@ -264,11 +281,11 @@ const Header = ({
                   <p>Pole kasutajat</p>
                 ) : (
                   /*header.map(user => (
-                  <li key={user.username}>
-                    {user.firstname}{" "}
-                    <Moment format="DD MMMM YYYY">{user.bday}</Moment>
-                  </li>
-                ))*/
+                <li key={user.username}>
+                  {user.firstname}{" "}
+                  <Moment format="DD MMMM YYYY">{user.bday}</Moment>
+                </li>
+              ))*/
                   header.username
                 )}
                 Rünno Ruul - {t("header:father")}

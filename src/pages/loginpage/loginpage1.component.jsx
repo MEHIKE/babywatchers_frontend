@@ -1,14 +1,8 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 //import React from "react";
 import { connect } from "react-redux";
 
-/*import {
-  getUsers,
-  setCurrent,
-  getUserLogin
-} from "../../redux/user/user.actions";
-*/
 import LoadingContext from "../../contexts/loading.context";
 
 import FormInput from "../../components/form-input/form-input.component";
@@ -19,16 +13,15 @@ import {
   clearCurrentUser
 } from "../../redux/user/user.actions";
 import UserDetailsContext from "../../contexts/userDetails.context";
-import { validateAll } from "indicative";
+//import { validateAll } from 'indicative';
 import { validate } from "indicative/validator";
 
 import PropTypes from "prop-types";
 
 //import { createStructuredSelector } from "reselect";
-//import LocalizedStrings from "react-localization";
-//import language from "./header.json";
 
 import { useTranslation } from "react-i18next";
+//import { ifError } from "assert";
 
 //{ users: { currentUser, loading, users }, setCurrent, getUsers, getUserLogin }
 //const Loginpage = ({ getUsers }, props) => {
@@ -44,9 +37,11 @@ const Loginpage = ({
   const { setUserDetails } = useContext(UserDetailsContext);
 
   const { t, i18n } = useTranslation();
-  const [username, setUsername] = useState("");
+  //const [username, setUsername] = useState("");
   //const [loading, setLoading] = useState(false);
-  const [password, setPassword] = useState("");
+  //const [password, setPassword] = useState("");
+  //const [props.show, setPropsshow] =useState(true);
+
   const [currentuser, setCurrentuser] = useState({
     username: "",
     password: ""
@@ -60,25 +55,26 @@ const Loginpage = ({
   //saame laiali
   //const { username, password } = currentUser;
 
-  //const textInput = useRef();
-
-  //const focusTextInput = () => textInput.current.focus();
   useEffect(() => {
     //f (header != null) getCurrentHeader(currentHeader.username);
     // else getCurrentHeader("logimata");
     // eslint-disable-next-line
-    if (currentUser) {
-      setUsername(currentUser.username);
-      setPassword(currentUser.password);
+    console.log("currentuser=" + { currentuser });
+    console.log("currentUser=" + { currentUser });
+    if (currentuser) {
+      setCurrentUser(currentuser);
+      currentUser.username = currentuser.username;
+      currentUser.password = currentuser.password;
+    } else if (currentUser) {
+      //setUsername(currentUser.username);
+      //setPassword(currentUser.password);
+
       setCurrentuser(currentUser);
       //setLoading(loading);
-      console.log("useeffect currentUser.username=" + currentUser.username);
-      console.log("useeffect currentuser.username=" + currentuser.username);
+      console.log("useeffect currentUser.username=" + currentuser.username);
+      console.log("useeffect currentuser.password=" + currentuser.password);
       console.log("LOADING2=" + loading);
-      //focusTextInput();
     } //else getUserLogin((currentUser = { username: "meh", password: "pass" }));
-    //console.log("useeffect props=" + props.show);
-    //getUsers("mehike");
   }, [currentUser]);
 
   if (loading || currentUser === null) {
@@ -86,32 +82,33 @@ const Loginpage = ({
     //return <h4>Loading....</h4>;
   }
 
-  if (
+  /* if (
     loading === false &&
-    (currentUser !== undefined && currentUser !== null)
+    (currentUser !== undefined || currentUser !== null) &&
+    currentuser.username !== ""
   ) {
-    console.log("CURRENT=" + currentUser.username);
-    console.log("LOADING2=TRUE");
-    props.current(currentUser.username);
+    console.log("CURRENT=" + currentuser.username);
+    console.log("LOADING2===TRUE");
+    props.current(currentuser.username);
     clearCurrentUser();
     props.show = false;
     //clearCurrentUser();
     //return;
   }
-
+*/
   const handleLogin = event => {
     event.preventDefault();
-    console.log("loginpage hetke keel:" + i18n.language);
+    console.log("handlelogin loginpage hetke keel:" + i18n.language);
     console.log(
       "Loginpage handleLogin event    username=" +
-        username +
+        currentuser.username +
         " password=" +
-        password +
-        "crrentuser.username=" +
+        currentuser.password +
+        " currentuser.username=" +
         currentuser.username
     );
 
-    const schema = {
+    /*const schema = {
       username: "required|alpha",
       password: "required|min:4|max:40"
     };
@@ -123,17 +120,17 @@ const Loginpage = ({
 
     validate(data1, schema)
       .then(console.log)
-      .catch(console.error);
+      .catch(console.error);*/
 
     const rules = {
-      username: "required|string|min:7",
-      password: "required|string|min:7"
+      username: "required|string|min:6",
+      password: "required|string|min:6"
     };
     const data = {
       username: currentuser.username,
       password: currentuser.password
     };
-    console.log("data=" + data.username);
+    console.log("data=" + data.username + " parool=" + data.password);
 
     const messages = {
       required: field => `${field} is required`,
@@ -142,26 +139,16 @@ const Loginpage = ({
       "password.min": "Password is too short"
     };
 
-    /*const formatDate = date => {
-    const newDate = new Date(date).toLocaleDateString('en-US');
-    const newTime = new Date(date).toLocaleTimeString('en-US');
-    //console.log(`${newDate} at ${newTime}`);
-    console.log({newDate} +" "+ {newTime});
-}*/
-    //const data1=this.state;
-    //const data1=getState();
+    /*const validatedData = validate(data, rules, messages)
+      .then(console.log)
+      .catch(console.error);
+    console.log("error " + console.error);
+    console.log("validated=" + validatedData);
+    */
+    //if (console.error !== "") return false;
 
-    //validateAll(data, rules, messages);
-    /*      .then(() => {
-        console.log("sucess");
-      })
-      .catch(errors => {
-        console.log(errors);
-      });*/
-    //console.log(this.refs.username.value);
     if (currentuser.username === "" || currentuser.password === "") {
       console.log("palun sisesta ikka kasutajanimi ja prool");
-      //console.log(this.refs.username.value);
     } else {
       showLoading();
       //console.log("currentUser=" + currentUser);
@@ -171,7 +158,7 @@ const Loginpage = ({
         password: password
       };*/
 
-      console.log("new currentUser=" + currentUser);
+      console.log("new currentUser=" + currentuser);
 
       getUserLogin({
         username: currentuser.username,
@@ -181,48 +168,78 @@ const Loginpage = ({
       console.log("salvestatud currentUser=" + users);
 
       //setCurrentUser(user.users[0]);
-      console.log("salvestatud currentUser=" + currentUser);
+      console.log("salvestatud currentUser=" + currentuser);
 
       //getUsers(username);
 
-      setPassword("");
+      //setPassword("");
+      setCurrentUser({
+        ...currentuser,
+        username: currentuser.username,
+        password: currentuser.password
+      });
       const timer = setTimeout(() => {
         hideLoading();
       }, 2500);
 
       setUserDetails({
-        name: username,
+        name: currentuser.username,
         dateOfBirth: "",
         email: "",
         secretQuestion: "",
         secretAnswer: ""
       });
-      props.show = true;
+      props.show = false;
+      console.log("end " + props.show);
       //hideLoading();
+      console.log("end1 handlelogin");
+      props.hideThis();
+      props.current();
+      /*const timer1 = setTimeout(() => {
+        console.log("RETURN");
+      }, 200500);*/
       return () => clearTimeout(timer);
+      //return true;
       //showLoading();
     }
-    if (currentUser)
-      console.log("submite end currentUser=" + currentUser.username);
+    if (currentuser)
+      console.log("submite end currentUser=" + currentuser.username);
     else console.log("subite=POLE CURRENTUSERIT");
+    console.log("handle2 end");
     return false;
   };
 
   //var input = withAutoFocus("focus", ["next"], ["prev"])(AutoFocusContainer);
 
   //onChange meetad iga inputi juurde
-  const onChange = e =>
+  const onChange = e => {
+    console.log(
+      "onChange=  target.name=" +
+        e.target.name +
+        "  ja target.value=" +
+        e.target.value +
+        "   currentuser=" +
+        currentuser
+    );
     setCurrentuser({ ...currentuser, [e.target.name]: e.target.value });
+    console.log(
+      "onChange after username=" +
+        currentuser.username +
+        "  e.target.name=" +
+        e.target.name
+    );
+    console.log({ currentuser });
+  };
 
   const handleChange = event => {
     const { value, name } = event;
     //setState({ [name]: value });
   };
 
+  console.log("props.show=" + props.show);
+
   return (
     <div className={props.show ? "modal-wrapper-show" : "modal-wrapper"}>
-      {console.log("props.show=" + props.show)}
-
       <div className="popuplogin" id="popup">
         <div className="popuplogin__content">
           <section
@@ -281,12 +298,12 @@ const Loginpage = ({
                       type="password"
                       placeholder={t("header:password")}
                       title={t("header:login_title")}
-                      required
                       id="password"
+                      required
                       name="password"
+                      htmlFor="password"
                       value={currentuser.password}
                       onChange={onChange}
-                      htmlFor="password"
                       label={t("header:password")}
                     ></FormInput>
 
@@ -329,7 +346,7 @@ Loginpage.propTypes = {
   setCurrentUser: PropTypes.func,
   getUserLogin: PropTypes.func.isRequired,
   clearCurrentUser: PropTypes.func.isRequired,
-  currentUser: PropTypes.object,
+  currentuser: PropTypes.object,
   users: PropTypes.object
 };
 

@@ -6,6 +6,7 @@ import pageReducer from "./page/page.reducer";
 import loadingReducer from "./loading/loading.reducer";
 import headerReducer from "./header/header.reducer";
 import chatsReducer from "./chats/chats.reducer";
+import loginsReducer from "./logins/logins.reducer";
 //import cartReducer from "./cart/cart.reducer";
 
 export default combineReducers({
@@ -14,6 +15,7 @@ export default combineReducers({
   page: pageReducer,
   loading: loadingReducer,
   header: headerReducer,
-  chats: chatsReducer
+  chats: chatsReducer,
+  logins: loginsReducer
   //cart: cartReducer
 });

@@ -40,33 +40,23 @@ import { ReactComponent as Role } from "../../img/mask.svg";
 import { ReactComponent as LogOut } from "../../img/log-out.svg";
 import { ReactComponent as LogIn } from "../../img/login.svg";
 import { ReactComponent as Register } from "../../img/user-plus.svg";
-import Moment from "react-moment";
+//import Moment from "react-moment";
 
 import PropTypes from "prop-types";
 
-import {
-  getCurrentHeader,
-  showCurrent
-} from "../../redux/header/header.actions";
+import { getCurrentHeader } from "../../redux/header/header.actions";
 
 import LoadingContext from "../../contexts/loading.context";
 //import logo from "../../img/user.jpg";
 
-import Loader from "../../assets/Loader";
+//import Loader from "../../assets/Loader";
 import BLoader from "../../assets/BarLoader";
 import UserDetailsContext from "../../contexts/userDetails.context";
-
-//export default getHeaderData;
-
-//let strings = new LocalizedStrings(language);
-//let lang = "";
 
 //const Header = ({ currentUser, hidden }) => {
 const Header = ({
   header: { header, loading, currentHeader },
-  getCurrentHeader,
-  showCurrent,
-  currentUser
+  getCurrentHeader
 
   //addHeader
 }) => {
@@ -78,7 +68,12 @@ const Header = ({
 
   useEffect(() => {
     showLoading();
-    if (header !== null) {
+    //if (header !== null) {
+    if (
+      header !== null &&
+      header !== undefined &&
+      header.username !== "logimata"
+    ) {
       // && currentHeader !== undefined) {
       console.log("headr=" + currentHeader);
       getCurrentHeader(currentHeader.username);
@@ -104,62 +99,15 @@ const Header = ({
       console.log("currentHeader==POLE");
       //console.log("header.currentHeader==NULL=" + header.currentHeader);
     }
-    //getUsers("mehike");
+
     // eslint-disable-next-line
   }, []);
 
-  /*  const getUsers = async () => {
-    setLoading(true);
-    const res = await fetch("/users");
-    const data = await res.json();
-
-    setUsers(data);
-    setLoading(false);
-  };
-*/
-
   if (loading || header === null) {
-    /*const Loader = () => (
-      <div className="App">
-        <img
-          src={require("../../img/baby_PNG51765.png")}
-          className="App-logo"
-          alt="logo"
-        />
-        <div>loading...</div>
-      </div>
-    );*/
-
     //return <Preloader color="multi"></Preloader>;
     return <BLoader />;
     //return "<h4>Loading....</h4> <Loader></Loader>";
   }
-
-  //this.state = {
-  //{
-  //let collections = FIRST_DATA;
-  //}
-  //};
-
-  /*  const handleChangeLang = event => {
-    event.preventDefault();
-    const { value, name } = event.target;
-    lang = value;
-    console.log("lang=" + value + " name=" + name);
-    console.log("enne, strings.getlanguage=" + strings.getLanguage());
-    strings.getLanguage() === "ee"
-      ? strings.setLanguage("en")
-      : strings.setLanguage("ee");
-
-    lang === "ee" ? (lang = "en") : (lang = "ee");
-
-    console.log("strings=" + strings);
-    console.log("strings.availablelangs=" + strings.getAvailableLanguages());
-    console.log("strings.getlanguage=" + strings.getLanguage());
-    console.log("strings.bw=" + strings.bw);
-  };
-*/
-  //isShowing = false;
 
   const handleChangeLang = event => {
     event.preventDefault();
@@ -187,16 +135,11 @@ const Header = ({
 
   const handleLogout = event => {
     event.preventDefault();
-    //isShowing =
-    //if (header != null && currentHeader.ser_id > 0) setIsShowing(!isShowing);
+
     header = null;
     currentHeader = null;
     getCurrentHeader("logimata");
     console.log("header handleLogin=" + isShowing);
-    //setIsShowing(isShowing);
-    //return <Redirect to="/login" />;
-    //React.history.push("/login");
-    //return <Loginpage></Loginpage>;
   };
 
   const handleCurrentUser = loginname => {
@@ -205,18 +148,6 @@ const Header = ({
   };
 
   if (isShowing) {
-    /*
-    return (
-      <div>
-        <Loginpage
-          className={isShowing ? "modal-wrapper-show" : "modal-wrapper"}
-          show={isShowing}
-          close={handleLogin}
-        >
-          Test
-        </Loginpage>
-      </div>
-    );*/
   }
 
   const hideThis = () => {

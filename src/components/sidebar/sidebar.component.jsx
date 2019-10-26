@@ -14,7 +14,7 @@ import { ReactComponent as Coin } from "../../img/coin-euro.svg";
 import { ReactComponent as Wrench } from "../../img/wrench.svg";
 
 const Sidebar = ({ header }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [isPublic, setIsPublic] = useState(false);
 
@@ -36,16 +36,14 @@ const Sidebar = ({ header }) => {
     console.log("sidebar header.currentHeader=" + header.header);
     console.log("sidebar header.currentHeader=" + header["currentHeader"]);
 
-    {
-      console.log(header);
-      console.log(header.currentHeader);
+    console.log(header);
+    console.log(header.currentHeader);
 
-      if (header.currentHeader !== null)
-        console.log(header.currentHeader.username);
-    }
+    if (header.currentHeader !== null)
+      console.log(header.currentHeader.username);
 
     // eslint-disable-next-line
-  }, []);
+  }, [header.currentHeader]);
 
   return (
     <nav className="page_sidebar">

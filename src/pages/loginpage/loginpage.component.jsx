@@ -82,6 +82,7 @@ const Loginpage = ({
     } //else getUserLogin((currentUser = { username: "meh", password: "pass" }));
     //console.log("useeffect props=" + props.show);
     //getUsers("mehike");
+    // eslint-disable-next-line
   }, [currentUser]);
 
   if (loading || currentUser === null) {

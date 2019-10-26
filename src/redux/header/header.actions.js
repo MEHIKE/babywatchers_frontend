@@ -120,3 +120,22 @@ export const setLoading = () => {
     type: HeaderActionTypes.SET_LOADING
   };
 };
+
+//show current
+/*export const showCurrent = () => {
+  return {
+    type: HeaderActionTypes.SHOW_CURRENT
+  };
+};*/
+
+/*export const showCurrent = currentHeader => async dispatch => {
+  dispatch({
+    type: HeaderActionTypes.SHOW_CURRENT,
+    payload: currentHeader
+  });
+};*/
+
+export const showCurrent = (currentHeader = []) => ({
+  type: HeaderActionTypes.SHOW_CURRENT,
+  currentHeader
+});

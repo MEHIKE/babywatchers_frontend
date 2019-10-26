@@ -12,10 +12,11 @@ export const clearCurrentUser = () => {
   };
 };
 
-/*export const getCurrentUser = () => ({
-  type: UserActionTypes.GET_CURRENT,
-  payload: user
-});*/
+export const getCurrentUser = () => ({
+  type: UserActionTypes.GET_CURRENT
+  //,
+  //payload: user
+});
 
 //get users from server t
 export const getUsers = username => async dispatch => {

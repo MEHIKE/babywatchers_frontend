@@ -60,6 +60,19 @@ const headerReducer = (state = INITIAL_STATE, action) => {
         ),
         loading: false
       };
+    case HeaderActionTypes.SHOW_CURRENT:
+      return {
+        ...state //,
+        //currentHeader: action.currentHeader
+        // currentHeader: action.currentHeader }; //{
+        //currentHeader: state
+        //...state
+        //,
+        /*header: state.header.filter(
+          header => header.username !== action.payload
+        //),
+        loading: false*/
+      };
     default:
       return state;
   }

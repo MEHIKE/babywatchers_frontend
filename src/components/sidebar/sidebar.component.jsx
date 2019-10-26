@@ -1,11 +1,7 @@
-import React, { useContext, useEffect } from "react";
-//import { connect } from "react-redux";
-//import { createStructuredSelector } from "reselect";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
 import { useTranslation } from "react-i18next";
-
-import UserDetailsContext from "../../contexts/userDetails.context";
-import LoadingContext from "../../contexts/loading.context";
 
 import { Link } from "react-router-dom";
 
@@ -17,27 +13,44 @@ import { ReactComponent as Users } from "../../img/users.svg";
 import { ReactComponent as Coin } from "../../img/coin-euro.svg";
 import { ReactComponent as Wrench } from "../../img/wrench.svg";
 
-const Sidebar = ({ currentUser, hidden }) => {
+const Sidebar = ({ header }) => {
   const { t, i18n } = useTranslation();
 
-  const { showLoading, hideLoading } = useContext(LoadingContext);
-  const { userDetails, setUserDetails } = useContext(UserDetailsContext);
-  const isPublic = false;
+  const [isPublic, setIsPublic] = useState(false);
 
   useEffect(() => {
-    //f (header != null) getCurrentHeader(currentHeader.username);
-    // else getCurrentHeader("logimata");
-    // eslint-disable-next-line
-    if (userDetails) {
-      isPublic = true;
+    if (header.currentHeader !== null && header.currentHeader !== undefined) {
+      console.log(header.currentHeader);
+      if (header.currentHeader.username === "logimata") {
+        setIsPublic(true);
+        console.log("sieMenu isPublic=" + isPublic);
+      } else setIsPublic(false);
+      console.log(header.currentHeader.username);
+    } else {
+      setIsPublic(true);
+      console.log("sieMenu isPublic=" + isPublic);
     }
-    console.log("sieMenu isPublic=" + isPublic);
-  });
+
+    console.log("sidebar header=" + header);
+    console.log("sidebar header.currentHeader=" + header.currentHeader);
+    console.log("sidebar header.currentHeader=" + header.header);
+    console.log("sidebar header.currentHeader=" + header["currentHeader"]);
+
+    {
+      console.log(header);
+      console.log(header.currentHeader);
+
+      if (header.currentHeader !== null)
+        console.log(header.currentHeader.username);
+    }
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <nav className="page_sidebar">
       <ul className="side-nav">
-        {isPublic || (
+        {!isPublic && (
           <li className="side-nav__item side-nav__item--active">
             <Link to="#" className="side-nav__link">
               <Users1 className="side-nav__icon"></Users1>
@@ -48,7 +61,7 @@ const Sidebar = ({ currentUser, hidden }) => {
             </Link>
           </li>
         )}
-        {isPublic || (
+        {!isPublic && (
           <li className="side-nav__item">
             <Link to="#" className="side-nav__link">
               <Cake className="side-nav__icon"></Cake>
@@ -93,4 +106,16 @@ const Sidebar = ({ currentUser, hidden }) => {
   );
 };
 
-export default Sidebar;
+/*const mapStateToProps = state => ({
+  currentUser: state.currentUser,
+  currentHeader: state.currentHeader
+});*/
+
+const mapStateToProps = state => {
+  return { header: state.header };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Sidebar);

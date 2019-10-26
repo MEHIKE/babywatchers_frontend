@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
-import { Wrapper, ContextObjectWrapper, Pre } from './contextInfo.styles'
-import UserDetailsContext from '../../contexts/userDetails.context'
-import LoadingContext from '../../contexts/loading.context'
+import React, { useContext } from 'react';
+import { Wrapper, ContextObjectWrapper, Pre } from './contextInfo.styles';
+import UserDetailsContext from '../../contexts/userDetails.context';
+import LoadingContext from '../../contexts/loading.context';
 
 const ContextInfo = () => {
-  const userDetailsStoredInContext = useContext(UserDetailsContext)
-  const loadingDetailsStoredContext = useContext(LoadingContext)
+  const userDetailsStoredInContext = useContext(UserDetailsContext);
+  const loadingDetailsStoredContext = useContext(LoadingContext);
 
   return (
     <Wrapper>
@@ -18,10 +18,10 @@ const ContextInfo = () => {
         obj={loadingDetailsStoredContext}
       />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default ContextInfo
+export default ContextInfo;
 
 const ContextObject = ({ contextName, obj }) => (
   <ContextObjectWrapper>
@@ -35,16 +35,16 @@ const ContextObject = ({ contextName, obj }) => (
       </Pre>
     ))}
   </ContextObjectWrapper>
-)
+);
 
-function outputFormattedContextValue (contextValue) {
+function outputFormattedContextValue(contextValue) {
   if (typeof contextValue !== 'function') {
     if (contextValue === 0) {
-      return '0'
+      return '0';
     }
 
-    return contextValue || "''"
+    return contextValue || "''";
   }
 
-  return 'function()'
+  return 'function()';
 }

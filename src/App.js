@@ -27,39 +27,37 @@ import ContextInfo from "./components/contextInfo";
 //function App() {
 //class App extends React.Component {
 const App = () => (
-  <Provider store={store}>
-    <Fragment>
-      <LoadingProvider>
-        <Spinner />
-        <UserDetailsProvider>
-          <Suspense fallback={<Loader />}>
-            <div className="page_container">
-              {/*<Route exact path="/login" component={Loginpage} />*/}
+  <Fragment>
+    <LoadingProvider>
+      <Spinner />
+      <UserDetailsProvider>
+        <Suspense fallback={<Loader />}>
+          <div className="page_container">
+            {/*<Route exact path="/login" component={Loginpage} />*/}
 
-              <Router>
-                <Fragment>
-                  <Header />
+            <Router>
+              <Fragment>
+                <Header />
 
-                  <div className="page_content">
-                    <Sidebar />
+                <div className="page_content">
+                  <Sidebar />
 
-                    <main className="page-view">
-                      <Switch>
-                        <Route exact path="/" component={PageDetail} />
-                      </Switch>
+                  <main className="page-view">
+                    <Switch>
+                      <Route exact path="/" component={PageDetail} />
+                    </Switch>
 
-                      <Footer />
-                    </main>
-                  </div>
-                </Fragment>
-              </Router>
-              <ContextInfo />
-            </div>
-          </Suspense>
-        </UserDetailsProvider>
-      </LoadingProvider>
-    </Fragment>
-  </Provider>
+                    <Footer />
+                  </main>
+                </div>
+              </Fragment>
+            </Router>
+            <ContextInfo />
+          </div>
+        </Suspense>
+      </UserDetailsProvider>
+    </LoadingProvider>
+  </Fragment>
 );
 
 export default App; //withNamespaces()(App);

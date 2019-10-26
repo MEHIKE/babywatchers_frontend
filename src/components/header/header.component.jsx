@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 import { useTranslation } from "react-i18next";
 
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+//import { CSSTransition, TransitionGroup } from 'react-transition-group';
 //import { withNamespaces } from 'react-i18next';
 
 //import { Link } from "react-router-dom";
@@ -44,13 +44,17 @@ import Moment from "react-moment";
 
 import PropTypes from "prop-types";
 
-import { getCurrentHeader } from "../../redux/header/header.actions";
+import {
+  getCurrentHeader,
+  showCurrent
+} from "../../redux/header/header.actions";
 
 import LoadingContext from "../../contexts/loading.context";
 //import logo from "../../img/user.jpg";
 
 import Loader from "../../assets/Loader";
 import BLoader from "../../assets/BarLoader";
+import UserDetailsContext from "../../contexts/userDetails.context";
 
 //export default getHeaderData;
 
@@ -61,22 +65,44 @@ import BLoader from "../../assets/BarLoader";
 const Header = ({
   header: { header, loading, currentHeader },
   getCurrentHeader,
+  showCurrent,
   currentUser
 
   //addHeader
 }) => {
   const { showLoading, hideLoading } = useContext(LoadingContext);
+  const { userDetails, setUserDetails } = useContext(UserDetailsContext);
   const { t, i18n } = useTranslation();
   //const [users, setUsers] = useState([]);
   const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
     showLoading();
-    if (header != null) getCurrentHeader(currentHeader.username);
-    else getCurrentHeader("logimata");
-    hideLoading();
     if (header !== null) {
-      console.log("Header user_id=" + currentHeader.user_id);
+      // && currentHeader !== undefined) {
+      console.log("headr=" + currentHeader);
+      getCurrentHeader(currentHeader.username);
+    } else getCurrentHeader("logimata");
+    hideLoading();
+    if (currentHeader !== null && currentHeader !== undefined) {
+      console.log(
+        "Header user_id=" +
+          currentHeader.user_id +
+          "   " +
+          currentHeader.username
+      );
+      setUserDetails({
+        name: currentHeader.username,
+        dateOfBirth: "",
+        email: "",
+        secretQuestion: "",
+        secretAnswer: ""
+      });
+      console.log("header.username=" + currentHeader.username);
+      console.log("setUserDetails header=" + userDetails);
+    } else {
+      console.log("currentHeader==POLE");
+      //console.log("header.currentHeader==NULL=" + header.currentHeader);
     }
     //getUsers("mehike");
     // eslint-disable-next-line
@@ -366,7 +392,8 @@ Header.propTypes = {
 
 const mapStateToProps = state => ({
   header: state.header,
-  isShowing: state.isShowing
+  isShowing: state.isShowing,
+  currentHeader: state.currentHeader
 });
 
 export default connect(

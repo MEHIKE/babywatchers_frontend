@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from 'react';
 
 //import React from "react";
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 /*import {
   getUsers,
@@ -9,28 +9,28 @@ import { connect } from "react-redux";
   getUserLogin
 } from "../../redux/user/user.actions";
 */
-import LoadingContext from "../../contexts/loading.context";
+import LoadingContext from '../../contexts/loading.context';
 
-import FormInput from "../../components/form-input/form-input.component";
-import CustomButton from "../../components/custom-button/custom-button.component";
-import CustomLink from "../../components/custom-link/custom-link.component";
+import FormInput from '../../components/form-input/form-input.component';
+import CustomButton from '../../components/custom-button/custom-button.component';
+import CustomLink from '../../components/custom-link/custom-link.component';
 
-import { getUserLogin, setLoading } from "../../redux/user/user.actions";
+import { getUserLogin, setLoading } from '../../redux/user/user.actions';
 import {
   setCurrentUser,
   clearCurrentUser
-} from "../../redux/user/user.actions";
-import UserDetailsContext from "../../contexts/userDetails.context";
-import { validateAll } from "indicative";
-import { validate } from "indicative/validator";
+} from '../../redux/user/user.actions';
+import UserDetailsContext from '../../contexts/userDetails.context';
+//import { validateAll } from "indicative";
+import { validate } from 'indicative/validator';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 //import { createStructuredSelector } from "reselect";
 //import LocalizedStrings from "react-localization";
 //import language from "./header.json";
 
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 //{ users: { currentUser, loading, users }, setCurrent, getUsers, getUserLogin }
 //const Loginpage = ({ getUsers }, props) => {
@@ -46,12 +46,12 @@ const Loginpage = ({
   const { setUserDetails } = useContext(UserDetailsContext);
 
   const { t, i18n } = useTranslation();
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   //const [loading, setLoading] = useState(false);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [currentuser, setCurrentuser] = useState({
-    username: "",
-    password: ""
+    username: '',
+    password: ''
   });
 
   //tekitame ühise muutuja, ja järgmisena saame selle lahti jagada  muutujateks
@@ -74,9 +74,9 @@ const Loginpage = ({
       setPassword(currentUser.password);
       setCurrentuser(currentUser);
       //setLoading(loading);
-      console.log("useeffect currentUser.username=" + currentUser.username);
-      console.log("useeffect currentuser.username=" + currentuser.username);
-      console.log("LOADING2=" + loading);
+      console.log('useeffect currentUser.username=' + currentUser.username);
+      console.log('useeffect currentuser.username=' + currentuser.username);
+      console.log('LOADING2=' + loading);
       //focusTextInput();
     } //else getUserLogin((currentUser = { username: "meh", password: "pass" }));
     //console.log("useeffect props=" + props.show);
@@ -84,7 +84,7 @@ const Loginpage = ({
   }, [currentUser]);
 
   if (loading || currentUser === null) {
-    console.log("LOADING=TRUE");
+    console.log('LOADING=TRUE');
     //return <h4>Loading....</h4>;
   }
 
@@ -92,8 +92,8 @@ const Loginpage = ({
     loading === false &&
     (currentUser !== undefined && currentUser !== null)
   ) {
-    console.log("CURRENT=" + currentUser.username);
-    console.log("LOADING2=TRUE");
+    console.log('CURRENT=' + currentUser.username);
+    console.log('LOADING2=TRUE');
     props.current(currentUser.username);
     clearCurrentUser();
     props.show = false;
@@ -103,24 +103,24 @@ const Loginpage = ({
 
   const handleLogin = event => {
     event.preventDefault();
-    console.log("loginpage hetke keel:" + i18n.language);
+    console.log('loginpage hetke keel:' + i18n.language);
     console.log(
-      "Loginpage handleLogin event    username=" +
+      'Loginpage handleLogin event    username=' +
         username +
-        " password=" +
+        ' password=' +
         password +
-        "crrentuser.username=" +
+        'crrentuser.username=' +
         currentuser.username
     );
 
     const schema = {
-      username: "required|alpha",
-      password: "required|min:4|max:40"
+      username: 'required|alpha',
+      password: 'required|min:4|max:40'
     };
 
     const data1 = {
-      username: "virk",
-      password: "supersecret"
+      username: 'virk',
+      password: 'supersecret'
     };
 
     validate(data1, schema)
@@ -128,20 +128,20 @@ const Loginpage = ({
       .catch(console.error);
 
     const rules = {
-      username: "required|string|min:7",
-      password: "required|string|min:7"
+      username: 'required|string|min:7',
+      password: 'required|string|min:7'
     };
     const data = {
       username: currentuser.username,
       password: currentuser.password
     };
-    console.log("data=" + data.username);
+    console.log('data=' + data.username);
 
     const messages = {
       required: field => `${field} is required`,
-      "username.string": "Username contains unallowed characters",
+      'username.string': 'Username contains unallowed characters',
 
-      "password.min": "Password is too short"
+      'password.min': 'Password is too short'
     };
 
     /*const formatDate = date => {
@@ -161,8 +161,8 @@ const Loginpage = ({
         console.log(errors);
       });*/
     //console.log(this.refs.username.value);
-    if (currentuser.username === "" || currentuser.password === "") {
-      console.log("palun sisesta ikka kasutajanimi ja prool");
+    if (currentuser.username === '' || currentuser.password === '') {
+      console.log('palun sisesta ikka kasutajanimi ja prool');
       //console.log(this.refs.username.value);
     } else {
       showLoading();
@@ -173,31 +173,31 @@ const Loginpage = ({
         password: password
       };*/
 
-      console.log("new currentUser=" + currentUser);
+      console.log('new currentUser=' + currentUser);
 
       getUserLogin({
         username: currentuser.username,
         password: currentuser.password
       });
 
-      console.log("salvestatud currentUser=" + users);
+      console.log('salvestatud currentUser=' + users);
 
       //setCurrentUser(user.users[0]);
-      console.log("salvestatud currentUser=" + currentUser);
+      console.log('salvestatud currentUser=' + currentUser);
 
       //getUsers(username);
 
-      setPassword("");
+      setPassword('');
       const timer = setTimeout(() => {
         hideLoading();
       }, 2500);
 
       setUserDetails({
-        name: username,
-        dateOfBirth: "",
-        email: "",
-        secretQuestion: "",
-        secretAnswer: ""
+        name: currentuser.username,
+        dateOfBirth: '',
+        email: '',
+        secretQuestion: '',
+        secretAnswer: ''
       });
       props.show = true;
       //hideLoading();
@@ -205,8 +205,8 @@ const Loginpage = ({
       //showLoading();
     }
     if (currentUser)
-      console.log("submite end currentUser=" + currentUser.username);
-    else console.log("subite=POLE CURRENTUSERIT");
+      console.log('submite end currentUser=' + currentUser.username);
+    else console.log('subite=POLE CURRENTUSERIT');
     return false;
   };
 
@@ -222,88 +222,88 @@ const Loginpage = ({
   };
 
   return (
-    <div className={props.show ? "modal-wrapper-show" : "modal-wrapper"}>
-      {console.log("props.show=" + props.show)}
+    <div className={props.show ? 'modal-wrapper-show' : 'modal-wrapper'}>
+      {console.log('props.show=' + props.show)}
 
-      <div className="popuplogin" id="popup">
-        <div className="popuplogin__content">
+      <div className='popuplogin' id='popup'>
+        <div className='popuplogin__content'>
           <section
-            className="popuplogin__left section-login"
-            id="section-login"
+            className='popuplogin__left section-login'
+            id='section-login'
           >
             <input
-              type="checkbox"
-              className="navigation__checkbox"
-              id="navi-toggle"
+              type='checkbox'
+              className='navigation__checkbox'
+              id='navi-toggle'
               onChange={props.close}
               checked
             />
 
             <label
-              htmlFor="navi-toggle"
-              className="navigation__button popuplogin__close"
+              htmlFor='navi-toggle'
+              className='navigation__button popuplogin__close'
               style={{
-                backgroundColor: "red",
-                color: "red",
-                top: "3rem",
-                right: "3rem",
-                height: "7rem",
-                width: "7rem"
+                backgroundColor: 'red',
+                color: 'red',
+                top: '3rem',
+                right: '3rem',
+                height: '7rem',
+                width: '7rem'
               }}
             >
-              <span className="navigation__icon">&nbsp;</span>
+              <span className='navigation__icon'>&nbsp;</span>
             </label>
 
-            <div className="popuplogin__right loginrow">
+            <div className='popuplogin__right loginrow'>
               {/*<a href="#" class="popup__close">
                 &times;
 </a>*/}
-              <div className="login">
-                <form className="login__form" onSubmit={handleLogin}>
-                  <div action="#" className="form">
-                    <div className="u-margin-bottom-medium">
-                      <h2 className="heading-secondary">{t("header:login")}</h2>
+              <div className='login'>
+                <form className='login__form' onSubmit={handleLogin}>
+                  <div action='#' className='form'>
+                    <div className='u-margin-bottom-medium'>
+                      <h2 className='heading-secondary'>{t('header:login')}</h2>
                     </div>
 
                     <FormInput
-                      type="text"
-                      placeholder={t("header:login_ph")}
+                      type='text'
+                      placeholder={t('header:login_ph')}
                       required
-                      title={t("header:login_title")}
+                      title={t('header:login_title')}
                       autoFocus={true}
-                      id="name"
-                      name="username"
+                      id='name'
+                      name='username'
                       value={currentuser.username}
                       onChange={onChange}
-                      htmlFor="name"
-                      label={t("header:login_label")}
+                      htmlFor='name'
+                      label={t('header:login_label')}
                     ></FormInput>
 
                     <FormInput
-                      type="password"
-                      placeholder={t("header:password")}
-                      title={t("header:login_title")}
+                      type='password'
+                      placeholder={t('header:password')}
+                      title={t('header:login_title')}
                       required
-                      id="password"
-                      name="password"
+                      id='password'
+                      name='password'
                       value={currentuser.password}
                       onChange={onChange}
-                      htmlFor="password"
-                      label={t("header:password")}
+                      htmlFor='password'
+                      label={t('header:password')}
                     ></FormInput>
 
-                    <CustomButton type="submit">
-                      {t("header:login")} &rarr;
+                    <CustomButton type='submit'>
+                      {t('header:login')} &rarr;
                     </CustomButton>
 
-                    <div className="login__line">&nbsp;</div>
+                    <div className='login__line'>&nbsp;</div>
 
-                    <div className="link__group">
-                      <CustomLink klass="btnlogin-inline">
-                        {t("header:register")}
+                    <div className='link__group'>
+                      <CustomLink klass='btnlogin-inline'>
+                        {t('header:register')}
                       </CustomLink>
-                      <CustomLink klass="btnlogin-inline__right">
-                        {t("header:new_password")}
+                      <CustomLink klass='btnlogin-inline__right'>
+                        {t('header:new_password')}
                       </CustomLink>
                     </div>
                   </div>

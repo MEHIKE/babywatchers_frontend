@@ -17,7 +17,9 @@ const UserDetailsContext = createContext({
   /**
    * {Object} userDetails i.e. {[name], [dateOfBirth], [email], [secretQuestion], [secretAnswer]}
    */
-  setUserDetails: userDetails => {}
+  setUserDetails: userDetails => {},
+  showUserDetails: () => {},
+  getUserDetails: key => {}
 });
 
 export default UserDetailsContext;

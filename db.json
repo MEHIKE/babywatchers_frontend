@@ -241,6 +241,7 @@
       "kidId": 14,
       "start_time": "",
       "end_time": "",
+      "confirmed": true,
       "desc": "Lapsehoiu lapsed gruppides"
     },
     {}
@@ -261,10 +262,12 @@
     {
       "id": 18,
       "userId": 1,
-      "type": "fb",
+      "type": "email",
       "username": "ruul.rynno@mail.ee",
       "password": "mehike",
-      "last_login_time": null
+      "last_login_time": null,
+      "confirmed": true,
+      "code": null
     }
   ],
   "chats": [

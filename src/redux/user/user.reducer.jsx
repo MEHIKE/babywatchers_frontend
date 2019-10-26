@@ -59,11 +59,14 @@ const userReducer = (state = INITIAL_STATE, action) => {
         currentUser: null,
         loading: false
       };
-    /*case UserActionTypes.GET_CURRENT:
+    case UserActionTypes.GET_CURRENT:
       return {
-        ...state,
-        currentUser: action.payload
-      };*/
+        ...state
+        //,
+        //currentUser: state.currentUser
+        //,
+        //currentUser: action.payload
+      };
     case UserActionTypes.USERS_ERROR:
       console.error(action.payload);
       return {

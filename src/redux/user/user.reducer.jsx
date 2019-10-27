@@ -20,6 +20,13 @@ const userReducer = (state = INITIAL_STATE, action) => {
         users: action.payload,
         loading: false
       };
+    case UserActionTypes.GET_USER:
+      return {
+        ...state,
+        //users: action.payload,
+        currentUser: action.payload,
+        loading: false
+      };
     case UserActionTypes.USER_LOGIN:
       return {
         ...state,
@@ -28,9 +35,16 @@ const userReducer = (state = INITIAL_STATE, action) => {
         loading: false
       };
     case UserActionTypes.ADD_USER:
+      //console.log(...state);
+      //console.log(...state.users);
       return {
         ...state,
-        users: [...state.users, action.payload],
+        //users: [...state.users, action.payload],
+        users:
+          state.users !== null
+            ? [...state.users, action.payload]
+            : [action.payload],
+        currentUser: action.payload,
         loading: false
       };
     case UserActionTypes.DELETE_USER:
@@ -67,7 +81,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         //,
         //currentUser: action.payload
       };
-    case UserActionTypes.USERS_ERROR:
+    case UserActionTypes.USER_ERROR:
       console.error(action.payload);
       return {
         ...state,

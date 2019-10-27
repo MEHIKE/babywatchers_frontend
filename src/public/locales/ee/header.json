@@ -1,5 +1,5 @@
 {
-  "bw": "Babywatcher lastehoid",
+  "bw": "Babywatch Lastehoid",
   "news": "Uudised",
   "mails": "Kirjad",
   "chats": "Sõnumid",
@@ -8,5 +8,24 @@
   "lang": "Eesti",
   "logout": "Logi välja",
   "login": "Logi sisse",
-  "father": "isa"
+  "login_ph": "kasutajanimi/email/idkood",
+  "register_ph": "email",
+  "login_title": "See väli ei tohi olla tühi",
+  "login_label": "Kasutaja",
+  "password": "Parool",
+  "passwordconfirm": "Korda parool",
+  "father": "isa",
+  "mother": "ema",
+  "grandfather": "vanaisa",
+  "grandmother": "vanaema",
+  "unkle": "onu",
+  "aunt": "tädi",
+  "babysitter": "lapsehoidja",
+  "relative": "sugulane",
+  "familiar": "tuttav",
+  "stranger": "võõras",
+  "siblings": "lähisugulane",
+  "cousin": "nõbu",
+  "register": "Uus kasutaja",
+  "new_password": "Uus parool"
 }

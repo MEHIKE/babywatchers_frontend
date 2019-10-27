@@ -40,8 +40,12 @@ const headerReducer = (state = INITIAL_STATE, action) => {
     case HeaderActionTypes.ADD_HEADER:
       return {
         ...state,
-        currentHeader: [...state.currentHeader, action.payload],
-        header: [...state.header, action.payload],
+        //currentHeader: [...state.currentHeader, action.payload],
+        currentHeader: action.payload,
+        header:
+          state.header !== null
+            ? [...state.header, action.payload]
+            : [action.payload],
         loading: false
       };
     case HeaderActionTypes.UPDATE_HEADER:

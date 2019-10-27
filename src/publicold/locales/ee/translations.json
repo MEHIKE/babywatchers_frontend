@@ -2,5 +2,5 @@
   "bw": "Babywatcher lastehoid",
   "news1": "Kõik on igati tore ja lahe ja meil läheb käigil hästi, teile ka parimat",
   "news2": "Elagu lasteaed",
-  "recommend": "Lucy ja  teised {{number}} soovitavad meid"
+  "recommend": "Lucy ja  teised {?} soovitavad meid"
 }

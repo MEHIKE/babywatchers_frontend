@@ -1,4 +1,5 @@
 import { HeaderActionTypes } from "./header.types";
+import uuid from "uuid";
 
 export const setCurrentHeader = header => ({
   type: HeaderActionTypes.SET_CURRENT_HEADER,
@@ -35,7 +36,7 @@ export const getCurrentHeader = name => async dispatch => {
   } catch (error) {
     dispatch({
       type: HeaderActionTypes.HEADER_ERROR,
-      payload: error.response.data
+      payload: error.response
     });
   }
 };
@@ -44,9 +45,23 @@ export const getCurrentHeader = name => async dispatch => {
 export const addHeader = header => async dispatch => {
   try {
     setLoading();
+    console.log(
+      JSON.stringify({
+        user_id: header.user_id,
+        company: header.company,
+        username: header.username,
+        name: header.username
+      })
+    );
     const res = await fetch("/user_settings", {
       method: "POST",
-      body: JSON.stringify(header),
+      body: JSON.stringify({
+        id: uuid.v4(),
+        user_id: header.user_id,
+        company: header.company,
+        username: header.username,
+        name: header.username
+      }),
       headers: {
         "Content-Type": "application/json"
       }
@@ -59,7 +74,7 @@ export const addHeader = header => async dispatch => {
   } catch (error) {
     dispatch({
       type: HeaderActionTypes.HEADER_ERROR,
-      payload: error.response.data
+      payload: error.response
     });
   }
 };

@@ -7,8 +7,5 @@
   "role": "Administrator",
   "sitters": "Babysitters",
   "money": "Money",
-  "settings": "Settings",
-  "infobw": "Info for babywatches",
-  "infositters": "Info for sitters",
-  "infoparents": "Info for parents"
+  "settings": "Settings"
 }

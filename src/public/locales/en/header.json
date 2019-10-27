@@ -1,5 +1,5 @@
 {
-  "bw": "Babywatch babysitter",
+  "bw": "Babywatch Babysitting",
   "news": "News",
   "mails": "Mails",
   "chats": "Chats",
@@ -8,5 +8,24 @@
   "lang": "English",
   "logout": "Log out",
   "login": "Login",
-  "father": "father"
+  "login_ph": "username/email/idcode",
+  "register_ph": "email",
+  "login_title": "This field can not be empty",
+  "login_label": "Username",
+  "password": "Password",
+  "passwordconfirm": "Confirm Password",
+  "father": "father",
+  "mother": "mother",
+  "grandfather": "grandfather",
+  "grandmother": "grandmother",
+  "unkle": "unkle",
+  "aunt": "aunt",
+  "babysitter": "babysitter",
+  "relative": "relative",
+  "familiar": "familiar",
+  "stranger": "stranger",
+  "siblings": "siglings",
+  "cousin": "cousin",
+  "register": "New user",
+  "new_password": "New password"
 }

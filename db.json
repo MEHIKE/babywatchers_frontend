@@ -55,11 +55,16 @@
       "password": "sitter",
       "userroles": "babysitter",
       "id": 6
+    },
+    {
+      "id": "aa7b76b1-f01d-4cf9-a508-655c4c4159f2",
+      "username": "ee",
+      "password": "ee"
     }
   ],
-
   "user_settings": [
     {
+      "id": "dsds",
       "user_id": 1,
       "company": "Babywatch Lastehoid",
       "username": "mehike",
@@ -76,6 +81,7 @@
       "last_logged_in_ip": null
     },
     {
+      "id": "asddas",
       "user_id": 0,
       "company": null,
       "username": "logimata",
@@ -90,9 +96,15 @@
       "last_active_colorscheme": "default",
       "last_logged_in_time": null,
       "last_logged_in_ip": null
+    },
+    {
+      "id": "02ab6563-560b-445f-93db-5ce7a8f0bcf8",
+      "user_id": "aa7b76b1-f01d-4cf9-a508-655c4c4159f2",
+      "company": "Babywatch Lastehoid",
+      "username": "ee",
+      "name": "ee"
     }
   ],
-
   "roles": [
     {
       "id": 7,
@@ -192,8 +204,7 @@
       "userId": 1,
       "role": "Father",
       "desc": "vanemaid, vanavanemaid jne siduv tabel lastega"
-    },
-    {}
+    }
   ],
   "watcherkids": [
     {
@@ -201,8 +212,7 @@
       "watcherId": 15,
       "start_time": "",
       "desc": "lapsehoidjaid lastega siduv tabel, kes keda hoiab. kas kasutada sama tabelit ka hoidudele?"
-    },
-    {}
+    }
   ],
   "watchers": [
     {
@@ -210,8 +220,7 @@
       "name": "Lapsehoidja 1",
       "start_time": "",
       "desc": "Lapsehoidja - vb pole vaja vaid saab võtta pigem users tabelist"
-    },
-    {}
+    }
   ],
   "companies": [
     {
@@ -220,8 +229,7 @@
       "name": "Babywatch lastehoid",
       "start_time": "",
       "desc": "lastehoiud või firmad, saab siduda kokku mitu"
-    },
-    {}
+    }
   ],
   "companygroups": [
     {
@@ -232,8 +240,7 @@
       "start_time": "",
       "end_time": "",
       "desc": "Lastehoiu grupid. äki minage ja maxage, et saaks koostada vanused"
-    },
-    {}
+    }
   ],
   "companygroup_kids": [
     {
@@ -246,7 +253,6 @@
     },
     {}
   ],
-
   "companysitters": [
     {
       "companyId": 16,
@@ -257,7 +263,6 @@
       "desc": "Lapsehoiu töötajate sidumine hoiuga ja grupiga. kas lübi useri või babywatchers tabeli"
     }
   ],
-
   "logins": [
     {
       "id": 18,
@@ -317,8 +322,7 @@
       "end_time": "",
       "message": "Kommentaar, saab panna kommentaarile alamkommentaare. kes näeb: 1USER,1COMP,1COMPGROUP,ALL,ME",
       "desc": "PIC/VIDEO.  mille kohta"
-    },
-    {}
+    }
   ],
   "pics": [
     {

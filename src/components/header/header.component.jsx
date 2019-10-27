@@ -23,6 +23,8 @@ import { useTranslation } from "react-i18next";
 //import { ReactComponent as Baby } from "../../img/baby_PNG51765.png";
 
 import Loginpage from "../../pages/loginpage/loginpage.component";
+import Registerpage from "../../pages/registerpage/registerpage.component";
+
 import Logo from "../logo/logo.component";
 import NewsIcon from "../widgets/News/news.component";
 //import { ReactComponent as News } from "../../img/new.svg";
@@ -52,6 +54,7 @@ import LoadingContext from "../../contexts/loading.context";
 //import Loader from "../../assets/Loader";
 import BLoader from "../../assets/BarLoader";
 import UserDetailsContext from "../../contexts/userDetails.context";
+import useModal from "../../utils/useModal";
 
 //const Header = ({ currentUser, hidden }) => {
 const Header = ({
@@ -65,6 +68,7 @@ const Header = ({
   const { t, i18n } = useTranslation();
   //const [users, setUsers] = useState([]);
   const [isShowing, setIsShowing] = useState(false);
+  const { isRegister, toggle, falseRegister } = useModal();
 
   useEffect(() => {
     showLoading();
@@ -123,10 +127,37 @@ const Header = ({
   };
 
   const handleLogin = event => {
-    event.preventDefault();
+    //event.preventDefault();
     //isShowing =
+    console.log("header handleLogin before=" + isShowing);
+    console.log(header);
+    console.log(currentHeader);
     if (header != null && currentHeader.user_id === 0) setIsShowing(!isShowing);
-    console.log("header handleLogin=" + isShowing);
+    console.log("header handleLogin after=" + isShowing);
+    //setIsShowing(isShowing);
+    //return <Redirect to="/login" />;
+    //React.history.push("/login");
+    //return <Loginpage></Loginpage>;
+  };
+
+  const handleRegister = event => {
+    //event.preventDefault();
+    //isShowing =
+    console.log("header handleRegister before=" + isRegister);
+    console.log(header);
+    console.log(currentHeader);
+    if (header != null && currentHeader.user_id === 0) toggle(); //(!isShowing);
+    console.log("header handleRegister after=" + isRegister);
+    //setIsShowing(true);
+    /*return (
+      <Registerpage
+        className={isRegister ? " modal-wrapper-show" : "modal - wrapper"}
+        show={!isRegister}
+        close={toggle}
+        hideThis={toggle}
+        current={handleCurrentUser}
+      />
+    );*/
     //setIsShowing(isShowing);
     //return <Redirect to="/login" />;
     //React.history.push("/login");
@@ -150,27 +181,47 @@ const Header = ({
   if (isShowing) {
   }
 
-  const hideThis = () => {
+  const hideLogin = () => {
     setIsShowing(false);
+  };
+
+  const hideRegister = () => {
+    falseRegister();
   };
 
   return (
     <div>
-      <Loginpage
-        className={isShowing ? "modal-wrapper-show" : "modal-wrapper"}
-        show={isShowing}
-        close={handleLogin}
-        hideThis={hideThis}
+      {isShowing ? (
+        <Loginpage
+          className={isShowing ? "modal-wrapper-show" : "modal-wrapper"}
+          show={isShowing}
+          close={handleLogin}
+          hideThis={hideLogin}
+          current={handleCurrentUser}
+        >
+          Login
+        </Loginpage>
+      ) : (
+        ""
+      )}
+      <Registerpage
+        className={isRegister ? "modal-wrapper-show" : "modal-wrapper"}
+        show={isRegister}
+        close={handleRegister}
+        hideThis={hideRegister}
         current={handleCurrentUser}
       >
-        Test
-      </Loginpage>
+        Register
+      </Registerpage>
       <header className="page_header">
         {/*isShowing && <Loginpage></Loginpage>*/}
+        {console.log(currentHeader)}
         <nav className="user-nav">
           <Logo
             company={
-              currentHeader.company ? currentHeader.company : t("header:bw")
+              currentHeader !== undefined && currentHeader.company
+                ? currentHeader.company
+                : t("header:bw")
             }
           ></Logo>
         </nav>
@@ -179,7 +230,7 @@ const Header = ({
         <nav className="user-nav user-nav__right">
           <NewsIcon tooltip={t("header:news")} number="!"></NewsIcon>
 
-          {currentHeader.company && (
+          {currentHeader !== undefined && currentHeader.company && (
             <div className="user-nav__icon-box tooltip">
               <span className="tooltiptext">{t("header:mails")}</span>
               <Mail className="user-nav__icon"></Mail>
@@ -187,7 +238,7 @@ const Header = ({
             </div>
           )}
 
-          {currentHeader.company && (
+          {currentHeader !== undefined && currentHeader.company && (
             <div className="user-nav__icon-box tooltip">
               <span className="tooltiptext">{t("header:chats")}</span>
               <Chat className="user-nav__icon"></Chat>
@@ -214,7 +265,7 @@ const Header = ({
         </nav>
 
         <nav className="user-nav user-nav__right">
-          {currentHeader.company && (
+          {currentHeader !== undefined && currentHeader.company && (
             <div className="user-nav__user" to="/">
               <img
                 src={require("../../img/user.jpg")}
@@ -238,7 +289,7 @@ const Header = ({
               </span>
             </div>
           )}
-          {currentHeader.company && (
+          {currentHeader !== undefined && currentHeader.company && (
             <div className="user-nav__user" to="/">
               <Role className="user-nav__user-photo user-nav__icon__role"></Role>
               <span className="user-nav__user-name">{t("header:role")}</span>
@@ -257,7 +308,7 @@ const Header = ({
             <span className="user-nav__user-name">{t("header:lang")}</span>
           </div>
 
-          {currentHeader.company ? (
+          {currentHeader !== undefined && currentHeader.company ? (
             <div className="user-nav__user" to="/logout" onClick={handleLogout}>
               <LogOut className="user-nav__user-photo user-nav__icon__out"></LogOut>
               <span className="user-nav__user-name">{t("header:logout")}</span>
@@ -269,18 +320,19 @@ const Header = ({
             </div>
           )}
 
-          {!currentHeader.company && (
-            <div
-              className="user-nav__user"
-              to="/register"
-              onClick={handleLogin}
-            >
-              <Register className="user-nav__user-photo user-nav__icon__out"></Register>
-              <span className="user-nav__user-name">
-                {t("header:register")}
-              </span>
-            </div>
-          )}
+          {currentHeader === undefined ||
+            (!currentHeader.company && (
+              <div
+                className="user-nav__user"
+                to="/register"
+                onClick={handleRegister}
+              >
+                <Register className="user-nav__user-photo user-nav__icon__out"></Register>
+                <span className="user-nav__user-name">
+                  {t("header:register")}
+                </span>
+              </div>
+            ))}
         </nav>
         {/*<Link className="options">
       <Link className="option" to="/shop">

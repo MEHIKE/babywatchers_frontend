@@ -1,6 +1,6 @@
 {
   "bw": "Babywatcher babysitting",
-  "news1": "all is fine and we are good too",
-  "news2": "Hello world",
-  "recommend": "Lucy and other {?} recommend this babywatch"
+  "news1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis ratione sapiente saepe. Accusantium umque quas, ut corporis incidunt deserunt quae architecto voluptate.",
+  "news2": "Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus, inventore iure aliquid aliquam.",
+  "recommend": "Lucy and other {{number}} recommend this babywatch"
 }

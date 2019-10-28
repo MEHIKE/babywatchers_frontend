@@ -27,5 +27,6 @@
   "siblings": "siglings",
   "cousin": "cousin",
   "register": "New user",
-  "new_password": "New password"
+  "new_password": "New password",
+  "firstlogin": "First login"
 }

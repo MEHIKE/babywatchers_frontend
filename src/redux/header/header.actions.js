@@ -60,7 +60,9 @@ export const addHeader = header => async dispatch => {
         user_id: header.user_id,
         company: header.company,
         username: header.username,
-        name: header.username
+        name: header.username,
+        last_active_role: 0,
+        last_active_rolename: header.firstlogin
       }),
       headers: {
         "Content-Type": "application/json"

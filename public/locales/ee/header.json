@@ -27,5 +27,6 @@
   "siblings": "lähisugulane",
   "cousin": "nõbu",
   "register": "Uus kasutaja",
-  "new_password": "Uus parool"
+  "new_password": "Uus parool",
+  "firstlogin": "Esmane sisenemine"
 }

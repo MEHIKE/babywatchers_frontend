@@ -8,6 +8,7 @@
       "idcode": "",
       "bday": "1972.04.28",
       "password": "mehike",
+      "url":"../../img/user.jpg",
       "userroles": "admin,boss,babysitter,teacher,parent,anon",
       "id": 1
     },
@@ -17,6 +18,7 @@
       "lastname": "Anonymous",
       "email": "ruul.rynno@mail.ee",
       "password": "tester",
+      "url":null,
       "userroles": "anon",
       "id": 2
     },
@@ -26,6 +28,7 @@
       "lastname": "Father",
       "email": "ruul.rynno@mail.ee",
       "password": "parent",
+      "url":null,
       "userroles": "parent",
       "id": 3
     },
@@ -35,6 +38,7 @@
       "lastname": "",
       "email": "ruul.rynno@mail.ee",
       "password": "teacher",
+      "url":null,
       "userroles": "teacher",
       "id": 4
     },
@@ -44,6 +48,7 @@
       "lastname": "",
       "email": "ruul.rynno@mail.ee",
       "password": "boss",
+      "url":null,
       "userroles": "boss",
       "id": 5
     },
@@ -53,13 +58,15 @@
       "lastname": "Sitter",
       "email": "ruul.rynno@mail.ee",
       "password": "sitter",
+      "url":null,
       "userroles": "babysitter",
       "id": 6
     },
     {
       "id": "aa7b76b1-f01d-4cf9-a508-655c4c4159f2",
       "username": "ee",
-      "password": "ee"
+      "password": "ee",
+      "url":null
     }
   ],
   "user_settings": [
@@ -69,6 +76,7 @@
       "company": "Babywatch Lastehoid",
       "username": "mehike",
       "name": "Rünno Ruul - isa",
+      "url":"/home/rynno/Dropbox/failid/Babywatcher/frontend_1/src/img/user.jpg",
       "last_active_role": 7,
       "last_active_rolename": "Admin",
       "last_active_company": 16,
@@ -86,6 +94,7 @@
       "company": null,
       "username": "logimata",
       "name": "Sisse logimata",
+      "url":null,
       "last_active_role": 0,
       "last_active_rolename": null,
       "last_active_company": 16,
@@ -102,7 +111,8 @@
       "user_id": "aa7b76b1-f01d-4cf9-a508-655c4c4159f2",
       "company": "Babywatch Lastehoid",
       "username": "ee",
-      "name": "ee"
+      "name": "ee",
+      "url":null
     }
   ],
   "roles": [
@@ -270,6 +280,7 @@
       "type": "email",
       "username": "ruul.rynno@mail.ee",
       "password": "mehike",
+      "url":"../../img/user.jpg",
       "last_login_time": null,
       "confirmed": true,
       "code": null

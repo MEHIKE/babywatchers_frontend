@@ -122,7 +122,8 @@ const Registerpage = ({
         username: currentUser.username,
         name: currentUser.username,
         user_id: currentUser.id,
-        company: t("header:bw")
+        company: t("header:bw"),
+        firstlogin: t("header:firstlogin")
       });
       //getCurrentHeader(currentUser.username);
       clearCurrentUser();

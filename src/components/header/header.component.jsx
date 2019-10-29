@@ -64,6 +64,7 @@ import { useAuth } from '../../contexts/auth/auth';
 const Header = ({
   header: { header, loading, currentHeader },
   getCurrentHeader
+  //,  pics
 
   //addHeader
 }) => {
@@ -75,7 +76,9 @@ const Header = ({
   //const [users, setUsers] = useState([]);
   const [isShowing, setIsShowing] = useState(false);
   const { isRegister, toggle, falseRegister } = useModal();
-  const [pics, setPics] = useState('');
+  //const [pics, setPics] = useState("");
+  const [picsurl, setPicsurl] = useState('');
+  //state={ pics: "" }
 
   useEffect(() => {
     showLoading();
@@ -111,13 +114,21 @@ const Header = ({
       //console.log("header.currentHeader==NULL=" + header.currentHeader);
     }
 
+    if (currentHeader && currentHeader.url) {
+      console.log(currentHeader.url);
+      //setPicsUrl(currentHeader.url, () => console.log(picsurl));
+      console.log(picsurl);
+    }
     // eslint-disable-next-line
   }, []);
 
+  //  const handleCurrentUser = loginname =>
   if (currentHeader && currentHeader.url) {
     console.log(currentHeader.url);
-    setPics(currentHeader.url);
-    console.log(pics);
+    //setPicsurl(currentHeader.url, () => console.log(picsurl));
+    //this.setState({ picsurl: currentHeader.url });
+    this.setState(state => ({ picsurl: currentHeader.url }));
+    console.log(picsurl);
   }
 
   if (loading || header === null) {
@@ -281,9 +292,10 @@ const Header = ({
         <nav className='user-nav user-nav__right'>
           {currentHeader !== undefined && currentHeader.company && (
             <div className='user-nav__user' to='/'>
-              {/*setPics("../../img/" + currentHeader.url)*/}
-              {console.log(`pics=  ${pics}`)}
-              {/*console.log("../../img/" + currentHeader.url + "  -> " + pics)*/}
+              {/*setPicsurl("../../img/" + currentHeader.url)*/}
+              {console.log(`picsurl=  ${picsurl}`)}
+              {console.log('currentheader.url=' + currentHeader.url)}
+              {console.log('picsurl ise=' + picsurl)}
 
               {currentHeader.url && (
                 <img
@@ -403,7 +415,8 @@ Header.propTypes = {
 const mapStateToProps = state => ({
   header: state.header,
   isShowing: state.isShowing,
-  currentHeader: state.currentHeader
+  currentHeader: state.currentHeader,
+  picsurl: state.picsurl
 });
 
 export default connect(

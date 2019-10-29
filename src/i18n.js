@@ -1,18 +1,18 @@
-import i18n from "i18next";
-import detector from "i18next-browser-languagedetector";
-import XHR from "i18next-xhr-backend";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import detector from 'i18next-browser-languagedetector';
+import XHR from 'i18next-xhr-backend';
+import { initReactI18next } from 'react-i18next';
 
-import translationsEN from "./public/locales/en/translations.json";
-import translationsEE from "./public/locales/ee/translations.json";
-import commonEN from "./public/locales/en/common.json";
-import commonEE from "./public/locales/ee/common.json";
-import headerEN from "./public/locales/en/header.json";
-import headerEE from "./public/locales/ee/header.json";
-import menusEN from "./public/locales/en/menus.json";
-import menusEE from "./public/locales/ee/menus.json";
-import validationEN from "./public/locales/en/validation.json";
-import validationEE from "./public/locales/ee/validation.json";
+import translationsEN from './public/locales/en/translations.json';
+import translationsEE from './public/locales/ee/translations.json';
+import commonEN from './public/locales/en/common.json';
+import commonEE from './public/locales/ee/common.json';
+import headerEN from './public/locales/en/header.json';
+import headerEE from './public/locales/ee/header.json';
+import menusEN from './public/locales/en/menus.json';
+import menusEE from './public/locales/ee/menus.json';
+import validationEN from './public/locales/en/validation.json';
+import validationEE from './public/locales/ee/validation.json';
 
 //https://github.com/i18next/react-i18next/tree/master/example/razzle-ssr
 
@@ -36,26 +36,41 @@ const resources = {
 
   es: {
     translation: {
-      bw: "Welcome to React and react-i18next"
+      bw: 'Welcome to React and react-i18next'
     }
   }
 };
 
+// This function will be used to create `translate` function for the context
+//const getTranslate = langCode => (key, file) =>
+//  resources[langCode][key][file] || file;
+
+/* We will have two things in our context state, 
+langCode will be the current language of the page
+and translate will be the method to translate keys
+into meaningful texts. Default language will be English */
+//const initialState = {
+//  langCode: 'en',
+//  translate: getTranslate('en')
+//};
+//variant
+//https://blog.usejournal.com/internationalization-with-react-hooks-af37bed9f195
+
 const options = {
-  fallbackLng: "en",
-  load: "languageOnly", // we only provide en, de -> no region specific locals like en-US, de-DE
+  fallbackLng: 'en',
+  load: 'languageOnly', // we only provide en, de -> no region specific locals like en-US, de-DE
   // have a common namespace used around the full app
-  ns: ["common", "header", "menus", "translations", "validation", "footer"],
-  defaultNS: "translations",
+  ns: ['common', 'header', 'menus', 'translations', 'validation', 'footer'],
+  defaultNS: 'translations',
 
   saveMissing: true,
   debug: true,
 
   interpolation: {
     escapeValue: false, // not needed for react!!
-    formatSeparator: ",",
+    formatSeparator: ',',
     format: (value, format, lng) => {
-      if (format === "uppercase") return value.toUpperCase();
+      if (format === 'uppercase') return value.toUpperCase();
       return value;
     }
   },

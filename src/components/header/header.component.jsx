@@ -57,8 +57,21 @@ import UserDetailsContext from '../../contexts/userDetails.context';
 import useModal from '../../utils/useModal';
 
 import Img from 'react-image';
+import Mina from '../../img/user.jpg';
 
 import { useAuth } from '../../contexts/auth/auth';
+
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => {
+    images[item.replace('./', '')] = r(item);
+  });
+  return images;
+}
+
+const images = importAll(
+  require.context('../../images', false, /\.(gif|jpe?g|svg)$/)
+);
 
 //const Header = ({ currentUser, hidden }) => {
 const Header = ({
@@ -80,56 +93,68 @@ const Header = ({
   const [picsurl, setPicsurl] = useState('');
   //state={ pics: "" }
 
-  useEffect(() => {
-    showLoading();
-    //if (header !== null) {
-    if (
-      header !== null &&
-      header !== undefined &&
-      header.username !== 'logimata'
-    ) {
-      // && currentHeader !== undefined) {
-      console.log('headr=' + currentHeader);
-      getCurrentHeader(currentHeader.username);
-    } else getCurrentHeader('logimata');
-    hideLoading();
-    if (currentHeader !== null && currentHeader !== undefined) {
-      console.log(
-        'Header user_id=' +
-          currentHeader.user_id +
-          '   ' +
-          currentHeader.username
-      );
-      setUserDetails({
-        name: currentHeader.username,
-        dateOfBirth: '',
-        email: '',
-        secretQuestion: '',
-        secretAnswer: ''
-      });
-      console.log('header.username=' + currentHeader.username);
-      console.log('setUserDetails header=' + userDetails);
-    } else {
-      console.log('currentHeader==POLE');
-      //console.log("header.currentHeader==NULL=" + header.currentHeader);
-    }
+  useEffect(
+    () => {
+      showLoading();
+      //if (header !== null) {
+      if (
+        header !== null &&
+        header !== undefined &&
+        header.username !== 'logimata'
+      ) {
+        // && currentHeader !== undefined) {
+        console.log('headr=' + currentHeader);
+        getCurrentHeader(currentHeader.username);
+      } else getCurrentHeader('logimata');
+      hideLoading();
+      if (currentHeader !== null && currentHeader !== undefined) {
+        console.log(
+          'Header user_id=' +
+            currentHeader.user_id +
+            '   ' +
+            currentHeader.username
+        );
+        setUserDetails({
+          name: currentHeader.username,
+          dateOfBirth: '',
+          email: '',
+          secretQuestion: '',
+          secretAnswer: ''
+        });
+        console.log('header.username=' + currentHeader.username);
+        console.log('setUserDetails header=' + userDetails);
+        if (currentHeader.url) currentHeader.url = '';
+      } else {
+        console.log('currentHeader==POLE');
+        //console.log("header.currentHeader==NULL=" + header.currentHeader);
+      }
 
-    if (currentHeader && currentHeader.url) {
-      console.log(currentHeader.url);
-      //setPicsUrl(currentHeader.url, () => console.log(picsurl));
-      console.log(picsurl);
-    }
-    // eslint-disable-next-line
-  }, []);
+      console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT1');
+      if (currentHeader && currentHeader.url) {
+        console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT2');
+        console.log(currentHeader.url);
+        setPicsurl(currentHeader.url);
+        console.log(picsurl);
+      }
+      // eslint-disable-next-line
+    },
+    currentHeader //, currentHeader.url
+  );
 
   //  const handleCurrentUser = loginname =>
-  if (currentHeader && currentHeader.url) {
+  /*  if (!loading && currentHeader && currentHeader.url) {
     console.log(currentHeader.url);
-    //setPicsurl(currentHeader.url, () => console.log(picsurl));
+    console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT3');
+                  
+                    const myIcon = new Image();
+                    myIcon.src = Icon;
+                  
+    setPicsurl(currentHeader.url);
     //this.setState({ picsurl: currentHeader.url });
-    this.setState(state => ({ picsurl: currentHeader.url }));
+    //this.setState(state => ({ picsurl: currentHeader.url }));
     console.log(picsurl);
-  }
+    console.log('END setPicsurl');
+  }*/
 
   if (loading || header === null) {
     //return <Preloader color="multi"></Preloader>;
@@ -214,6 +239,56 @@ const Header = ({
     falseRegister();
   };
 
+  if (currentHeader) {
+    /*const importAll = require =>
+      require.keys().reduce((acc, next) => {
+        acc[next.replace('./', '')] = require(next);
+        return acc;
+      }, {});
+
+    console.log(importAll);
+    const images = importAll(
+      require.context('./img', false, /\.(png|jpe?g|svg)$/)
+    );*/
+
+    // Import all images in image folder
+
+    console.log('images');
+    console.log(images);
+  }
+  /*if (currentHeader) {
+    const testFolder = './';
+    const fs = require('fs');
+    const path = require('path');
+
+    const allowedExts = [
+      '.jpg' // add any extensions you need
+    ];
+
+    const modules = {};
+
+    console.log('fs=' + fs + ' path=' + path);
+    console.log(fs);
+    console.log(path);
+
+    const files = fs.readdirSync(testFolder);
+
+    //const myImage = require('../../user.jpg');
+
+    if (files && files.length) {
+      files
+        .filter(file => allowedExts.indexOf(path.extname(file)) > -1)
+        .forEach(
+          file =>
+            (exports[
+              path.basename(file, path.extname(file))
+            ] = require(`./${file}`))
+        );
+    }
+    console.log(files);
+    module.exports = modules;
+  }*/
+
   return (
     <div>
       {isShowing ? (
@@ -294,15 +369,24 @@ const Header = ({
             <div className='user-nav__user' to='/'>
               {/*setPicsurl("../../img/" + currentHeader.url)*/}
               {console.log(`picsurl=  ${picsurl}`)}
-              {console.log('currentheader.url=' + currentHeader.url)}
+              {console.log('currentheader.url=' + images[currentHeader.url])}
               {console.log('picsurl ise=' + picsurl)}
 
               {currentHeader.url && (
-                <img
-                  src={require(currentHeader.url)}
-                  alt='User pic'
-                  className='user-nav__user-photo'
-                />
+                <>
+                  {images && (
+                    <img
+                      src={images[currentHeader.url]}
+                      alt='User -> '
+                      className='user-nav__user-photo'
+                    />
+                  )}
+                  {/*<img
+                    src={Mina}
+                    alt='User pic'
+                    className='user-nav__user-photo'
+                  />*/}
+                </>
               )}
 
               <span className='user-nav__user-name'>

@@ -81,7 +81,7 @@ const Header = ({
 
   //addHeader
 }) => {
-  const { setAuthTokens } = useAuth();
+  const { authTokens, setAuthTokens } = useAuth();
 
   const { showLoading, hideLoading } = useContext(LoadingContext);
   const { userDetails, setUserDetails } = useContext(UserDetailsContext);
@@ -97,14 +97,24 @@ const Header = ({
     () => {
       showLoading();
       //if (header !== null) {
+      console.log(
+        'AUTH-----------------------------------------------------AUTH'
+      );
+      console.log(authTokens);
       if (
         header !== null &&
         header !== undefined &&
-        header.username !== 'logimata'
+        header.username !== 'logimata' &&
+        authTokens &&
+        authTokens.logedIn &&
+        authTokens.username !== 'logimata'
       ) {
         // && currentHeader !== undefined) {
         console.log('headr=' + currentHeader);
         getCurrentHeader(currentHeader.username);
+        setAuthTokens({ username: header.username, logedIn: true });
+        console.log(authTokens);
+        console.log('Is LOGGED IN: ' + authTokens.logedIn);
       } else getCurrentHeader('logimata');
       hideLoading();
       if (currentHeader !== null && currentHeader !== undefined) {
@@ -138,7 +148,7 @@ const Header = ({
       }
       // eslint-disable-next-line
     },
-    currentHeader //, currentHeader.url
+    [authTokens] //, currentHeader.url
   );
 
   //  const handleCurrentUser = loginname =>

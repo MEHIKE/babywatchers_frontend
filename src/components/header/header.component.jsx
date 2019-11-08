@@ -61,6 +61,8 @@ import Mina from '../../img/user.jpg';
 
 import { useAuth } from '../../contexts/auth/auth';
 
+import AuthContext from '../../contexts/auth2/authContext';
+
 function importAll(r) {
   let images = {};
   r.keys().map((item, index) => {
@@ -93,29 +95,61 @@ const Header = ({
   const [picsurl, setPicsurl] = useState('');
   //state={ pics: "" }
 
+  const authContext = useContext(AuthContext);
+  const {
+    login,
+    logout,
+    error,
+    clearErrors,
+    isAuthenticated,
+    user,
+    token
+  } = authContext;
+
   useEffect(
     () => {
       showLoading();
+
+      if (isAuthenticated) {
+        //props.history.push('/');
+      }
+
       //if (header !== null) {
       console.log(
         'AUTH-----------------------------------------------------AUTH'
       );
       console.log(authTokens);
       if (
-        header !== null &&
-        header !== undefined &&
-        header.username !== 'logimata' &&
+        //header !== null &&
+        //header !== undefined &&
+        //header.username !== 'logimata' &&
         authTokens &&
         authTokens.logedIn &&
-        authTokens.username !== 'logimata'
+        authTokens.username !== 'logimata' &&
+        authTokens.username !== ''
       ) {
+        if (
+          header &&
+          header.username &&
+          header.username !== authTokens.username
+        ) {
+          //getCurrentHeader(authTokens.username);
+          setAuthTokens({ username: header.username, logedIn: true });
+          //login({ username: header.username, password: header.password });
+        }
         // && currentHeader !== undefined) {
         console.log('headr=' + currentHeader);
-        getCurrentHeader(currentHeader.username);
-        setAuthTokens({ username: header.username, logedIn: true });
+        //getCurrentHeader(currentHeader.username);
+        getCurrentHeader(authTokens.username);
+
         console.log(authTokens);
         console.log('Is LOGGED IN: ' + authTokens.logedIn);
-      } else getCurrentHeader('logimata');
+        console.log(currentHeader);
+      } else {
+        console.log('LOGIMATA');
+        getCurrentHeader('logimata');
+        console.log(currentHeader);
+      }
       hideLoading();
       if (currentHeader !== null && currentHeader !== undefined) {
         console.log(
@@ -148,7 +182,7 @@ const Header = ({
       }
       // eslint-disable-next-line
     },
-    [authTokens] //, currentHeader.url
+    [] //, currentHeader.url
   );
 
   //  const handleCurrentUser = loginname =>
@@ -225,10 +259,11 @@ const Header = ({
 
   const handleLogout = event => {
     event.preventDefault();
-
+    localStorage.setItem('tokens', null);
     header = null;
     currentHeader = null;
     setAuthTokens();
+    logout();
     getCurrentHeader('logimata');
     console.log('header handleLogin=' + isShowing);
   };
@@ -419,14 +454,14 @@ const Header = ({
           {currentHeader !== undefined &&
             currentHeader.company &&
             currentHeader.last_active_rolename && (
-              <div className='user-nav__user' to='/'>
+              <a className='user-nav__user' href='/admin'>
                 <Role className='user-nav__user-photo user-nav__icon__role'></Role>
 
                 <span className='user-nav__user-name'>
                   {currentHeader.last_active_rolename}
                   {/*t("header:role")*/}
                 </span>
-              </div>
+              </a>
             )}
 
           <div className='user-nav__user' to='/' onClick={handleChangeLang}>

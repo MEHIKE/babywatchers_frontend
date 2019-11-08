@@ -36,6 +36,8 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../contexts/auth/auth';
 
+import AuthContext from '../../contexts/auth2/authContext';
+
 //{ users: { currentUser, loading, users }, setCurrent, getUsers, getUserLogin }
 //const Loginpage = ({ getUsers }, props) => {
 const Loginpage = ({
@@ -64,6 +66,17 @@ const Loginpage = ({
     username: '',
     password: ''
   });
+
+  const authContext = useContext(AuthContext);
+  const {
+    login,
+    logout,
+    error,
+    clearErrors,
+    isAuthenticated,
+    user,
+    token
+  } = authContext;
 
   //tekitame ühise muutuja, ja järgmisena saame selle lahti jagada  muutujateks
   //const [currentUser, setCurrentUser] = useState({
@@ -217,6 +230,8 @@ const Loginpage = ({
       const jwt = data;
       setAuthTokens(jwt);
       setLoggedIn(true);
+      //login({ username: header.username, password: header.password });
+      login(data);
 
       //hideLoading();
       return () => clearTimeout(timer);

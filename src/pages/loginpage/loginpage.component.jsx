@@ -23,7 +23,7 @@ import {
   setCurrentUser,
   clearCurrentUser
 } from '../../redux/user/user.actions';
-import UserDetailsContext from '../../contexts/userDetails.context';
+//import UserDetailsContext from '../../contexts/userDetails.context';
 //import { validateAll } from "indicative";
 import { validate } from 'indicative/validator';
 
@@ -50,13 +50,13 @@ const Loginpage = ({
   ...props
 }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const { setAuthTokens } = useAuth();
+  //const { setAuthTokens } = useAuth();
   //const referer = props.location.state.referer || '/';
 
   const [isError, setIsError] = useState(false);
 
   const { showLoading, hideLoading } = useContext(LoadingContext);
-  const { setUserDetails } = useContext(UserDetailsContext);
+  //const { setUserDetails } = useContext(UserDetailsContext);
 
   const { t, i18n } = useTranslation();
   const [username, setUsername] = useState('');
@@ -218,17 +218,17 @@ const Loginpage = ({
         hideLoading();
       }, 2500);
 
-      setUserDetails({
+      /*setUserDetails({
         name: currentuser.username,
         dateOfBirth: '',
         email: '',
         secretQuestion: '',
         secretAnswer: ''
-      });
+      });*/
       props.show = true;
 
       const jwt = data;
-      setAuthTokens(jwt);
+      //setAuthTokens(jwt);
       setLoggedIn(true);
       //login({ username: header.username, password: header.password });
       login(data);

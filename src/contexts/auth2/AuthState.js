@@ -31,6 +31,12 @@ const AuthState = props => {
     if (localStorage.token) {
       //setAuthToken(localStorage.token);
     }
+    if (!user && localStorage.user2) {
+      console.log(user);
+      console.log(localStorage.user2);
+      user = JSON.parse(localStorage.user2);
+      console.log(localStorage.getItem('user2'));
+    }
     console.log('LOADUSER=' + user);
     console.log(user);
     try {

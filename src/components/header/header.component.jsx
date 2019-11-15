@@ -53,7 +53,7 @@ import LoadingContext from '../../contexts/loading.context';
 
 //import Loader from "../../assets/Loader";
 import BLoader from '../../assets/BarLoader';
-import UserDetailsContext from '../../contexts/userDetails.context';
+//import UserDetailsContext from '../../contexts/userDetails.context';
 import useModal from '../../utils/useModal';
 
 import Img from 'react-image';
@@ -62,6 +62,8 @@ import Mina from '../../img/user.jpg';
 import { useAuth } from '../../contexts/auth/auth';
 
 import AuthContext from '../../contexts/auth2/authContext';
+
+import { useHistory } from 'react-router-dom';
 
 function importAll(r) {
   let images = {};
@@ -83,10 +85,10 @@ const Header = ({
 
   //addHeader
 }) => {
-  const { authTokens, setAuthTokens } = useAuth();
+  //const { authTokens, setAuthTokens } = useAuth();
 
   const { showLoading, hideLoading } = useContext(LoadingContext);
-  const { userDetails, setUserDetails } = useContext(UserDetailsContext);
+  //const { userDetails, setUserDetails } = useContext(UserDetailsContext);
   const { t, i18n } = useTranslation();
   //const [users, setUsers] = useState([]);
   const [isShowing, setIsShowing] = useState(false);
@@ -99,6 +101,7 @@ const Header = ({
   const {
     login,
     logout,
+    loadUser,
     error,
     clearErrors,
     isAuthenticated,
@@ -106,48 +109,56 @@ const Header = ({
     token
   } = authContext;
 
+  const history = useHistory();
+
   useEffect(
     () => {
       showLoading();
 
-      if (isAuthenticated) {
+      console.log('isAuthenticated=' + isAuthenticated);
+      if (isAuthenticated === null || !isAuthenticated) {
         //props.history.push('/');
+        loadUser();
+        console.log(user);
+        //setAuthTokens(user);
       }
 
       //if (header !== null) {
       console.log(
         'AUTH-----------------------------------------------------AUTH'
       );
-      console.log(authTokens);
+      //console.log(authTokens);
       if (
         //header !== null &&
         //header !== undefined &&
         //header.username !== 'logimata' &&
-        authTokens &&
-        authTokens.logedIn &&
-        authTokens.username !== 'logimata' &&
-        authTokens.username !== ''
+        //authTokens &&
+        //authTokens.logedIn &&
+        //authTokens.username !== 'logimata' &&
+        //authTokens.username !== ''
+        user &&
+        user.logedIn &&
+        user.username !== 'logimata' &&
+        user.username !== ''
       ) {
-        if (
-          header &&
-          header.username &&
-          header.username !== authTokens.username
-        ) {
+        if (header && header.username && header.username !== user.username) {
           //getCurrentHeader(authTokens.username);
-          setAuthTokens({ username: header.username, logedIn: true });
+          //setAuthTokens({ username: header.username, logedIn: true });
           //login({ username: header.username, password: header.password });
         }
         // && currentHeader !== undefined) {
         console.log('headr=' + currentHeader);
         //getCurrentHeader(currentHeader.username);
-        getCurrentHeader(authTokens.username);
+        if (!currentHeader || !currentHeader.username)
+          getCurrentHeader(user.username);
 
-        console.log(authTokens);
-        console.log('Is LOGGED IN: ' + authTokens.logedIn);
+        //console.log(authTokens);
+        //console.log('Is LOGGED IN: ' + authTokens.logedIn);
         console.log(currentHeader);
       } else {
         console.log('LOGIMATA');
-        getCurrentHeader('logimata');
+        if (!currentHeader || !currentHeader.username)
+          getCurrentHeader('logimata');
         console.log(currentHeader);
       }
       hideLoading();
@@ -158,15 +169,15 @@ const Header = ({
             '   ' +
             currentHeader.username
         );
-        setUserDetails({
+        /*setUserDetails({
           name: currentHeader.username,
           dateOfBirth: '',
           email: '',
           secretQuestion: '',
           secretAnswer: ''
-        });
+        });*/
         console.log('header.username=' + currentHeader.username);
-        console.log('setUserDetails header=' + userDetails);
+        //console.log('setUserDetails header=' + userDetails);
         if (currentHeader.url) currentHeader.url = '';
       } else {
         console.log('currentHeader==POLE');
@@ -257,12 +268,34 @@ const Header = ({
     //return <Loginpage></Loginpage>;
   };
 
+  const handleHomepage = event => {
+    console.log('handleHomepage');
+    const location = {
+      pathname: '/',
+      state: { fromDashboard: true }
+    };
+    history.push(location);
+    history.push('/');
+    console.log('handleHomepage');
+  };
+
+  const handleRole = event => {
+    console.log('handleRole');
+    const location = {
+      pathname: '/admin',
+      state: { fromDashboard: true }
+    };
+    history.push(location);
+    //history.push('/');
+    console.log('handleRole');
+  };
+
   const handleLogout = event => {
     event.preventDefault();
     localStorage.setItem('tokens', null);
     header = null;
     currentHeader = null;
-    setAuthTokens();
+    //setAuthTokens();
     logout();
     getCurrentHeader('logimata');
     console.log('header handleLogin=' + isShowing);
@@ -362,13 +395,16 @@ const Header = ({
         {/*isShowing && <Loginpage></Loginpage>*/}
         {console.log(currentHeader)}
         <nav className='user-nav'>
-          <Logo
-            company={
-              currentHeader !== undefined && currentHeader.company
-                ? currentHeader.company
-                : t('header:bw')
-            }
-          ></Logo>
+          <div onClick={handleHomepage}>
+            <Logo
+              onClick={handleHomepage}
+              company={
+                currentHeader !== undefined && currentHeader.company
+                  ? currentHeader.company
+                  : t('header:bw')
+              }
+            ></Logo>
+          </div>
         </nav>
         <span className='my-spacer'> </span>
 
@@ -454,14 +490,14 @@ const Header = ({
           {currentHeader !== undefined &&
             currentHeader.company &&
             currentHeader.last_active_rolename && (
-              <a className='user-nav__user' href='/admin'>
+              <div className='user-nav__user' onClick={handleRole}>
                 <Role className='user-nav__user-photo user-nav__icon__role'></Role>
 
                 <span className='user-nav__user-name'>
                   {currentHeader.last_active_rolename}
                   {/*t("header:role")*/}
                 </span>
-              </a>
+              </div>
             )}
 
           <div className='user-nav__user' to='/' onClick={handleChangeLang}>

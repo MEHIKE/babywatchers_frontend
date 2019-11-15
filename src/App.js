@@ -38,15 +38,17 @@ import AlertState from './contexts/alert/AlertState';
 
 import AuthContext2 from './contexts/auth2/authContext';
 
+import Notfound from './pages/notfound';
+
 //function App() {
 //class App extends React.Component {
-const App = () => {
-  const [authTokens, setAuthTokens] = useState();
+const App = ({ store }) => {
+  //const [authTokens, setAuthTokens] = useState();
 
   const authContext2 = useContext(AuthContext2);
   //const { isAuthenticated, user, loadUser } = authContext2;
 
-  const setTokens = data => {
+  /* const setTokens = data => {
     console.log(
       'setTokens***************************************************** data='
     );
@@ -74,8 +76,8 @@ const App = () => {
 
     console.log(JSON.parse(localStorage.getItem('tokens')));
   };
-
-  useEffect(
+*/
+  /* useEffect(
     () => {
       //showLoading();
       if (authContext2 && !authContext2.user && localStorage.getItem('user2'))
@@ -87,7 +89,7 @@ const App = () => {
       ) {
         //localStorage.setItem('tokens', JSON.stringify(data));
         //setAuthTokens(JSON.parse(localStorage.getItem('tokens')));
-      } //else {*/
+      } //else {
       //if
       //setAuthTokens(JSON.parse(localStorage.getItem('tokens')));
       //}
@@ -95,48 +97,50 @@ const App = () => {
     },
     [] //, currentHeader.url
   );
+  */
 
   return (
     <AuthState>
+      {console.log('enne fragmenti')}
       <Fragment>
+        {console.log('enne alertstate')}
         <AlertState>
+          {console.log('enne ladong providerit')}
           <LoadingProvider>
-            <Spinner />
-            <AuthContext.Provider
-              value={{ authTokens, setAuthTokens: setTokens }}
-            >
-              <UserDetailsProvider>
-                <Suspense fallback={<Loader />}>
-                  <div className='page_container'>
-                    {/*<Route exact path="/login" component={Loginpage} />*/}
+            {/*<Spinner />*/}
+            {console.log('enne authcontext provderit')}
+            {/*<AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }} >*/}
+            {/*<UserDetailsProvider>*/}
+            {console.log('enne suspenset')}
+            <Suspense fallback={<Loader />}>
+              <div className='page_container'>
+                {/*<Route exact path="/login" component={Loginpage} />*/}
+                {console.log('enne routerit')}
+                <Router>
+                  <Fragment>
+                    <Header />
 
-                    <Router>
-                      <Fragment>
-                        <Header />
+                    <div className='page_content'>
+                      <Sidebar />
 
-                        <div className='page_content'>
-                          <Sidebar />
+                      <main className='page-view'>
+                        <Switch>
+                          <Route exact path='/' component={PageDetail} />
+                          <PrivateRoute exact path='/admin' component={Admin} />
+                          <Route component={Notfound} />
+                        </Switch>
 
-                          <main className='page-view'>
-                            <Switch>
-                              <Route exact path='/' component={PageDetail} />
-                              <PrivateRoute
-                                exact
-                                path='/admin'
-                                component={Admin}
-                              />
-                            </Switch>
+                        <Footer />
+                      </main>
+                    </div>
+                  </Fragment>
+                </Router>
+                {/*<ContextInfo />*/}
+              </div>
+            </Suspense>
+            {/*</UserDetailsProvider>*/}
 
-                            <Footer />
-                          </main>
-                        </div>
-                      </Fragment>
-                    </Router>
-                    <ContextInfo />
-                  </div>
-                </Suspense>
-              </UserDetailsProvider>
-            </AuthContext.Provider>
+            {/*</AuthContext.Provider>*/}
           </LoadingProvider>
         </AlertState>
       </Fragment>

@@ -7,16 +7,16 @@ import AuthContext from '../../contexts/auth2/authContext';
 const PrivateRoute = ({ component: Component, ...rest }) => {
   //const isAuthenticated = useAuth();
   //const { authTokens } = useAuth();
-  const { authTokens, setAuthTokens } = useAuth();
+  //const { authTokens, setAuthTokens } = useAuth();
 
   const authContext = useContext(AuthContext);
   const { isAuthenticated, user } = authContext;
 
   useEffect(
     () => {
-      if (authTokens) {
+      if (user) {
         console.log('PRIVATEROUTE authTokens on olems=');
-        console.log(authTokens);
+        //console.log(authTokens);
         console.log(user);
       } else {
         if (
@@ -25,15 +25,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           JSON.parse(localStorage.getItem('tokens')).username !== 'logimata'
         ) {
           console.log('OMISTAME TOKENI');
-          setAuthTokens(JSON.parse(localStorage.getItem('tokens')));
+          //setAuthTokens(JSON.parse(localStorage.getItem('tokens')));
 
-          console.log('TOKEN OMISTATUD=' + authTokens);
+          //console.log('TOKEN OMISTATUD=' + authTokens);
           console.log(user);
         } else console.log('TINGIMUSED EI VASTA');
       }
-      if (authTokens || isAuthenticated || (user && user.logedIn)) {
+      if (isAuthenticated || (user && user.logedIn)) {
         console.log('ENTERING TO PRIVATE ROUTE1');
-        console.log(authTokens);
+        //console.log(authTokens);
         console.log(user);
         //throw Error();
       } else {
@@ -41,7 +41,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         console.log(user);
       }
       console.log('PRIVATEROUTE');
-      console.log(authTokens);
+      //console.log(authTokens);
       console.log(user);
     },
     [] //, currentHeader.url
@@ -52,20 +52,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={props =>
         user && user.logedIn ? (
-          <Component
-            {...props}
-            logedIn={user.logedIn}
-            username={user.username}
-            logged={false}
-          />
+          <>
+            {console.log(props)}
+            <Component
+              {...props}
+              logedIn={user.logedIn}
+              username={user.username}
+              logged={false}
+            />
+          </>
         ) : (
           <div>
             {console.log(
-              'ENTERING TO PRIVATE ROUTE2' +
-                authTokens +
-                ' * ' +
-                isAuthenticated +
-                '* '
+              'ENTERING TO PRIVATE ROUTE2' + ' * ' + isAuthenticated + '* '
             )}
             <Redirect
               to={{ pathname: '/', state: { referer: props.location } }}

@@ -1,10 +1,10 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose } from 'redux';
 //import { composeWithDevTools } from "redux-devtools-extension";
-import logger from "redux-logger";
-import thunk from "redux-thunk";
-import reduxPromise from "redux-promise";
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import reduxPromise from 'redux-promise';
 
-import rootReducer from "./root-reducer";
+import rootReducer from './root-reducer';
 
 const middlewares = [reduxPromise, logger, thunk];
 const initialState = {};
@@ -17,7 +17,10 @@ const initialState = {};
 
 let store;
 
-if (window.navigator.userAgent.includes("Chrome")) {
+if (
+  window.navigator.userAgent.includes('Chrome') &&
+  !window.navigator.userAgent.includes('OPR')
+) {
   store = createStore(
     rootReducer,
     initialState,
